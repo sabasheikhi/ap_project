@@ -17,6 +17,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_SignInButton_clicked();
+    void on_SignUpButton_clicked();
+    void on_forgotPasswordButton_clicked();
+    void on_usernameLineEdit_textChanged(const QString &arg1);
+    void on_passwordLineEdit_textChanged(const QString &arg1);
+    void on_eyeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

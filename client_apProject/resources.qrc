@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/eye">
+        <file>hided.png</file>
+        <file>unhided.png</file>
+    </qresource>
+</RCC>
