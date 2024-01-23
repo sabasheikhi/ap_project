@@ -1,0 +1,10 @@
+release/dashboard.o
+release/main.o
+release/mainwindow.o
+release/organization.o
+release/project.o
+release/qrc_pictures.o
+release/moc_dashboard.o
+release/moc_mainwindow.o
+release/moc_organization.o
+release/moc_project.o
