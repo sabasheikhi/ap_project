@@ -9,20 +9,25 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    dashboard.cpp \
+    common.cpp \
     main.cpp \
     mainwindow.cpp \
     organization.cpp \
-    project.cpp
+    project.cpp \
+    task.cpp \
+    team.cpp \
+    user.cpp
 
 HEADERS += \
-    dashboard.h \
+    common.h \
     mainwindow.h \
     organization.h \
-    project.h
+    project.h \
+    task.h \
+    team.h \
+    user.h
 
 FORMS += \
-    dashboard.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -30,5 +35,4 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    pictures.qrc
+RESOURCES +=

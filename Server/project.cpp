@@ -27,8 +27,8 @@ void project::setStartDate( QDateTime& startDate) { p_startDate = startDate; }
 QDateTime project::endDate()  { return p_endDate; }
 void project::setEndDate( QDateTime& endDate) { p_endDate = endDate;  }
 
-QMap<int, Role_P> project::members() { return p_members; }
-void project::setMembers( QMap<int, Role_P>& members) { p_members = members;  }
+QMap<int, Role> project::members() { return p_members; }
+void project::setMembers( QMap<int, Role>& members) { p_members = members;  }
 
 /* bool project::isMemberOf( organization& org)  {
     for (const auto& member : org.members()) {

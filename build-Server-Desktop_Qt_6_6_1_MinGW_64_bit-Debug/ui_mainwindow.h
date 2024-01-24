@@ -28,7 +28,6 @@ public:
     QLineEdit *Port;
     QLabel *label_Address;
     QLabel *label_Port;
-    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -63,9 +62,6 @@ public:
         label_Port = new QLabel(centralwidget);
         label_Port->setObjectName("label_Port");
         label_Port->setGeometry(QRect(40, 100, 63, 20));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(140, 180, 111, 41));
         MainWindow->setCentralWidget(centralwidget);
         QWidget::setTabOrder(Port, run_server);
         QWidget::setTabOrder(run_server, address);
@@ -81,7 +77,6 @@ public:
         run_server->setText(QCoreApplication::translate("MainWindow", "Run", nullptr));
         label_Address->setText(QCoreApplication::translate("MainWindow", "Address :", nullptr));
         label_Port->setText(QCoreApplication::translate("MainWindow", "Port :", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "go to Dashboard", nullptr));
     } // retranslateUi
 
 };

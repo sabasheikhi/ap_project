@@ -1,10 +1,11 @@
+release/dashboard.o
 release/forgotpassworddialog.o
 release/main.o
 release/mainwindow.o
 release/security.o
 release/signupdialog.o
-release/resources.o
 release/qrc_resources.o
+release/moc_dashboard.o
 release/moc_forgotpassworddialog.o
 release/moc_mainwindow.o
 release/moc_signupdialog.o

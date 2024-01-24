@@ -50,24 +50,23 @@ void organization::changeMemberRoleById(int memberId, Role role)
 {
 
 
-        if (!o_members.contains(memberId)) {
-            return;
-        }
+    if (!o_members.contains(memberId)) {
+        return;
+    }
 
-        o_members[memberId] = role;
+    o_members[memberId] = role;
 
 }
 bool organization::removeMember(int memberId)
 {
-        if (!o_members.contains(memberId)) {
-                return false;
-        }
-        o_members.remove(memberId);
+    if (!o_members.contains(memberId)) {
+        return false;
+    }
+    o_members.remove(memberId);
 
-            return true;
+    return true;
 
 }
-
 
 
 

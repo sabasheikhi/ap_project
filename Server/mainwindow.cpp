@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <QLineEdit>
-#include "dashboard.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,11 +32,3 @@ void MainWindow::on_run_server_clicked()
     {exit(1);}
     connect(server,SIGNAL(newConnection()),this,SLOT(handleNewConnection()));
 }
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    Dashboard* s = new Dashboard();
-    s->show();
-}
-

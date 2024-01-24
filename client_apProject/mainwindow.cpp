@@ -7,6 +7,10 @@
 #include "forgotpassworddialog.h"
 #define HIDED_EYE ":/eye/hided.png"
 #define UNHIDED_EYE ":/eye/unhided.png"
+#include "dashboard.h"
+#include <QCloseEvent>
+#include <QMessageBox>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +30,11 @@ void MainWindow::on_SignInButton_clicked()
     // az toye file check kn in username , password valid hst ya na... if not => warning
     // hash password byd ba hash password toye file compare beshe...
     // else => enter dashboard
+    Dashboard* page = new Dashboard();
+    if (QMainWindow::close())
+        page->show();
+    else
+        QMessageBox::critical(this, "Error loading page", "Couldn't open Dashboard. Please try again!");
 }
 
 

@@ -5,14 +5,10 @@
 #include <QObject>
 #include <QList>
 #include "project.h"
+#include "common.h"
 class project;
 
 //QList<project> o_projects;
-enum Role {
-    Owner,
-    Admin,
-    Member,
-};
 class organization : public QObject
 {
     Q_OBJECT
@@ -25,10 +21,10 @@ public:
     int ID();
     QString description();
     void setDescription(QString&);
-   // QList<Project> projects();
-   // void addProject(Project);
-   // QList<Team> projects();
-   // void addProject(Project);
+    // QList<Project> projects();
+    // void addProject(Project);
+    // QList<Team> projects();
+    // void addProject(Project);
     QMap<int, Role> members();
     void setMembers(QMap<int, Role> &members);
     void edit_organization(QString&,QString&);
@@ -43,7 +39,7 @@ private:
     QString o_name;
     QString o_description;
     QList<project> o_projects;
-   //QList<Team> o_teams;
+    //QList<Team> o_teams;
     QMap<int, Role> o_members;
     int o_ID;
     static int count;
