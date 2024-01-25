@@ -92,19 +92,6 @@ placeholder-text-color: #800000ff</string>
      <string>Port :</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>180</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>go to Dashboard</string>
-    </property>
-   </widget>
   </widget>
  </widget>
  <tabstops>

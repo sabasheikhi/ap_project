@@ -3,4 +3,7 @@
         <file>hided.png</file>
         <file>unhided.png</file>
     </qresource>
+    <qresource prefix="/plus">
+        <file>plusIcon.png</file>
+    </qresource>
 </RCC>

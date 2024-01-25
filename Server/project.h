@@ -5,12 +5,10 @@
 #include <QMap>
 #include <QObject>
 #include "organization.h"
+#include "common.h"
+
 class organization;
-enum Role_P {
-    pOwner,
-    pAdmin,
-    pMember,
-};
+
 class project : public QObject
 {
     Q_OBJECT
@@ -25,9 +23,9 @@ public:
     void setStartDate(QDateTime&);
     QDateTime endDate();
     void setEndDate (QDateTime&);
-    QMap<int, Role_P>members();
-    void setMembers( QMap<int, Role_P>& members);
-   //bool isMemberOf( organization&);
+    QMap<int, Role>members();
+    void setMembers( QMap<int, Role>& members);
+    //bool isMemberOf( organization&);
 
 signals:
 
@@ -38,10 +36,10 @@ private:
     organization* p_owner;
     QDateTime p_startDate;
     QDateTime p_endDate;
-    QMap<int, Role_P> p_members;
+    QMap<int, Role> p_members;
     int p_ID;
     static int counter;
     bool projectStatus;
-   // QList<Task> tasks;
+    // QList<Task> tasks;
 };
 #endif // PROJECT_H
