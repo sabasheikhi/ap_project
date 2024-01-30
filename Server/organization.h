@@ -4,7 +4,7 @@
 #include <QMap>
 #include <QObject>
 #include <QList>
-#include "project.h"
+
 #include "common.h"
 class project;
 

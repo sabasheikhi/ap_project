@@ -13,7 +13,7 @@ organization::organization(QObject *parent)
 
 int organization::ID(){return o_ID;}
 organization::organization(QString &name,QString &description)
-    : o_name(name), o_description(description) {o_ID=count++; o_members[user->getID()]={Owner};}
+    : o_name(name), o_description(description) {o_ID=count++; }
 
 QString organization::name()
 { return o_name; }
