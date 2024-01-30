@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,6 +26,9 @@ public:
     QLabel *welcomeLabel;
     QListWidget *onlineChatSystemListWidget;
     QLabel *label;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
+    QPushButton *addButton;
 
     void setupUi(QWidget *Dashboard)
     {
@@ -43,10 +48,28 @@ public:
         label->setObjectName("label");
         label->setGeometry(QRect(-10, 0, 1071, 631));
         label->setStyleSheet(QString::fromUtf8("image: url(:/dashboard/dashboard.png);"));
+        gridLayoutWidget = new QWidget(Dashboard);
+        gridLayoutWidget->setObjectName("gridLayoutWidget");
+        gridLayoutWidget->setGeometry(QRect(300, 90, 761, 501));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setObjectName("gridLayout");
+        gridLayout->setSizeConstraint(QLayout::SetFixedSize);
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        addButton = new QPushButton(gridLayoutWidget);
+        addButton->setObjectName("addButton");
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(addButton->sizePolicy().hasHeightForWidth());
+        addButton->setSizePolicy(sizePolicy);
+
+        gridLayout->addWidget(addButton, 0, 0, 1, 1);
+
         label->raise();
         notificationsListWidget->raise();
         welcomeLabel->raise();
         onlineChatSystemListWidget->raise();
+        gridLayoutWidget->raise();
 
         retranslateUi(Dashboard);
 
@@ -58,6 +81,7 @@ public:
         Dashboard->setWindowTitle(QCoreApplication::translate("Dashboard", "Dashboard", nullptr));
         welcomeLabel->setText(QCoreApplication::translate("Dashboard", "welcome!", nullptr));
         label->setText(QString());
+        addButton->setText(QCoreApplication::translate("Dashboard", "add", nullptr));
     } // retranslateUi
 
 };

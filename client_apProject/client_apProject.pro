@@ -13,6 +13,7 @@ SOURCES += \
     forgotpassworddialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    organizationui.cpp \
     security.cpp \
     signupdialog.cpp
 
@@ -20,6 +21,7 @@ HEADERS += \
     dashboard.h \
     forgotpassworddialog.h \
     mainwindow.h \
+    organizationui.h \
     security.h \
     signupdialog.h
 
@@ -27,7 +29,7 @@ FORMS += \
     dashboard.ui \
     forgotpassworddialog.ui \
     mainwindow.ui \
-    organization.ui \
+    organizationui.ui \
     signupdialog.ui
 
 # Default rules for deployment.

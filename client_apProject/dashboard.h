@@ -10,11 +10,19 @@ class Dashboard;
 class Dashboard : public QWidget
 {
     Q_OBJECT
+    int row,column;
     QTcpSocket* socket;
 
 public:
     explicit Dashboard(QWidget *parent,QTcpSocket* st);
+    void fix();
+
     ~Dashboard();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_addButton_clicked();
 
 private:
     Ui::Dashboard *ui;

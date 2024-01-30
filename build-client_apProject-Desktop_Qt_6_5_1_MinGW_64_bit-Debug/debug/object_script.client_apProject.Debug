@@ -2,6 +2,7 @@ debug/dashboard.o
 debug/forgotpassworddialog.o
 debug/main.o
 debug/mainwindow.o
+debug/organizationui.o
 debug/security.o
 debug/signupdialog.o
 debug/qrc_back.o
@@ -18,4 +19,5 @@ debug/qrc_wel.o
 debug/moc_dashboard.o
 debug/moc_forgotpassworddialog.o
 debug/moc_mainwindow.o
+debug/moc_organizationui.o
 debug/moc_signupdialog.o

@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -18,12 +19,21 @@ QT_BEGIN_NAMESPACE
 class Ui_Form
 {
 public:
+    QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName("Form");
-        Form->resize(267, 185);
+        Form->resize(230, 162);
+        label = new QLabel(Form);
+        label->setObjectName("label");
+        label->setGeometry(QRect(-10, 0, 251, 161));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/organize/organize.png);"));
+        label_2 = new QLabel(Form);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(10, 130, 121, 20));
 
         retranslateUi(Form);
 
@@ -33,6 +43,8 @@ public:
     void retranslateUi(QWidget *Form)
     {
         Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
+        label->setText(QString());
+        label_2->setText(QString());
     } // retranslateUi
 
 };

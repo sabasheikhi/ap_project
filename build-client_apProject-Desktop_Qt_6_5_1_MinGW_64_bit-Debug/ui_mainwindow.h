@@ -51,11 +51,14 @@ public:
         SignInButton->setObjectName("SignInButton");
         SignInButton->setEnabled(false);
         SignInButton->setGeometry(QRect(100, 180, 221, 31));
-        SignInButton->setStyleSheet(QString::fromUtf8("border-radius:10px;\n"
+        SignInButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"border-radius:10px;\n"
 "color: rgb(11, 4, 57);\n"
 "background-color: rgb(204, 204, 204);\n"
-"QPushButton::hover {\n"
-"	background-color: rgb(228, 255, 179);\n"
+"}\n"
+"QPushButton:hover {\n"
+"	;\n"
+"	background-color: rgb(222, 255, 131);\n"
 "    }\n"
 ""));
         usernameLineEdit = new QLineEdit(centralwidget);
@@ -83,14 +86,17 @@ public:
         SignUpMessageLabel->setStyleSheet(QString::fromUtf8("color: #ECD8BE;"));
         SignUpButton = new QPushButton(centralwidget);
         SignUpButton->setObjectName("SignUpButton");
-        SignUpButton->setGeometry(QRect(250, 290, 51, 24));
+        SignUpButton->setGeometry(QRect(260, 287, 51, 24));
         QFont font;
         font.setPointSize(8);
         SignUpButton->setFont(font);
-        SignUpButton->setStyleSheet(QString::fromUtf8("border:none;\n"
+        SignUpButton->setStyleSheet(QString::fromUtf8("\n"
+"QPushButton{border:none;\n"
 "color: #ECD8BE;\n"
-"QPushButton::hover {\n"
-"	color: rgb(228, 255, 179);\n"
+"}\n"
+"QPushButton:hover {\n"
+"	\n"
+"	color: rgb(255, 255, 52);\n"
 "    }\n"
 ""));
         forgotPasswordButton = new QPushButton(centralwidget);

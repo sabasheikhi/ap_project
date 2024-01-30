@@ -42,11 +42,14 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius:10px;
+     <string notr="true">QPushButton{
+border-radius:10px;
 color: rgb(11, 4, 57);
 background-color: rgb(204, 204, 204);
-QPushButton::hover {
-	background-color: rgb(228, 255, 179);
+}
+QPushButton:hover {
+	;
+	background-color: rgb(222, 255, 131);
     }
 </string>
     </property>
@@ -136,8 +139,8 @@ background-color: #DCDCDC;</string>
    <widget class="QPushButton" name="SignUpButton">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>290</y>
+      <x>260</x>
+      <y>287</y>
       <width>51</width>
       <height>24</height>
      </rect>
@@ -148,10 +151,13 @@ background-color: #DCDCDC;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border:none;
+     <string notr="true">
+QPushButton{border:none;
 color: #ECD8BE;
-QPushButton::hover {
-	color: rgb(228, 255, 179);
+}
+QPushButton:hover {
+	
+	color: rgb(255, 255, 52);
     }
 </string>
     </property>
