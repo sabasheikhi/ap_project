@@ -8,6 +8,7 @@ Dashboard::Dashboard(QWidget *parent,QTcpSocket* st,QString username)
 {
     ui->setupUi(this);
     socket=st;
+    connect(socket,SIGNAL(readyRead()),this,SLOT(handleWrite()));
     row = 0;
     column =0;
     this->username = username;
@@ -59,7 +60,22 @@ void Dashboard::request_new_organization(QString name,QString des)
 void Dashboard::on_addButton_clicked()
 {
     AddOrganizationClass* window = new AddOrganizationClass(this);
+    connect(this,SIGNAL(closeAddOrg()),window,SLOT(close()));
     connect(window,SIGNAL(addOrganization(QString,QString)),this,SLOT(request_new_organization(QString,QString)));
     window->exec();
 }
-
+void Dashboard::handleWrite()
+{
+    QString input = socket->readAll();
+    qDebug() << input;
+    QTextStream stream(&input);
+    QString buffer;
+    stream>>buffer;
+    if(buffer=="2002")
+    {
+        stream>>buffer;
+        QString name = buffer;
+        new_org(name);
+        emit closeAddOrg();
+    }
+}

@@ -389,7 +389,7 @@ debug/moc_addorganizationclass.cpp: ../client_apProject/addorganizationclass.h \
 		D:/Qt/6.5.1/mingw_64/include/QtCore/qnativeinterface.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.5.1/mingw_64/bin/moc.exe
-	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Asus/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Asus/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\addorganizationclass.h -o debug\moc_addorganizationclass.cpp
+	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Reynard/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Reynard/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\addorganizationclass.h -o debug\moc_addorganizationclass.cpp
 
 debug/moc_dashboard.cpp: ../client_apProject/dashboard.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QWidget \
@@ -558,7 +558,7 @@ debug/moc_dashboard.cpp: ../client_apProject/dashboard.h \
 		D:/Qt/6.5.1/mingw_64/include/QtNetwork/qhostaddress.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.5.1/mingw_64/bin/moc.exe
-	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Asus/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Asus/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\dashboard.h -o debug\moc_dashboard.cpp
+	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Reynard/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Reynard/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\dashboard.h -o debug\moc_dashboard.cpp
 
 debug/moc_forgotpassworddialog.cpp: ../client_apProject/forgotpassworddialog.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QDialog \
@@ -721,7 +721,7 @@ debug/moc_forgotpassworddialog.cpp: ../client_apProject/forgotpassworddialog.h \
 		D:/Qt/6.5.1/mingw_64/include/QtCore/qnativeinterface.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.5.1/mingw_64/bin/moc.exe
-	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Asus/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Asus/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\forgotpassworddialog.h -o debug\moc_forgotpassworddialog.cpp
+	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Reynard/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Reynard/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\forgotpassworddialog.h -o debug\moc_forgotpassworddialog.cpp
 
 debug/moc_mainwindow.cpp: ../client_apProject/mainwindow.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QMainWindow \
@@ -892,7 +892,7 @@ debug/moc_mainwindow.cpp: ../client_apProject/mainwindow.h \
 		D:/Qt/6.5.1/mingw_64/include/QtNetwork/qhostaddress.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.5.1/mingw_64/bin/moc.exe
-	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Asus/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Asus/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\mainwindow.h -o debug\moc_mainwindow.cpp
+	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Reynard/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Reynard/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_organizationui.cpp: ../client_apProject/organizationui.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QWidget \
@@ -1054,7 +1054,7 @@ debug/moc_organizationui.cpp: ../client_apProject/organizationui.h \
 		D:/Qt/6.5.1/mingw_64/include/QtCore/qnativeinterface.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.5.1/mingw_64/bin/moc.exe
-	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Asus/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Asus/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\organizationui.h -o debug\moc_organizationui.cpp
+	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Reynard/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Reynard/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\organizationui.h -o debug\moc_organizationui.cpp
 
 debug/moc_signupdialog.cpp: ../client_apProject/signupdialog.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QDialog \
@@ -1217,7 +1217,7 @@ debug/moc_signupdialog.cpp: ../client_apProject/signupdialog.h \
 		D:/Qt/6.5.1/mingw_64/include/QtCore/qnativeinterface.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.5.1/mingw_64/bin/moc.exe
-	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Asus/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Asus/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\signupdialog.h -o debug\moc_signupdialog.cpp
+	D:\Qt\6.5.1\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Reynard/Documents/GitHub/ap_project/build-client_apProject-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -IC:/Users/Reynard/Documents/GitHub/ap_project/client_apProject -ID:/Qt/6.5.1/mingw_64/include -ID:/Qt/6.5.1/mingw_64/include/QtWidgets -ID:/Qt/6.5.1/mingw_64/include/QtGui -ID:/Qt/6.5.1/mingw_64/include/QtNetwork -ID:/Qt/6.5.1/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\client_apProject\signupdialog.h -o debug\moc_signupdialog.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1445,11 +1445,15 @@ debug/addorganizationclass.o: ../client_apProject/addorganizationclass.cpp ../cl
 		D:/Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
 		D:/Qt/6.5.1/mingw_64/include/QtCore/qlocale.h \
 		D:/Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QFrame \
+		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qframe.h \
+		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QLabel \
+		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qlabel.h \
+		D:/Qt/6.5.1/mingw_64/include/QtGui/qpicture.h \
+		D:/Qt/6.5.1/mingw_64/include/QtGui/qtextdocument.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QLineEdit \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qlineedit.h \
-		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qframe.h \
 		D:/Qt/6.5.1/mingw_64/include/QtGui/qtextcursor.h \
-		D:/Qt/6.5.1/mingw_64/include/QtGui/qtextdocument.h \
 		D:/Qt/6.5.1/mingw_64/include/QtGui/qtextformat.h \
 		D:/Qt/6.5.1/mingw_64/include/QtGui/qpen.h \
 		D:/Qt/6.5.1/mingw_64/include/QtGui/qtextoption.h \
@@ -1681,6 +1685,7 @@ debug/dashboard.o: ../client_apProject/dashboard.cpp ../client_apProject/dashboa
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QPushButton \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qpushbutton.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractbutton.h \
+		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		../client_apProject/addorganizationclass.h \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/QDialog \
 		D:/Qt/6.5.1/mingw_64/include/QtWidgets/qdialog.h \

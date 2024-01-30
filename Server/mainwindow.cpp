@@ -90,9 +90,9 @@ void MainWindow::read_data()
                 socket->write("4010");
                 return;
             }
-            socket->write("4040");
-            return;
         }
+        socket->write("4040");
+        return;
     }
 
     else if(buffer=="NEWORG")
@@ -110,7 +110,7 @@ void MainWindow::read_data()
                 organization* org=new organization(name,des);
                 user->Organizations().append(org);
                 org->setMembers(user->getID(),Role::Owner);
-                //socket->write("2002");
+                socket->write("2002 " +name.toUtf8());
                 return;
             }
 

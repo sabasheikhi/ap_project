@@ -23,8 +23,10 @@ private slots:
     void new_org(QString name);
     void request_new_organization(QString name,QString des );
     void on_addButton_clicked();
-    void handle_Write();
+    void handleWrite();
 
+signals:
+    void closeAddOrg();
 private:
     Ui::Dashboard *ui;
 };
