@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,6 +27,7 @@ FORMS += \
     dashboard.ui \
     forgotpassworddialog.ui \
     mainwindow.ui \
+    organization.ui \
     signupdialog.ui
 
 # Default rules for deployment.
@@ -35,4 +36,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resources.qrc
+    back.qrc \
+    back.qrc \
+    backs.qrc \
+    cheshm.qrc \
+    dash.qrc \
+    img.qrc \
+    organize.qrc \
+    pain.qrc \
+    paint.qrc \
+    person.qrc \
+    resources.qrc \
+    wel.qrc

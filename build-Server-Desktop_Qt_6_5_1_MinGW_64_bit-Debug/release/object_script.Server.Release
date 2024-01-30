@@ -1,0 +1,14 @@
+release/common.o
+release/main.o
+release/mainwindow.o
+release/organization.o
+release/project.o
+release/task.o
+release/team.o
+release/user.o
+release/moc_mainwindow.o
+release/moc_organization.o
+release/moc_project.o
+release/moc_task.o
+release/moc_team.o
+release/moc_user.o

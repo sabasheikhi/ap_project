@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/wele">
+        <file>wel.jpg</file>
+    </qresource>
+</RCC>
