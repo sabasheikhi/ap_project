@@ -97,17 +97,22 @@ void MainWindow::read_data()
 
     else if(buffer=="NEWORG")
     {
-        QString name,des;
+        QString username,name,des;
+        stream>>buffer;
+        username = buffer;
         stream>>buffer;
         name = buffer;
         stream>>buffer;
         des = buffer;
-
-        organization* org=new organization(name,des);
-        user->Organizations().append(org);
-        socket->write("2002");
-        return;
+        for(auto user:users){
+            if(username==user->Username())
+            {
+                organization* org=new organization(name,des);
+                user->Organizations().append(org);
+                //socket->write("2002");
+                return;
+            }
 
     }
 
-}
+    }}

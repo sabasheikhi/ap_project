@@ -36,5 +36,5 @@ private:
 
     // save user data in QMap or linkedList?
 };
-extern User* user;
+
 #endif // USER_H
