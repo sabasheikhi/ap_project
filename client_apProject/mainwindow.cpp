@@ -47,7 +47,7 @@ void MainWindow::handleWrite()
     qDebug() << response;
     if(response=="2001" )
     {
-        Dashboard* window = new Dashboard(nullptr,socket);
+        Dashboard* window = new Dashboard(nullptr,socket,username);
         window->show();
         disconnect(connection);
         this->close();
@@ -73,9 +73,11 @@ void MainWindow::handleWrite()
 void MainWindow::on_SignInButton_clicked()
 
 {
-    QString username = ui->usernameLineEdit->text();
+    QString usrname = ui->usernameLineEdit->text();
     QString password = ui->passwordLineEdit->text();
-    QString command = "SIGNIN "+username +" "+ password+"\n";
+
+    QString command = "SIGNIN "+usrname +" "+ password+"\n";
+    username = usrname;
     socket->write(command.toUtf8());
     socket->flush();
 }

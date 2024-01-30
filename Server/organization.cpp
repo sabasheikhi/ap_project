@@ -30,7 +30,7 @@ void organization::setDescription(QString &description)
 //void organization::addProject(Project project) { o_projects.append(project); }
 
 QMap<int, Role> organization::members() { return o_members; }
-void organization::setMembers(QMap<int, Role> &members) { o_members = members; }
+void organization::setMembers(int id,Role role) { o_members[id] = role; }
 
 
 //........................................................................................
@@ -40,10 +40,6 @@ void organization::edit_organization(QString &name,QString &description)
 {
     setName(name);
     setDescription(description);
-}
-QList<organization> organization::memberOrganizations()
-{
-    return member_organizations;
 }
 
 void organization::changeMemberRoleById(int memberId, Role role)

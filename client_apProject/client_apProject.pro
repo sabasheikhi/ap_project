@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addorganizationclass.cpp \
     dashboard.cpp \
     forgotpassworddialog.cpp \
     main.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     signupdialog.cpp
 
 HEADERS += \
+    addorganizationclass.h \
     dashboard.h \
     forgotpassworddialog.h \
     mainwindow.h \
@@ -26,6 +28,7 @@ HEADERS += \
     signupdialog.h
 
 FORMS += \
+    addorganizationclass.ui \
     dashboard.ui \
     forgotpassworddialog.ui \
     mainwindow.ui \

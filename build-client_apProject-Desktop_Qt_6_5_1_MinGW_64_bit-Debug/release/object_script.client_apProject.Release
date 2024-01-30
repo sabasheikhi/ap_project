@@ -1,3 +1,4 @@
+release/addorganizationclass.o
 release/dashboard.o
 release/forgotpassworddialog.o
 release/main.o
@@ -16,6 +17,7 @@ release/qrc_paint.o
 release/qrc_person.o
 release/qrc_resources.o
 release/qrc_wel.o
+release/moc_addorganizationclass.o
 release/moc_dashboard.o
 release/moc_forgotpassworddialog.o
 release/moc_mainwindow.o

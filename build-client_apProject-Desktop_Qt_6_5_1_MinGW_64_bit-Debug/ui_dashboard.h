@@ -79,7 +79,7 @@ public:
     void retranslateUi(QWidget *Dashboard)
     {
         Dashboard->setWindowTitle(QCoreApplication::translate("Dashboard", "Dashboard", nullptr));
-        welcomeLabel->setText(QCoreApplication::translate("Dashboard", "welcome!", nullptr));
+        welcomeLabel->setText(QCoreApplication::translate("Dashboard", "Welcome!", nullptr));
         label->setText(QString());
         addButton->setText(QCoreApplication::translate("Dashboard", "add", nullptr));
     } // retranslateUi

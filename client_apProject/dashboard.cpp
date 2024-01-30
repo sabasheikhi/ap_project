@@ -1,7 +1,8 @@
 #include "dashboard.h"
 #include "ui_dashboard.h"
+#include "addorganizationclass.h"
 #include "organizationui.h"
-Dashboard::Dashboard(QWidget *parent,QTcpSocket* st)
+Dashboard::Dashboard(QWidget *parent,QTcpSocket* st,QString username)
     : QWidget(parent)
     , ui(new Ui::Dashboard)
 {
@@ -9,6 +10,7 @@ Dashboard::Dashboard(QWidget *parent,QTcpSocket* st)
     socket=st;
     row = 0;
     column =0;
+    this->username = username;
     ui->addButton->setFixedSize(230,162);
     ui->gridLayout->setAlignment(ui->gridLayout->layout(),Qt::AlignLeft|Qt::AlignTop);
     ui->gridLayout->addWidget(ui->addButton,0,0,Qt::AlignLeft|Qt::AlignTop);
@@ -41,13 +43,23 @@ void Dashboard::on_pushButton_clicked()
 {
 
 }
-
-
-void Dashboard::on_addButton_clicked()
+void Dashboard::new_org(QString name)
 {
     fix();
-    OrganizationUI* b=new OrganizationUI(this,"name");
+    OrganizationUI* b=new OrganizationUI(this,name);
     b->setFixedSize(230,162);
     ui->gridLayout->addWidget(b,0,0,Qt::AlignLeft|Qt::AlignTop);
+}
+void Dashboard::request_new_organization(QString name,QString des)
+{
+    QString command = "NEWORG "+username +" " + des +"\n";
+    socket->write(command.toUtf8());
+    socket->flush();
+}
+void Dashboard::on_addButton_clicked()
+{
+    AddOrganizationClass* window = new AddOrganizationClass(this);
+    connect(window,SIGNAL(addOrganization(QString,QString)),this,SLOT(request_new_organization(QString,QString)));
+    window->exec();
 }
 

@@ -1,6 +1,9 @@
 #ifndef USER_H
 #define USER_H
-
+#include "project.h"
+#include "organization.h"
+#include "task.h"
+#include "team.h"
 #include <QObject>
 #include <QString>
 
@@ -12,6 +15,10 @@ public:
     QString Username();
     QString Password();
     QString Name();
+    QList<project*>& Projects();
+    QList<organization*>& Organizations();
+    QList<Team*>& Teams();
+    QList<Task*>& Tasks();
     int getID();
     // in user che task hayi dare v deadline hrkodum ta keye?
 private:
@@ -22,7 +29,12 @@ private:
     QString hashed_password;
     QString email;
     QString securityQuestion;
+    QList<organization*> organizations;
+    QList<Team*> teams;
+    QList<project*> projects;
+    QList<Task*> tasks;
+
     // save user data in QMap or linkedList?
 };
-
+extern User* user;
 #endif // USER_H

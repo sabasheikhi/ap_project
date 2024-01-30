@@ -1,3 +1,4 @@
+debug/addorganizationclass.o
 debug/dashboard.o
 debug/forgotpassworddialog.o
 debug/main.o
@@ -16,6 +17,7 @@ debug/qrc_paint.o
 debug/qrc_person.o
 debug/qrc_resources.o
 debug/qrc_wel.o
+debug/moc_addorganizationclass.o
 debug/moc_dashboard.o
 debug/moc_forgotpassworddialog.o
 debug/moc_mainwindow.o

@@ -33,7 +33,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>welcome!</string>
+    <string>Welcome!</string>
    </property>
   </widget>
   <widget class="QListWidget" name="onlineChatSystemListWidget">

@@ -20,3 +20,17 @@ bool User::userExists(QString username, QString hashed_password){
 }
 */
 int User::getID(){ return id; }
+QList<project*>& User::Projects()
+{return projects;}
+QList<organization*>& User::Organizations()
+{
+    return organizations;
+}
+QList<Team*>& User::Teams()
+{
+    return teams;
+}
+QList<Task*>& User::Tasks()
+{
+    return tasks;
+}

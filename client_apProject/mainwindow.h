@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     QTcpSocket* socket;
     QMetaObject::Connection connection;
+    QString username;
 
 public:
     MainWindow(QWidget *parent = nullptr);
