@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
+    <width>472</width>
     <height>418</height>
    </rect>
   </property>
@@ -192,9 +192,9 @@ background-color: #DCDCDC;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>-10</y>
-     <width>481</width>
+     <width>491</width>
      <height>431</height>
     </rect>
    </property>
@@ -242,7 +242,7 @@ color: rgb(4, 11, 68);
 background-color: #DCDCDC;</string>
    </property>
    <property name="text">
-    <string>sign up</string>
+    <string>Sign Up</string>
    </property>
   </widget>
   <zorder>label</zorder>

@@ -51,5 +51,16 @@ void SignUpDialog::on_pushButton_clicked()
         QMessageBox::critical(this, "Password not strong", "Password should contain at least 8 characters, including uppercase and lowercase letters, numbers, and special characters(@, #, $).");
         return;
     }
+
+    emit SignUpRequest(ui->usernameLineEdit->text(),ui->passwordLineEdit->text(),
+                        ui->fullnameLineEdit->text(),ui->emailLineEdit->text(),
+                       ui->securityQuestionLineEdit->text());
+}
+void SignUpDialog::username_taken(){
+    QMessageBox::warning(this,"Warning" , "Username already exists");
 }
 
+void SignUpDialog::signup_success(){
+    QMessageBox::information(this,"Successful" , "User was created successfully");
+    this->close();
+}

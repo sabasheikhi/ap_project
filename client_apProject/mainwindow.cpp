@@ -38,38 +38,64 @@ MainWindow::~MainWindow()
 
 void MainWindow::handleWrite()
 {
+    // 4011 User Already Exists
+    // 2000 User created
+    // 2001 User login
+    // 4010 wrong password
+    // 4040 username not found
     QString response = socket->readAll();
     qDebug() << response;
-    if(response=="200" )
+    if(response=="2001" )
     {
         Dashboard* window = new Dashboard(nullptr,socket);
         window->show();
         disconnect(connection);
         this->close();
     }
-    else if(response=="401")
+    else if(response=="4010")
     {
         QMessageBox::critical(this,"Wrong password","your password is incorrect");
     }
+    else if(response=="2000"){
+        emit success_signup();
+    }
+    else if(response=="4011")
+    {
+        emit username_taken();
+    }
+    else if(response=="4040")
+    {
+        QMessageBox::warning(this,"Warning","Username not found.");
+    }
+
 }
 
 void MainWindow::on_SignInButton_clicked()
 
 {
-     QString username = ui->usernameLineEdit->text();
+    QString username = ui->usernameLineEdit->text();
     QString password = ui->passwordLineEdit->text();
-    QString command = "signIn "+username +" "+ password;
+    QString command = "SIGNIN "+username +" "+ password+"\n";
     socket->write(command.toUtf8());
-
+    socket->flush();
 }
-
-
 void MainWindow::on_SignUpButton_clicked()
 {
     SignUpDialog *signUpPage = new SignUpDialog(this);
+    connect(signUpPage,SIGNAL(SignUpRequest(QString,QString,QString,QString,QString)),
+            this,SLOT(signUpRequest(QString,QString,QString,QString,QString)));
+    connect(this,SIGNAL(success_signup()),signUpPage,SLOT(signup_success()));
+    connect(this,SIGNAL(username_taken()),signUpPage,SLOT(username_taken()));
     signUpPage->show();
-}
 
+}
+void MainWindow::signUpRequest(QString username,QString password,QString name,QString email,QString security)
+{
+    QString command = "SIGNUP " +username +" ";
+    command+=password+" "+name+" " + email + " " + security+"\n";
+    socket->write(command.toUtf8());
+    socket->flush();
+}
 
 void MainWindow::on_forgotPasswordButton_clicked()
 {

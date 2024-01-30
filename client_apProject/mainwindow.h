@@ -21,7 +21,7 @@ public:
     ~MainWindow();
 
 private slots:
-
+    void signUpRequest(QString username,QString password,QString name,QString email,QString security);
     void handleWrite();
     void on_SignInButton_clicked();
     void on_SignUpButton_clicked();
@@ -32,5 +32,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+signals:
+    void success_signup();
+    void username_taken();
+
 };
 #endif // MAINWINDOW_H

@@ -23,7 +23,7 @@ private slots:
 
     void on_run_server_clicked();
     void read_data();
-     void handleNewConnection();
+    void handleNewConnection();
 
 private:
     Ui::MainWindow *ui;

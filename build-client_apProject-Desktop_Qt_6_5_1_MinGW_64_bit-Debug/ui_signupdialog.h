@@ -40,7 +40,7 @@ public:
     {
         if (SignUpDialog->objectName().isEmpty())
             SignUpDialog->setObjectName("SignUpDialog");
-        SignUpDialog->resize(478, 418);
+        SignUpDialog->resize(472, 418);
         usernameLineEdit = new QLineEdit(SignUpDialog);
         usernameLineEdit->setObjectName("usernameLineEdit");
         usernameLineEdit->setGeometry(QRect(210, 80, 171, 24));
@@ -95,7 +95,7 @@ public:
         eyeButton->setCheckable(true);
         label = new QLabel(SignUpDialog);
         label->setObjectName("label");
-        label->setGeometry(QRect(0, -10, 481, 431));
+        label->setGeometry(QRect(-10, -10, 491, 431));
         label->setStyleSheet(QString::fromUtf8("image: url(:/backs/backsi.png);"));
         label_2 = new QLabel(SignUpDialog);
         label_2->setObjectName("label_2");
@@ -149,7 +149,7 @@ public:
         eyeButton->setText(QString());
         label->setText(QString());
         label_2->setText(QCoreApplication::translate("SignUpDialog", "signup page", nullptr));
-        pushButton->setText(QCoreApplication::translate("SignUpDialog", "sign up", nullptr));
+        pushButton->setText(QCoreApplication::translate("SignUpDialog", "Sign Up", nullptr));
     } // retranslateUi
 
 };
