@@ -14,11 +14,7 @@ User::User(QString &username, QString &hashed_password,QString& name, QString &e
 QString User::Username() { return username;}
 QString User::Password() { return hashed_password;}
 QString User::Name() {return name;}
-/*
-bool User::userExists(QString username, QString hashed_password){
-    // begard toye file ya map ya hrchi k hst bbin user found mishe ya n
-}
-*/
+
 int User::getID(){ return id; }
 QList<project*>& User::Projects()
 {return projects;}

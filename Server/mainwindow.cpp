@@ -39,6 +39,7 @@ void MainWindow::read_data()
     // 2001 User login
     // 4010 wrong password
     // 4040 username not found
+    // 2002 New organization creat
     QTcpSocket* socket = (QTcpSocket*)sender();
     QString input = socket->readAll();
     qDebug() << input;
@@ -94,7 +95,19 @@ void MainWindow::read_data()
         }
     }
 
+    else if(buffer=="NEWORG")
+    {
+        QString name,des;
+        stream>>buffer;
+        name = buffer;
+        stream>>buffer;
+        des = buffer;
 
+        organization* org=new organization(name,des);
+        user->Organizations().append(org);
+        socket->write("2002");
+        return;
 
+    }
 
 }

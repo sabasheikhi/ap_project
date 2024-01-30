@@ -1,1 +1,8 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/back">
+        <file>back.png</file>
+    </qresource>
+    <qresource prefix="/bachssss">
+        <file>back.png</file>
+    </qresource>
+</RCC>

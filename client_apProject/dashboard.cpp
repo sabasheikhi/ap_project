@@ -52,7 +52,7 @@ void Dashboard::new_org(QString name)
 }
 void Dashboard::request_new_organization(QString name,QString des)
 {
-    QString command = "NEWORG "+username +" " + des +"\n";
+    QString command = "NEWORG "+name +" " + des +"\n";
     socket->write(command.toUtf8());
     socket->flush();
 }

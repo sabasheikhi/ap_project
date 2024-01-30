@@ -82,7 +82,7 @@ public:
         label = new QLabel(forgotPasswordDialog);
         label->setObjectName("label");
         label->setGeometry(QRect(-20, 0, 471, 401));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/backs/backsi.png);"));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/back/back.png)"));
         label->raise();
         ok_cancel_buttonBox->raise();
         emailLineEdit->raise();

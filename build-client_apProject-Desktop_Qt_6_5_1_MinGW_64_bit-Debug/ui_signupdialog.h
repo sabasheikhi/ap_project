@@ -96,7 +96,7 @@ public:
         label = new QLabel(SignUpDialog);
         label->setObjectName("label");
         label->setGeometry(QRect(-10, -10, 491, 431));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/backs/backsi.png);"));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/back/back.png)"));
         label_2 = new QLabel(SignUpDialog);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(190, 30, 101, 31));

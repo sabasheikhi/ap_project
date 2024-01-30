@@ -12,6 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
@@ -24,21 +26,49 @@ public:
     QPushButton *addButton;
     QLineEdit *nameLineEdit;
     QTextEdit *descriptionLineEdit;
+    QLabel *Name;
+    QLabel *label_2;
+    QFrame *line;
 
     void setupUi(QDialog *AddOrganizationClass)
     {
         if (AddOrganizationClass->objectName().isEmpty())
             AddOrganizationClass->setObjectName("AddOrganizationClass");
-        AddOrganizationClass->resize(479, 129);
+        AddOrganizationClass->resize(484, 161);
+        AddOrganizationClass->setStyleSheet(QString::fromUtf8("background-color: rgb(35, 28, 83);"));
         addButton = new QPushButton(AddOrganizationClass);
         addButton->setObjectName("addButton");
-        addButton->setGeometry(QRect(370, 10, 80, 24));
+        addButton->setGeometry(QRect(360, 20, 91, 31));
+        addButton->setStyleSheet(QString::fromUtf8("background-color: rgb(149, 149, 149);\n"
+"border-radius:5px;"));
         nameLineEdit = new QLineEdit(AddOrganizationClass);
         nameLineEdit->setObjectName("nameLineEdit");
-        nameLineEdit->setGeometry(QRect(50, 20, 113, 24));
+        nameLineEdit->setGeometry(QRect(140, 20, 131, 31));
+        nameLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(250, 255, 193);\n"
+"border-radius:8px;"));
         descriptionLineEdit = new QTextEdit(AddOrganizationClass);
         descriptionLineEdit->setObjectName("descriptionLineEdit");
-        descriptionLineEdit->setGeometry(QRect(50, 50, 401, 61));
+        descriptionLineEdit->setGeometry(QRect(140, 80, 311, 61));
+        descriptionLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(250, 255, 193);\n"
+"border-radius:8px;"));
+        Name = new QLabel(AddOrganizationClass);
+        Name->setObjectName("Name");
+        Name->setGeometry(QRect(40, 20, 63, 20));
+        Name->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        label_2 = new QLabel(AddOrganizationClass);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(40, 60, 91, 20));
+        label_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        line = new QFrame(AddOrganizationClass);
+        line->setObjectName("line");
+        line->setGeometry(QRect(461, -10, 20, 191));
+        QFont font;
+        font.setPointSize(12);
+        line->setFont(font);
+        line->setStyleSheet(QString::fromUtf8("color: rgb(250, 255, 193);\n"
+"color: rgb(255, 255, 255);"));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
 
         retranslateUi(AddOrganizationClass);
 
@@ -49,6 +79,8 @@ public:
     {
         AddOrganizationClass->setWindowTitle(QCoreApplication::translate("AddOrganizationClass", "Dialog", nullptr));
         addButton->setText(QCoreApplication::translate("AddOrganizationClass", "Add", nullptr));
+        Name->setText(QCoreApplication::translate("AddOrganizationClass", "Name :", nullptr));
+        label_2->setText(QCoreApplication::translate("AddOrganizationClass", "Description :", nullptr));
     } // retranslateUi
 
 };

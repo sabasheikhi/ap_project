@@ -199,7 +199,7 @@ background-color: #DCDCDC;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/backs/backsi.png);</string>
+    <string notr="true">image: url(:/back/back.png)</string>
    </property>
    <property name="text">
     <string/>

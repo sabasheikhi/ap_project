@@ -15,6 +15,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,6 +30,8 @@ public:
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QPushButton *addButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
 
     void setupUi(QWidget *Dashboard)
     {
@@ -38,6 +41,9 @@ public:
         notificationsListWidget = new QListWidget(Dashboard);
         notificationsListWidget->setObjectName("notificationsListWidget");
         notificationsListWidget->setGeometry(QRect(40, 100, 201, 231));
+        notificationsListWidget->setStyleSheet(QString::fromUtf8("\n"
+"border-radius:14px;\n"
+"background-color: #7C7C7C;"));
         welcomeLabel = new QLabel(Dashboard);
         welcomeLabel->setObjectName("welcomeLabel");
         welcomeLabel->setGeometry(QRect(50, 50, 91, 21));
@@ -65,11 +71,18 @@ public:
 
         gridLayout->addWidget(addButton, 0, 0, 1, 1);
 
+        verticalLayoutWidget = new QWidget(Dashboard);
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(60, 110, 160, 201));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
         label->raise();
         notificationsListWidget->raise();
         welcomeLabel->raise();
         onlineChatSystemListWidget->raise();
         gridLayoutWidget->raise();
+        verticalLayoutWidget->raise();
 
         retranslateUi(Dashboard);
 

@@ -223,7 +223,7 @@ border-radius:5px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/oa/back.png);</string>
+     <string notr="true">image: url(:/back/back.png)</string>
     </property>
     <property name="text">
      <string/>

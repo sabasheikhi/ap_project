@@ -120,7 +120,7 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(-120, 0, 671, 451));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/oa/back.png);"));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/back/back.png)"));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(180, 10, 71, 71));

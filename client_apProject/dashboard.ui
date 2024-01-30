@@ -22,6 +22,11 @@
      <height>231</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">
+border-radius:14px;
+background-color: #7C7C7C;</string>
+   </property>
   </widget>
   <widget class="QLabel" name="welcomeLabel">
    <property name="geometry">
@@ -90,11 +95,23 @@
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>110</y>
+     <width>160</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout"/>
+  </widget>
   <zorder>label</zorder>
   <zorder>notificationsListWidget</zorder>
   <zorder>welcomeLabel</zorder>
   <zorder>onlineChatSystemListWidget</zorder>
   <zorder>gridLayoutWidget</zorder>
+  <zorder>verticalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>
