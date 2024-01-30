@@ -19,6 +19,8 @@ private slots:
     void on_ok_cancel_buttonBox_accepted();
     void on_eyeButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::SignUpDialog *ui;
 };

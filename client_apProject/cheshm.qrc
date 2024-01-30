@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/chesh">
+        <file>show-password.png</file>
+    </qresource>
+</RCC>

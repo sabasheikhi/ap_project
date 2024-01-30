@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/paint">
+        <file>back.png</file>
+    </qresource>
+</RCC>

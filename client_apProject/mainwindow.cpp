@@ -17,6 +17,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    socket = new QTcpSocket();
+    QHostAddress address("127.0.0.1");
+    int port = 1111;
+    socket->connectToHost(address,port);
+    if(!socket->waitForConnected(1000))
+    {
+        qDebug() << "failed to connect to the host";
+        exit(1);
+    }
+
+    connection = connect(socket,SIGNAL(readyRead()),this,SLOT(handleWrite()));
     ui->usernameLineEdit->setFocus();
 }
 
@@ -25,16 +36,31 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_SignInButton_clicked()
+void MainWindow::handleWrite()
 {
-    // az toye file check kn in username , password valid hst ya na... if not => warning
-    // hash password byd ba hash password toye file compare beshe...
-    // else => enter dashboard
-    Dashboard* page = new Dashboard();
-    if (QMainWindow::close())
-        page->show();
-    else
-        QMessageBox::critical(this, "Error loading page", "Couldn't open Dashboard. Please try again!");
+    QString response = socket->readAll();
+    qDebug() << response;
+    if(response=="200" )
+    {
+        Dashboard* window = new Dashboard(nullptr,socket);
+        window->show();
+        disconnect(connection);
+        this->close();
+    }
+    else if(response=="401")
+    {
+        QMessageBox::critical(this,"Wrong password","your password is incorrect");
+    }
+}
+
+void MainWindow::on_SignInButton_clicked()
+
+{
+     QString username = ui->usernameLineEdit->text();
+    QString password = ui->passwordLineEdit->text();
+    QString command = "signIn "+username +" "+ password;
+    socket->write(command.toUtf8());
+
 }
 
 

@@ -1,0 +1,14 @@
+debug/common.o
+debug/main.o
+debug/mainwindow.o
+debug/organization.o
+debug/project.o
+debug/task.o
+debug/team.o
+debug/user.o
+debug/moc_mainwindow.o
+debug/moc_organization.o
+debug/moc_project.o
+debug/moc_task.o
+debug/moc_team.o
+debug/moc_user.o

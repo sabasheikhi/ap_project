@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/per">
+        <file>pe.png</file>
+    </qresource>
+</RCC>

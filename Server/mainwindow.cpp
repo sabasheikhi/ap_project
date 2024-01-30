@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <QLineEdit>
-
+#include <QTextStream>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 void MainWindow::handleNewConnection()
 {
     QTcpSocket* socket = server->nextPendingConnection();
-    connect(socket,SIGNAL(readyRead()),this,SLOT());
+    connect(socket,SIGNAL(readyRead()),this,SLOT(read_data()));
 }
 void MainWindow::on_run_server_clicked()
 {
@@ -31,4 +31,18 @@ void MainWindow::on_run_server_clicked()
     if(!server->listen(address,port))
     {exit(1);}
     connect(server,SIGNAL(newConnection()),this,SLOT(handleNewConnection()));
+}
+void MainWindow::read_data()
+{
+    QTcpSocket* socket = (QTcpSocket*)sender();
+    QString input = socket->readAll();
+    QTextStream stream(&input);
+    QString buffer;
+    stream>>buffer;
+
+
+
+
+
+
 }

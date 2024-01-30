@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/backs">
+        <file>backsi.png</file>
+    </qresource>
+</RCC>
