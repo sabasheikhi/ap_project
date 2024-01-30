@@ -94,7 +94,7 @@ void MainWindow::on_SignUpButton_clicked()
 void MainWindow::signUpRequest(QString username,QString password,QString name,QString email,QString security)
 {
     QString command = "SIGNUP " +username +" ";
-    command+=password+" "+name+" " + email + " " + security+"\n";
+    command+=password+" { "+name+" } " + email + " { " + security+"} \n";
     socket->write(command.toUtf8());
     socket->flush();
 }

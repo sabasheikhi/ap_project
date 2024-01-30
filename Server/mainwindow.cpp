@@ -54,11 +54,24 @@ void MainWindow::read_data()
         stream>>buffer;
         password = buffer;
         stream>>buffer;
-        name = buffer;
+        buffer=="{";
+        stream>>buffer;
+        while(buffer!="}")
+        {
+            name+=buffer+" ";
+            stream>>buffer;
+        }
+        name.removeLast();
         stream>>buffer;
         email = buffer;
+        buffer=="{";
         stream>>buffer;
-        security = buffer;
+        while(buffer!="}")
+        {
+            security+=buffer+" ";
+            stream>>buffer;
+        }
+        security.removeLast();
         for(auto user:users)
         {
             if(username==user->Username())
@@ -101,9 +114,25 @@ void MainWindow::read_data()
         stream>>buffer;
         username = buffer;
         stream>>buffer;
-        name = buffer;
+        buffer=="{";
         stream>>buffer;
-        des = buffer;
+        while(buffer!="}")
+        {
+            name+=buffer+" ";
+            stream>>buffer;
+        }
+        name.removeLast();
+        stream>>buffer;
+        buffer=="{";
+        stream>>buffer;
+        while(buffer!="}")
+        {
+            des+=buffer+" ";
+            stream>>buffer;
+        }
+        des.removeLast();
+        qDebug() << name;
+        qDebug() << des;
         for(auto user:users){
             if(username==user->Username())
             {

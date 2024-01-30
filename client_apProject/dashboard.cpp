@@ -53,7 +53,7 @@ void Dashboard::new_org(QString name)
 }
 void Dashboard::request_new_organization(QString name,QString des)
 {
-    QString command = "NEWORG "+username +" " +name +" " + des +"\n";
+    QString command = "NEWORG " +username +" { "+name +" } { " + des +" }\n";
     socket->write(command.toUtf8());
     socket->flush();
 }
@@ -73,9 +73,7 @@ void Dashboard::handleWrite()
     stream>>buffer;
     if(buffer=="2002")
     {
-        stream>>buffer;
-        QString name = buffer;
-        new_org(name);
+        new_org(stream.readAll());
         emit closeAddOrg();
     }
 }
