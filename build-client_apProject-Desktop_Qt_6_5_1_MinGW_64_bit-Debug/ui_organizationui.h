@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,21 +20,24 @@ QT_BEGIN_NAMESPACE
 class Ui_OrganizationUI
 {
 public:
-    QLabel *img;
     QLabel *name;
+    QPushButton *pushButton;
 
     void setupUi(QWidget *OrganizationUI)
     {
         if (OrganizationUI->objectName().isEmpty())
             OrganizationUI->setObjectName("OrganizationUI");
         OrganizationUI->resize(230, 162);
-        img = new QLabel(OrganizationUI);
-        img->setObjectName("img");
-        img->setGeometry(QRect(-10, 0, 251, 161));
-        img->setStyleSheet(QString::fromUtf8("image: url(:/organize/organize.png);"));
         name = new QLabel(OrganizationUI);
         name->setObjectName("name");
-        name->setGeometry(QRect(10, 130, 121, 20));
+        name->setGeometry(QRect(20, 130, 121, 20));
+        pushButton = new QPushButton(OrganizationUI);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(0, 0, 231, 161));
+        pushButton->setStyleSheet(QString::fromUtf8("\n"
+"image: url(:/organize/organize.png);"));
+        pushButton->raise();
+        name->raise();
 
         retranslateUi(OrganizationUI);
 
@@ -43,8 +47,8 @@ public:
     void retranslateUi(QWidget *OrganizationUI)
     {
         OrganizationUI->setWindowTitle(QCoreApplication::translate("OrganizationUI", "Form", nullptr));
-        img->setText(QString());
         name->setText(QString());
+        pushButton->setText(QString());
     } // retranslateUi
 
 };

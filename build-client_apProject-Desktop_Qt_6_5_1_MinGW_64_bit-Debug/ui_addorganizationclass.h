@@ -38,7 +38,7 @@ public:
         AddOrganizationClass->setStyleSheet(QString::fromUtf8("background-color: rgb(35, 28, 83);"));
         addButton = new QPushButton(AddOrganizationClass);
         addButton->setObjectName("addButton");
-        addButton->setGeometry(QRect(360, 20, 91, 31));
+        addButton->setGeometry(QRect(350, 20, 81, 31));
         addButton->setStyleSheet(QString::fromUtf8("background-color: rgb(149, 149, 149);\n"
 "border-radius:5px;"));
         nameLineEdit = new QLineEdit(AddOrganizationClass);

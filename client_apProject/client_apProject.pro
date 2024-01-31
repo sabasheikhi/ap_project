@@ -11,28 +11,34 @@ CONFIG += c++17
 SOURCES += \
     addorganizationclass.cpp \
     dashboard.cpp \
+    editorganizationclass.cpp \
     forgotpassworddialog.cpp \
     main.cpp \
     mainwindow.cpp \
     organizationui.cpp \
+    orgdialog.cpp \
     security.cpp \
     signupdialog.cpp
 
 HEADERS += \
     addorganizationclass.h \
     dashboard.h \
+    editorganizationclass.h \
     forgotpassworddialog.h \
     mainwindow.h \
     organizationui.h \
+    orgdialog.h \
     security.h \
     signupdialog.h
 
 FORMS += \
     addorganizationclass.ui \
     dashboard.ui \
+    editorganizationclass.ui \
     forgotpassworddialog.ui \
     mainwindow.ui \
     organizationui.ui \
+    orgdialog.ui \
     signupdialog.ui
 
 # Default rules for deployment.

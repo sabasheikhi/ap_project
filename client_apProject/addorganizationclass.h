@@ -12,6 +12,7 @@ class AddOrganizationClass : public QDialog
     Q_OBJECT
 
 public:
+
     explicit AddOrganizationClass(QWidget *parent = nullptr);
     ~AddOrganizationClass();
 
@@ -20,8 +21,8 @@ private slots:
 signals:
     void addOrganization(QString name,QString des);
 private:
-    QString username;
     Ui::AddOrganizationClass *ui;
+    QString username;
 };
 
 #endif // ADDORGANIZATIONCLASS_H
