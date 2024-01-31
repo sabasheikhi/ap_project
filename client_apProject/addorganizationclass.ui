@@ -77,7 +77,7 @@ border-radius:8px;</string>
     <string>Name :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="descriptionLabel">
    <property name="geometry">
     <rect>
      <x>40</x>

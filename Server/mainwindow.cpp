@@ -40,6 +40,9 @@ void MainWindow::read_data()
     // 4010 wrong password
     // 4040 username not found
     // 2002 New organization creat
+    // 4041 organization not found
+    // 2003 organization edited successfully
+    // 4042 user not found
     QTcpSocket* socket = (QTcpSocket*)sender();
     QString input = socket->readAll();
     qDebug() << input;
@@ -144,5 +147,82 @@ void MainWindow::read_data()
             }
 
     }
+    }
+
+    else if (buffer == "EDITORG "){
+        QString new_name, new_description;
+        QString old_name, old_description; // label ha ro dorost knm
+        QString name, description;
+        stream>>buffer;
+        name = buffer;
+        stream>>buffer;
+        description = buffer;
+        for (auto user : users) {
+            QList<organization*> userOrganizations = user->Organizations();
+
+            for (auto org : userOrganizations) {
+                if (org->name == name && org->description == description) {
+                    // chejuri check knm in user owner hst ya n? vase role getter bznm
+
+                    org->edit_organization(new_name, new_description);
+                    socket->write("2003");
+                    return;
+                }
+            }
+        }
+        socket->write("4041"); // not found
+        return;
+    }
+
+    else if (buffer == "DELETEORG "){
+        QString name, description;
+        stream>>buffer;
+        name = buffer;
+        stream>>buffer;
+        description = buffer;
+        for (auto user : users) {
+            QList<organization*> &userOrganizations = user->Organizations();
+
+            userOrganizations.removeAll([name, description](organization* org) {
+               return org->name == name && org->description == description;
+            }); // inja hm socket byd chizi write kne??
+        }
+        socket->write("4041");
+        return;
+    }
+
+    else if (buffer == "DELETEUSER"){
+        QString id, role;
+        stream>>buffer;
+        id = buffer;
+        stream>>buffer;
+        role = buffer;
+        // begardm hmchin useri hst ya n . age hst deletesh knm az toye member haye organization
+        // toye class organization ye QMap<int, Role> members(); hst toye in mitunm begardm
+        /*
+        auto iterator = members().find(id);
+        if (iterator != members().end()){
+            members().erase(iterator);
+        }
+        else
+            socket->write("4042");
+        */
+        // esm in organization byd az toye QList in user khas hm pak beshe
+        for (auto user: users){
+            if (user->getID() == id.toInt()){
+                // check kon bebin role esh toye in organization == role hst ya n.
+                // age bood => organization ro az toye list in user pak kn.
+            }
+        }
+
+    }
+
+    else if (buffer == "ADDOREDITUSER"){
+        QString id, role;
+        stream>>buffer;
+        id = buffer;
+        stream>>buffer;
+        role = buffer;
+        // byd avl bbinm in dre add mikne ya edit(in user vojud dre ya n)
     }
 }

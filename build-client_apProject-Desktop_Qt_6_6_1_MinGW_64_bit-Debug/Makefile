@@ -227,10 +227,21 @@ Makefile: ../client_apProject/client_apProject.pro D:/Qt6.6/6.6.1/mingw_64/mkspe
 		../client_apProject/client_apProject.pro \
 		D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Widgets.prl \
 		D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Gui.prl \
+		D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Network.prl \
 		D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Core.prl \
 		D:/Qt6.6/6.6.1/mingw_64/lib/Qt6EntryPoint.prl \
 		D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/build_pass.prf \
-		../client_apProject/resources.qrc
+		../client_apProject/back.qrc \
+		../client_apProject/backs.qrc \
+		../client_apProject/cheshm.qrc \
+		../client_apProject/dash.qrc \
+		../client_apProject/img.qrc \
+		../client_apProject/organize.qrc \
+		../client_apProject/pain.qrc \
+		../client_apProject/paint.qrc \
+		../client_apProject/person.qrc \
+		../client_apProject/resources.qrc \
+		../client_apProject/wel.qrc
 	$(QMAKE) -o Makefile ..\client_apProject\client_apProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/spec_pre.prf:
 D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/device_config.prf:
@@ -389,10 +400,21 @@ D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/lex.prf:
 ../client_apProject/client_apProject.pro:
 D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Widgets.prl:
 D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Gui.prl:
+D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Network.prl:
 D:/Qt6.6/6.6.1/mingw_64/lib/Qt6Core.prl:
 D:/Qt6.6/6.6.1/mingw_64/lib/Qt6EntryPoint.prl:
 D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/build_pass.prf:
+../client_apProject/back.qrc:
+../client_apProject/backs.qrc:
+../client_apProject/cheshm.qrc:
+../client_apProject/dash.qrc:
+../client_apProject/img.qrc:
+../client_apProject/organize.qrc:
+../client_apProject/pain.qrc:
+../client_apProject/paint.qrc:
+../client_apProject/person.qrc:
 ../client_apProject/resources.qrc:
+../client_apProject/wel.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\client_apProject\client_apProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

@@ -38,8 +38,12 @@
      <height>29</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(7, 7, 7);
+background-color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
-    <string>Edit</string>
+    <string> Edit Organization</string>
    </property>
   </widget>
   <widget class="QPushButton" name="deleteorg">
@@ -52,7 +56,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Delete Organization</string>
    </property>
   </widget>
   <widget class="QComboBox" name="roleComboBox">
@@ -132,7 +136,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Delete User</string>
    </property>
   </widget>
   <widget class="QPushButton" name="addOrEditUser">
@@ -145,7 +149,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Add or Edit</string>
+    <string>Add or Edit User</string>
    </property>
   </widget>
   <widget class="QLabel" name="nameLabel">
@@ -158,10 +162,11 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(255, 170, 127);</string>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="descriptionLabel">
@@ -174,10 +179,11 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(255, 170, 127);</string>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
  </widget>

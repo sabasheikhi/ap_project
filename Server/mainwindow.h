@@ -4,6 +4,8 @@
 #include <QTcpSocket>
 #include <QMainWindow>
 #include "user.h"
+#include "organization.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

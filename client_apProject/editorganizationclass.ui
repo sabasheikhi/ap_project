@@ -13,20 +13,25 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label_2">
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(18, 2, 83);</string>
+  </property>
+  <widget class="QLabel" name="descriptionLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>110</y>
+     <x>70</x>
+     <y>130</y>
      <width>91</width>
      <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(74, 74, 74);
+border-radius:7px;</string>
    </property>
    <property name="text">
-    <string>Description :</string>
+    <string>   Description :</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="descriptionLineEdit">
@@ -82,23 +87,25 @@ border-radius:8px;</string>
   <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>70</x>
      <y>70</y>
      <width>63</width>
      <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(80, 80, 80);
+border-radius:7px;</string>
    </property>
    <property name="text">
-    <string>Name :</string>
+    <string>   Name :</string>
    </property>
   </widget>
   <widget class="QPushButton" name="editButton">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>400</x>
      <y>70</y>
      <width>81</width>
      <height>31</height>

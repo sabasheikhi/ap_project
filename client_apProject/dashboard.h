@@ -18,6 +18,7 @@ public:
 
     ~Dashboard();
 
+
 private slots:
     void on_pushButton_clicked();
     void new_org(QString name);

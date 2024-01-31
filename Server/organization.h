@@ -25,7 +25,7 @@ public:
     void addProject(project*);
     //QList<Team> projects();
     // void addProject(Project);
-    QMap<int, Role> members();
+    QMap<int, Role> &members();
     void setMembers(int,Role);
     void edit_organization(QString&,QString&);
     bool isMemberOf(organization&);
