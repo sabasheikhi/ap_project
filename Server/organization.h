@@ -4,11 +4,9 @@
 #include <QMap>
 #include <QObject>
 #include <QList>
-
+#include "project.h"
+#include "team.h"
 #include "common.h"
-class project;
-
-//QList<project> o_projects;
 class organization : public QObject
 {
     Q_OBJECT
@@ -21,25 +19,22 @@ public:
     int ID();
     QString description();
     void setDescription(QString&);
-    QList<project*> projects();
-    void addProject(project*);
-    //QList<Team> projects();
-    // void addProject(Project);
     QMap<int, Role> &members();
     void setMembers(int,Role);
-    void edit_organization(QString&,QString&);
     bool isMemberOf(organization&);
     void o_delete();
-    void changeMemberRoleById(int,Role);
-    bool removeMember(int);
+    void removeMember(int memberId);
+    bool getMembers(int id,Role role);
+    QList<Team*>& Teams();
+    QList<project*>& Projects();
 
 signals:
 private:
     QString o_name;
     QString o_description;
-    QList<project*> o_projects;
-    //QList<Team> o_teams;
     QMap<int, Role> o_members;
+    QList<Team*> teams;
+    QList<project*> projects;
     int o_ID;
     static int count;
 

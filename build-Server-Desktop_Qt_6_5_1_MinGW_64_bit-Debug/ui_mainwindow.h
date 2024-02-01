@@ -28,41 +28,55 @@ public:
     QLineEdit *Port;
     QLabel *label_Address;
     QLabel *label_Port;
+    QLabel *back;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(373, 253);
+        MainWindow->resize(389, 332);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         address = new QLineEdit(centralwidget);
         address->setObjectName("address");
-        address->setGeometry(QRect(140, 50, 113, 25));
+        address->setGeometry(QRect(170, 100, 113, 25));
         address->setAutoFillBackground(false);
-        address->setStyleSheet(QString::fromUtf8("QLineEdit { selection-color: red }\n"
-"QLineEdit { selection-background-color: black }\n"
-"QLineEdit { placeholder-text-color: #800000ff } /* semi-transparent blue */"));
+        address->setStyleSheet(QString::fromUtf8("background-color: rgb(247, 246, 238);\n"
+"border-radius:7px;"));
         run_server = new QPushButton(centralwidget);
         run_server->setObjectName("run_server");
-        run_server->setGeometry(QRect(150, 140, 93, 29));
-        run_server->setStyleSheet(QString::fromUtf8("QPushButton::hover {\n"
+        run_server->setGeometry(QRect(190, 190, 93, 29));
+        run_server->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"border-radius:8px;\n"
+"	background-color: rgb(255, 219, 123);\n"
+"	background-color: rgb(255, 240, 155);\n"
+"    }\n"
+"QPushButton::hover {\n"
 "    \n"
 "	background-color: rgb(132, 106, 98);\n"
 "    }"));
         Port = new QLineEdit(centralwidget);
         Port->setObjectName("Port");
-        Port->setGeometry(QRect(140, 90, 113, 25));
-        Port->setStyleSheet(QString::fromUtf8("\n"
-"/*background-color: rgb(203, 203, 203);*/\n"
-"placeholder-text-color: #800000ff"));
+        Port->setGeometry(QRect(170, 140, 113, 25));
+        Port->setStyleSheet(QString::fromUtf8("background-color: rgb(247, 246, 238);\n"
+"border-radius:7px;"));
         label_Address = new QLabel(centralwidget);
         label_Address->setObjectName("label_Address");
-        label_Address->setGeometry(QRect(40, 50, 63, 20));
+        label_Address->setGeometry(QRect(80, 100, 63, 20));
         label_Port = new QLabel(centralwidget);
         label_Port->setObjectName("label_Port");
-        label_Port->setGeometry(QRect(40, 100, 63, 20));
+        label_Port->setGeometry(QRect(80, 140, 63, 20));
+        back = new QLabel(centralwidget);
+        back->setObjectName("back");
+        back->setGeometry(QRect(0, 0, 391, 331));
+        back->setStyleSheet(QString::fromUtf8("image: url(:/back/server.png);"));
         MainWindow->setCentralWidget(centralwidget);
+        back->raise();
+        address->raise();
+        run_server->raise();
+        Port->raise();
+        label_Address->raise();
+        label_Port->raise();
         QWidget::setTabOrder(Port, run_server);
         QWidget::setTabOrder(run_server, address);
 
@@ -77,6 +91,7 @@ public:
         run_server->setText(QCoreApplication::translate("MainWindow", "Run", nullptr));
         label_Address->setText(QCoreApplication::translate("MainWindow", "Address :", nullptr));
         label_Port->setText(QCoreApplication::translate("MainWindow", "Port :", nullptr));
+        back->setText(QString());
     } // retranslateUi
 
 };

@@ -32,36 +32,34 @@ void organization::setDescription(QString &description)
 
 QMap<int, Role>& organization::members() { return o_members; }
 void organization::setMembers(int id,Role role) { o_members[id] = role; }
+bool organization::getMembers(int id,Role role)
+{
+    if(o_members[id] == role){
+        return true;
+    }
+    return false;
+}
+QList<Team*>& organization::Teams()
+{
+    return teams;
+}
+QList<project*>& organization::Projects()
+{
+    return projects;
+}
 
 
 //........................................................................................
 //functions:
 
-void organization::edit_organization(QString &name,QString &description)
-{
-    setName(name);
-    setDescription(description);
-}
 
-void organization::changeMemberRoleById(int memberId, Role role)
+
+void organization::removeMember(int memberId)
 {
 
-
-    if (!o_members.contains(memberId)) {
-        return;
-    }
-
-    o_members[memberId] = role;
-
-}
-bool organization::removeMember(int memberId)
-{
-    if (!o_members.contains(memberId)) {
-        return false;
-    }
     o_members.remove(memberId);
 
-    return true;
+
 
 }
 

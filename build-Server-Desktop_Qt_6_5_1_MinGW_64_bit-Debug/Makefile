@@ -222,7 +222,8 @@ Makefile: ../Server/Server.pro D:/Qt/6.5.1/mingw_64/mkspecs/win32-g++/qmake.conf
 		D:/Qt/6.5.1/mingw_64/lib/Qt6Network.prl \
 		D:/Qt/6.5.1/mingw_64/lib/Qt6Core.prl \
 		D:/Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl \
-		D:/Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf
+		D:/Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf \
+		../Server/back.qrc
 	$(QMAKE) -o Makefile ..\Server\Server.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 D:/Qt/6.5.1/mingw_64/mkspecs/features/spec_pre.prf:
 D:/Qt/6.5.1/mingw_64/mkspecs/features/device_config.prf:
@@ -377,6 +378,7 @@ D:/Qt/6.5.1/mingw_64/lib/Qt6Network.prl:
 D:/Qt/6.5.1/mingw_64/lib/Qt6Core.prl:
 D:/Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl:
 D:/Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf:
+../Server/back.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Server\Server.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

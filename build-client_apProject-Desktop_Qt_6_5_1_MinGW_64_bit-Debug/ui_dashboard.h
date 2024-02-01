@@ -68,6 +68,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(addButton->sizePolicy().hasHeightForWidth());
         addButton->setSizePolicy(sizePolicy);
+        addButton->setStyleSheet(QString::fromUtf8("image: url(:/pluss/plusIcon.png);"));
 
         gridLayout->addWidget(addButton, 0, 0, 1, 1);
 
@@ -94,7 +95,7 @@ public:
         Dashboard->setWindowTitle(QCoreApplication::translate("Dashboard", "Dashboard", nullptr));
         welcomeLabel->setText(QCoreApplication::translate("Dashboard", "Welcome!", nullptr));
         label->setText(QString());
-        addButton->setText(QCoreApplication::translate("Dashboard", "add", nullptr));
+        addButton->setText(QString());
     } // retranslateUi
 
 };

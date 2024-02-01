@@ -32,13 +32,11 @@ QString Team::getDescription(){ return description; }
 
 int Team::getID(){ return id; }
 
-QMap<int, Role> Team::getMembers(){ return members; }
 
 void Team::setName(QString &name){ this->name = name; }
 
 void Team::setDescription(QString &description){ this->description = description; }
 
-void Team::setMembers(QMap<int, Role> &member){ members = member;}
 
 void Team::edit_team(QString &name, QString &description){
     setName(name);
@@ -57,12 +55,6 @@ void Team::changeMemberRoleById(int id, Role role){
     if (!members.contains(id))
         return;
     members[id] = role;
-}
-
-void Team::removeMember(int id){
-    if (!members.contains(id))
-        return;
-    members.remove(id);
 }
 
 int Team::whoseTaskIsIt(int taskNumber){
@@ -88,3 +80,24 @@ QMap<int, int> Team::showTeamsListSortedByOrganizationID(){ return teamsList; }
 void Team::assignTaskToMember(int task_id, int member_id){
     tasks.insert(task_id, member_id);
 }
+void Team::setMembers(int id,Role role) { members[id] = role; }
+bool Team::getMembers(int id,Role role)
+{
+    if(members[id] == role){
+        return true;
+    }
+    return false;
+}
+void Team::removeMember(int memberId)
+{
+
+    members.remove(memberId);
+
+
+
+}
+QList<project*>& Team::Projects()
+{
+    return projects;
+}
+

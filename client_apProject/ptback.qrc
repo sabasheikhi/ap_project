@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ptback">
+        <file>project.png</file>
+        <file>team.png</file>
+    </qresource>
+</RCC>

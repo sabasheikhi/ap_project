@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 }
-
+QMap<QString,QTcpSocket*> sockets;
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -40,9 +40,11 @@ void MainWindow::read_data()
     // 4010 wrong password
     // 4040 username not found
     // 2002 New organization creat
+    // 2003 Organization name and description changed
     // 4041 organization not found
     // 2003 organization edited successfully
     // 4042 user not found
+    // 4012 Your are not the owner
     QTcpSocket* socket = (QTcpSocket*)sender();
     QString input = socket->readAll();
     qDebug() << input;
@@ -100,7 +102,16 @@ void MainWindow::read_data()
             if(username==user->Username())
             {
                 if(password==user->Password()){
+                    sockets[username] = socket;
                     socket->write("2001");
+                    socket->flush();
+                    QString result ="LISTORG";
+                    for (auto x:user->Organizations())
+                    {
+                        result+=" { "+x->name()+" }";
+                    }
+                    result+=" \n";
+                    socket->write(result.toUtf8());
                     return;
                 }
                 socket->write("4010");
@@ -146,83 +157,1043 @@ void MainWindow::read_data()
                 return;
             }
 
+        }
     }
+    else if (buffer == "EDITORG") {
+    QString username,lastname, name, des;
+    stream >> buffer;
+    username = buffer;
+    stream >> buffer;
+    buffer = "{";
+    stream >> buffer;
+    while (buffer != "}") {
+            lastname += buffer + " ";
+            stream >> buffer;
     }
+    lastname.removeLast();
+    stream >> buffer;
+    buffer = "{";
+    stream >> buffer;
+    while (buffer != "}") {
+            name += buffer + " ";
+            stream >> buffer;
+    }
+    name.removeLast();
+    stream >> buffer;
+    buffer = "{";
+    stream >> buffer;
+    while (buffer != "}") {
+            des += buffer + " ";
+            stream >> buffer;
+    }
+    des.removeLast();
+    qDebug() << lastname << name << des;
+    for(auto user:users){
+            if(username==user->Username())
+            {
+                qDebug() << "user found";
+                for (auto x:user->Organizations())
+                {
 
-    else if (buffer == "EDITORG "){
-        QString new_name, new_description;
-        QString old_name, old_description; // label ha ro dorost knm
-        QString name, description;
-        stream>>buffer;
-        name = buffer;
-        stream>>buffer;
-        description = buffer;
-        for (auto user : users) {
-            QList<organization*> userOrganizations = user->Organizations();
+                    if(x->name()==lastname)
+                    qDebug() << "org found";
+                    {
+                        qDebug() << x->members();
+                    qDebug() << x->getMembers(user->getID(),Role::Owner);
+                        if(x->getMembers(user->getID(),Role::Owner))
+                        {
+                            x->setName(name);
+                            x->setDescription(des);
+                            QString response= "STATUS ";
+                            response += " { "+name +" } { " + des +" }\n";
+                            socket->write(response.toUtf8());
+                            socket->flush();
+                            return;
+                        }
+                        socket->write("4012");
+                        return;
+                    }
+                }
 
-            for (auto org : userOrganizations) {
-                if (org->name == name && org->description == description) {
-                    // chejuri check knm in user owner hst ya n? vase role getter bznm
+            }
+        }
+    }
+    else if (buffer=="DESCRIPTION")
+    {
+            QString username, name;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                    {
+                        if(x->name()==name)
+                        {
+                            QString des=x->description();
+                            QString response= "DES";
+                            response += " { "+des+" }";
+                            response+=" \n";
+                            socket->write(response.toUtf8());
+                            socket->flush();
+                        }
+                    }
 
-                    org->edit_organization(new_name, new_description);
-                    socket->write("2003");
-                    return;
                 }
             }
-        }
-        socket->write("4041"); // not found
-        return;
-    }
 
-    else if (buffer == "DELETEORG "){
-        QString name, description;
-        stream>>buffer;
-        name = buffer;
-        stream>>buffer;
-        description = buffer;
-        for (auto user : users) {
-            QList<organization*> &userOrganizations = user->Organizations();
-
-            userOrganizations.removeAll([name, description](organization* org) {
-               return org->name == name && org->description == description;
-            }); // inja hm socket byd chizi write kne??
-        }
-        socket->write("4041");
-        return;
-    }
-
-    else if (buffer == "DELETEUSER"){
-        QString id, role;
-        stream>>buffer;
-        id = buffer;
-        stream>>buffer;
-        role = buffer;
-        // begardm hmchin useri hst ya n . age hst deletesh knm az toye member haye organization
-        // toye class organization ye QMap<int, Role> members(); hst toye in mitunm begardm
-        /*
-        auto iterator = members().find(id);
-        if (iterator != members().end()){
-            members().erase(iterator);
-        }
-        else
-            socket->write("4042");
-        */
-        // esm in organization byd az toye QList in user khas hm pak beshe
-        for (auto user: users){
-            if (user->getID() == id.toInt()){
-                // check kon bebin role esh toye in organization == role hst ya n.
-                // age bood => organization ro az toye list in user pak kn.
+    }//  QString command = "DELETEORG " +username +" { "+lastname +" }\n";
+    else if(buffer=="DELETEORG")
+    {
+            QString username , name;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer == "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
             }
-        }
+            name.removeLast();
+            qDebug() << "deleting org "<<name<<username;
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    qDebug() <<"user found";
+                    for (auto x:user->Organizations())
+                        if(x->name()==name)
+                        {
+                            qDebug() <<"org found";
+                            qDebug() <<x->getMembers(user->getID(),Role::Owner);
+                            if(x->getMembers(user->getID(),Role::Owner)==true)
+                            {
+                                delete x;
+                                user->Organizations().removeAll(x);
+                                QString result ="LISTORG";
+                                for (auto x:user->Organizations())
+                                {
+                                    result+=" { "+x->name()+" }";
+                                }
+                                result+=" \n";
+                                socket->write(result.toUtf8());
+                                return;
+                            }
+                            socket->write("4012");
+                            return;
+                        }
+                }
+            }
+    } //QString command = "ROLEORG " +username +" "+ username_member +" "+ role +" { "+lastname +" }\n";
+    else if(buffer=="ROLEORG")
+    {
+
+            QString username,role,name, member_username;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            member_username = buffer;
+            stream>>buffer;
+            role = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==name)
+                        {
+                            int id;
+                            for(auto u:users){
+                                if(u->Username()==member_username){
+                                    id=u->getID();
+                                }
+                            }
+                            if(x->getMembers(user->getID(),Role::Owner)==true)
+                            {
+
+                                if(role=="Member")
+                                {
+                                    x->setMembers(id,Role::Member);
+
+                                }
+                                if(role=="Admin")
+                                {
+                                    x->setMembers(id,Role::Admin);
+                                }
+                                return;
+                            }
+                            else if(x->getMembers(user->getID(),Role::Admin)==true){
+                                if(role=="Member")
+                                {
+                                    x->setMembers(id,Role::Member);
+                                }
+                                return;
+                            }
+                            socket->write("4012");
+                            return;
+                        }
+                }
+            }
+
+    }//String command = "MEMBERRORG " +username +" "+member_us +" { "+lastname +" }\n";
+    else if(buffer=="MEMBERRORG")
+    {
+            QString username,name,m;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            m = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==name)
+                        {
+                            int id;
+                            for(auto u:users){
+                                if(u->Username()==m){
+                                    id=u->getID();
+                                }
+                            }
+
+                            if(x->getMembers(user->getID(),Role::Owner)==true)
+                            {
+
+                               x->removeMember(id);
+                                return;
+                            }
+                            else if(x->getMembers(user->getID(),Role::Admin)==true){
+                                if(x->getMembers(id,Role::Member)==true)
+                                {
+                                    x->removeMember(id);
+                                }
+                                return;
+                            }
+                            socket->write("4012");
+                            return;
+                        }
+                }
+            }
+    }//QString command = "NEWPRO " +username +" { "+orgname +" } { "+namep +" } { " + desp +" }\n";
+    else if(buffer=="NEWPRO")
+    {
+            QString username,nameorg,namep,desp;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                nameorg += buffer + " ";
+                stream >> buffer;
+            }
+            nameorg.removeLast();
+            stream>>buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                namep += buffer + " ";
+                stream >> buffer;
+            }
+            namep.removeLast();
+            stream>>buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                desp += buffer + " ";
+                stream >> buffer;
+            }
+            desp.removeLast();
+            for(auto user:users){
+                if(username==user->Username() )
+                {
+                    int id=user->getID();
+                    for (auto x:user->Organizations())
+                        if(x->name()==nameorg)
+                        {
+                            if(x->getMembers(id,Role::Owner)==true)
+                            {
+                                project* pro=new project(namep,desp);
+                                user->Projects().append(pro);
+                                x->Projects().append(pro);
+                                pro->setMembers(user->getID(),Role::Owner);
+                                socket->write("2004 " +namep.toUtf8());
+                                return;
+                            }
+                            else if(x->getMembers(id,Role::Admin)==true){
+                                project* pro=new project(namep,desp);
+                                user->Projects().append(pro);
+                                x->Projects().append(pro);
+                                pro->setMembers(user->getID(),Role::Admin);
+                                socket->write("2004 " +namep.toUtf8());
+                                return;
+
+                            }
+                            socket->write("4012");
+                            return;
+                        }
+                }
+            }
 
     }
+    else if(buffer=="NEWTEAM")
+    {
+            QString username,nameorg,namet,dest;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                nameorg += buffer + " ";
+                stream >> buffer;
+            }
+            nameorg.removeLast();
+            stream>>buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                namet += buffer + " ";
+                stream >> buffer;
+            }
+            namet.removeLast();
+            stream>>buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                dest += buffer + " ";
+                stream >> buffer;
+            }
+            dest.removeLast();
+            for(auto user:users){
+                if(username==user->Username() )
+                {
+                    int id=user->getID();
+                    for (auto x:user->Organizations())
+                        if(x->name()==nameorg)
+                        {
+                            if(x->getMembers(id,Role::Owner)==true)
+                            {
+                                Team* team=new Team(namet,dest);
+                                user->Teams().append(team);
+                                x->Teams().append(team);
+                                team->setMembers(user->getID(),Role::Owner);
+                                socket->write("2005 " +namet.toUtf8());
+                                return;
+                            }
+                            else if(x->getMembers(id,Role::Admin)==true){
+                                Team* team=new Team(namet,dest);
+                                user->Teams().append(team);
+                                x->Teams().append(team);
+                                team->setMembers(user->getID(),Role::Admin);
+                                socket->write("2005 " +namet.toUtf8());
+                                return;
+                            }
+                            socket->write("4012");
+                            return;
+                        }
+                }
+            }
 
-    else if (buffer == "ADDOREDITUSER"){
-        QString id, role;
-        stream>>buffer;
-        id = buffer;
-        stream>>buffer;
-        role = buffer;
-        // byd avl bbinm in dre add mikne ya edit(in user vojud dre ya n)
+    }//QString command = "DESCRIPTIONPRO " +username + " { "+name_ +" }\n";
+    else if(buffer=="DESCRIPTIONPRO")
+    {
+            QString username, name;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Projects())
+                    {
+                        if(x->name()==name)
+                        {
+                            QString des=x->description();
+                            QString response= "DESC";
+                            response += " { "+des+" }";
+                            response+=" \n";
+                            socket->write(response.toUtf8());
+                            socket->flush();
+                        }
+                    }
+
+                }
+            }
+
+    }//QString command = "EDITPRO " +username +" { "+proname +" } { "+orgname +" } { "+name +" } { " + des +" }\n";
+    else if(buffer=="EDITPRO")
+    {
+            QString username,orgname,lastname, name, des;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                lastname += buffer + " ";
+                stream >> buffer;
+            }
+            lastname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                des += buffer + " ";
+                stream >> buffer;
+            }
+            des.removeLast();
+            qDebug() << lastname << name << des;
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    qDebug() << "user found";
+                    for (auto x:user->Organizations())
+                    {
+
+                        if(x->name()==orgname)
+                            qDebug() << "org found";
+                        {
+                            qDebug() << x->members();
+                            qDebug() << x->getMembers(user->getID(),Role::Owner);
+                            for(auto pro:user->Projects())
+                            {
+                                if(pro->getMembers(user->getID(),Role::Owner) || pro->getMembers(user->getID(),Role::Admin))
+                                {
+                                    pro->setName(name);
+                                    pro->setDescription(des);
+                                    QString response= "STATUS ";
+                                    response += " { "+name +" } { " + des +" }\n";
+                                    socket->write(response.toUtf8());
+                                    socket->flush();
+                                    return;
+                                }
+
+                            socket->write("4012");
+                            return;
+                        }
+
+                        }
+                    }
+
+                }
+            }
+
+    }//QString command = "DELETEPRO " +username +" { "+proname +" } { "+orgname +" }\n";
+    else if(buffer=="DELETEPRO")
+    {
+            QString username , proname , orgname;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer == "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer == "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    qDebug() <<"user found";
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        qDebug() <<"org found";
+                        qDebug() <<x->getMembers(user->getID(),Role::Owner);
+                        if(x->getMembers(user->getID(),Role::Owner)==true ||x->getMembers(user->getID(),Role::Admin)==true )
+                        {
+                            for(auto pro:user->Projects())
+                            {
+                                    delete pro;
+                                    user->Projects().removeAll(pro);
+                                    x->Projects().removeAll(pro);
+                            }
+                            QString result ="LISTPRO";
+                            for (auto pro:user->Projects())
+                            {
+                                    result+=" { "+pro->name()+" }";
+                            }
+                            result+=" \n";
+                            socket->write(result.toUtf8());
+                            return;
+                        }
+                        socket->write("4012");
+                        return;
+                        }
+                }
+            }
+    }//QString command = "ROLEPRO " +username +" "+ username_member +" "+ role +" { "+proname +" } { "+orgname +" }\n";
+    else if(buffer=="ROLEPRO")
+    {
+            QString username,role,proname,orgname, member_username;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            member_username = buffer;
+            stream>>buffer;
+            role = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        for(auto pro:x->Projects())
+                        {
+                            if(pro->name()==proname)
+                            {
+                                    int id;
+                                    for(auto u:users){
+                                        if(u->Username()==member_username){
+                                            id=u->getID();
+                                        }
+                                    }
+                                    if(pro->getMembers(user->getID(),Role::Owner)==true)
+                                    {
+
+                                        if(role=="Member")
+                                        {
+                                           pro->setMembers(id,Role::Member);
+
+                                        }
+                                        if(role=="Admin")
+                                        {
+                                            pro->setMembers(id,Role::Admin);
+                                        }
+                                        return;
+                                    }
+                                    else if(pro->getMembers(user->getID(),Role::Admin)==true){
+                                        if(role=="Member")
+                                        {
+                                            pro->setMembers(id,Role::Member);
+                                        }
+                                        return;
+                                    }
+
+                                    socket->write("4012");
+                                    return;
+                            }
+
+                        }
+
+                        }
+                }
+            }
+
+    }//QString command = "MEMBERPRO " +username +" "+member_us +" { "+proname +" } { "+orgname +" }\n";
+    else if(buffer=="MEMBERPRO")
+    {
+            QString username,proname,orgname,m;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            m = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        for(auto pro:x->Projects())
+                        {
+                            if(pro->name()==proname)
+                            {
+
+                                    int id;
+                                    for(auto u:users){
+                                        if(u->Username()==m){
+                                            id=u->getID();
+                                        }
+                                    }
+                                    if(pro->getMembers(user->getID(),Role::Owner)==true)
+                                    {
+
+                                        if(pro->getMembers(id,Role::Admin)==true)
+                                        {
+                                            pro->removeMember(id);
+
+                                            return;
+
+                                        }
+                                        else if(pro->getMembers(id,Role::Member)==true)
+                                        {
+                                            pro->removeMember(id);
+                                            return;
+                                        }
+
+                                    }
+                                    else if(pro->getMembers(user->getID(),Role::Admin)==true){
+                                        if(pro->getMembers(id,Role::Member)==true)
+                                        {
+                                            pro->removeMember(id);
+
+                                            return;
+                                        }
+
+                                    }
+                                    socket->write("4012");
+                                    return;
+                            }
+
+                        }
+
+                        }
+                }
+            }
+    }
+    //QString command = "PROSTATUS " +username+" "+ value +" { "+proname +" } { "+orgname +" }\n";
+    else if(buffer=="PROSTATUS")
+    {
+            QString username,proname,orgname,value;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            value = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        for(auto pro:x->Projects())
+                        {
+                            if(pro->name()==proname)
+                            {
+
+
+                                    if(pro->getMembers(user->getID(),Role::Owner)==true)
+                                    {
+
+                                        pro->setstatus(value);
+                                        QString response= "PROSTATUS ";
+                                        response +=value;
+                                        socket->write(response.toUtf8());
+                                        socket->flush();
+                                        return;
+
+                                    }
+                                    socket->write("4012");
+                                    return;
+                            }
+
+                        }
+
+                        }
+                }
+            }
+    }
+    else if(buffer=="DESCRIPTIONTEAM")
+    {
+            QString username, name;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Teams())
+                    {
+                        if(x->getName()==name)
+                        {
+                        QString des=x->getDescription();
+                        QString response= "DESCTEAM";
+                        response += " { "+des+" }";
+                        response+=" \n";
+                        socket->write(response.toUtf8());
+                        socket->flush();
+                        }
+                    }
+
+                }
+            }
+
+    }
+    else if(buffer=="EDITEAM")
+    {
+            QString username,orgname,lastname, name, des;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                lastname += buffer + " ";
+                stream >> buffer;
+            }
+            lastname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                name += buffer + " ";
+                stream >> buffer;
+            }
+            name.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                des += buffer + " ";
+                stream >> buffer;
+            }
+            des.removeLast();
+            qDebug() << lastname << name << des;
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    qDebug() << "user found";
+                    for (auto x:user->Organizations())
+                    {
+
+                        if(x->name()==orgname)
+                        qDebug() << "org found";
+                        {
+                        qDebug() << x->members();
+                        qDebug() << x->getMembers(user->getID(),Role::Owner);
+                        for(auto pro:user->Teams())
+                        {
+                            if(pro->getMembers(user->getID(),Role::Owner) || pro->getMembers(user->getID(),Role::Admin))
+                            {
+                                    pro->setName(name);
+                                    pro->setDescription(des);
+                                    QString response= "STATUSTEAM ";
+                                    response += " { "+name +" } { " + des +" }\n";
+                                    socket->write(response.toUtf8());
+                                    socket->flush();
+                                    return;
+                            }
+
+                            socket->write("4012");
+                            return;
+                        }
+
+                        }
+                    }
+
+                }
+            }
+
+    }
+    else if(buffer=="DELETETEAM")
+    {
+            QString username , proname , orgname;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer == "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer == "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    qDebug() <<"user found";
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        qDebug() <<"org found";
+                        qDebug() <<x->getMembers(user->getID(),Role::Owner);
+                        if(x->getMembers(user->getID(),Role::Owner)==true ||x->getMembers(user->getID(),Role::Admin)==true )
+                        {
+                            for(auto pro:user->Teams())
+                            {
+                                    delete pro;
+                                    user->Teams().removeAll(pro);
+                                    x->Teams().removeAll(pro);
+                            }
+                            QString result ="LISTTEAM";
+                            for (auto pro:user->Teams())
+                            {
+                                    result+=" { "+pro->getName()+" }";
+                            }
+                            result+=" \n";
+                            socket->write(result.toUtf8());
+                            return;
+                        }
+                        socket->write("4012");
+                        return;
+                        }
+                }
+            }
+    }
+    else if(buffer=="ROLETEAM")
+    {
+            QString username,role,proname,orgname, member_username;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            member_username = buffer;
+            stream>>buffer;
+            role = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        for(auto pro:x->Teams())
+                        {
+                            if(pro->getName()==proname)
+                            {
+                                    int id;
+                                    for(auto u:users){
+                                        if(u->Username()==member_username){
+                                            id=u->getID();
+                                        }
+                                    }
+                                    if(pro->getMembers(user->getID(),Role::Owner)==true)
+                                    {
+
+                                        if(role=="Member")
+                                        {
+                                            pro->setMembers(id,Role::Member);
+
+                                        }
+                                        if(role=="Admin")
+                                        {
+                                            pro->setMembers(id,Role::Admin);
+                                        }
+                                        return;
+                                    }
+                                    else if(pro->getMembers(user->getID(),Role::Admin)==true){
+                                        if(role=="Member")
+                                        {
+                                            pro->setMembers(id,Role::Member);
+                                        }
+                                        return;
+                                    }
+
+                                    socket->write("4012");
+                                    return;
+                            }
+
+                        }
+
+                        }
+                }
+            }
+
+    }
+    else if(buffer=="MEMBERTEAM")
+    {
+            QString username,proname,orgname,m;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            m = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                proname += buffer + " ";
+                stream >> buffer;
+            }
+            proname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username())
+                {
+                    for (auto x:user->Organizations())
+                        if(x->name()==orgname)
+                        {
+                        for(auto pro:x->Teams())
+                        {
+                            if(pro->getName()==proname)
+                            {
+
+                                    int id;
+                                    for(auto u:users){
+                                        if(u->Username()==m){
+                                            id=u->getID();
+                                        }
+                                    }
+                                    if(pro->getMembers(user->getID(),Role::Owner)==true)
+                                    {
+
+                                        if(pro->getMembers(id,Role::Admin)==true)
+                                        {
+                                            pro->removeMember(id);
+
+                                            return;
+
+                                        }
+                                        else if(pro->getMembers(id,Role::Member)==true)
+                                        {
+                                            pro->removeMember(id);
+                                            return;
+                                        }
+
+                                    }
+                                    else if(pro->getMembers(user->getID(),Role::Admin)==true){
+                                        if(pro->getMembers(id,Role::Member)==true)
+                                        {
+                                            pro->removeMember(id);
+
+                                            return;
+                                        }
+
+                                    }
+                                    socket->write("4012");
+                                    return;
+                            }
+
+                        }
+
+                        }
+                }
+            }
     }
 }

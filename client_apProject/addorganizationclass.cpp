@@ -6,8 +6,8 @@ AddOrganizationClass::AddOrganizationClass(QWidget *parent) :
     ui(new Ui::AddOrganizationClass)
 {
     ui->setupUi(this);
-    ui->nameLineEdit = "";
-    ui->descriptionLineEdit = "";
+  //  ui->nameLineEdit = "";
+  //  ui->descriptionLineEdit = "";
 }
 
 AddOrganizationClass::~AddOrganizationClass()

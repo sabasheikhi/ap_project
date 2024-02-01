@@ -12,34 +12,52 @@ SOURCES += \
     addorganizationclass.cpp \
     dashboard.cpp \
     editorganizationclass.cpp \
+    editproject.cpp \
+    editteam.cpp \
     forgotpassworddialog.cpp \
     main.cpp \
     mainwindow.cpp \
     organizationui.cpp \
     orgdialog.cpp \
+    prodialog.cpp \
+    projectui.cpp \
     security.cpp \
-    signupdialog.cpp
+    signupdialog.cpp \
+    teamdialog.cpp \
+    teamui.cpp
 
 HEADERS += \
     addorganizationclass.h \
     dashboard.h \
     editorganizationclass.h \
+    editproject.h \
+    editteam.h \
     forgotpassworddialog.h \
     mainwindow.h \
     organizationui.h \
     orgdialog.h \
+    prodialog.h \
+    projectui.h \
     security.h \
-    signupdialog.h
+    signupdialog.h \
+    teamdialog.h \
+    teamui.h
 
 FORMS += \
     addorganizationclass.ui \
     dashboard.ui \
     editorganizationclass.ui \
+    editproject.ui \
+    editteam.ui \
     forgotpassworddialog.ui \
     mainwindow.ui \
     organizationui.ui \
     orgdialog.ui \
-    signupdialog.ui
+    prodialog.ui \
+    projectui.ui \
+    signupdialog.ui \
+    teamdialog.ui \
+    teamui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -57,5 +75,8 @@ RESOURCES += \
     pain.qrc \
     paint.qrc \
     person.qrc \
+    pluss.qrc \
+    prodialog.qrc \
+    ptback.qrc \
     resources.qrc \
     wel.qrc

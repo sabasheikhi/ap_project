@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>541</width>
-    <height>295</height>
+    <height>218</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,15 +19,15 @@
   <widget class="QLabel" name="descriptionLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>130</y>
-     <width>91</width>
+     <x>50</x>
+     <y>100</y>
+     <width>101</width>
      <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(74, 74, 74);
+
 border-radius:7px;</string>
    </property>
    <property name="text">
@@ -37,8 +37,8 @@ border-radius:7px;</string>
   <widget class="QTextEdit" name="descriptionLineEdit">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>130</y>
+     <x>160</x>
+     <y>100</y>
      <width>311</width>
      <height>61</height>
     </rect>
@@ -48,33 +48,11 @@ border-radius:7px;</string>
 border-radius:8px;</string>
    </property>
   </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>501</x>
-     <y>40</y>
-     <width>20</width>
-     <height>191</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(250, 255, 193);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="nameLineEdit">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>70</y>
+     <x>160</x>
+     <y>40</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -87,15 +65,15 @@ border-radius:8px;</string>
   <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>70</y>
+     <x>50</x>
+     <y>40</y>
      <width>63</width>
      <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(80, 80, 80);
+
 border-radius:7px;</string>
    </property>
    <property name="text">
@@ -105,15 +83,15 @@ border-radius:7px;</string>
   <widget class="QPushButton" name="editButton">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>70</y>
+     <x>380</x>
+     <y>40</y>
      <width>81</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(149, 149, 149);
-border-radius:5px;</string>
+border-radius:7px;</string>
    </property>
    <property name="text">
     <string>Edit</string>

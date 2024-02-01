@@ -27,7 +27,7 @@ public:
     QLineEdit *nameLineEdit;
     QTextEdit *descriptionLineEdit;
     QLabel *Name;
-    QLabel *label_2;
+    QLabel *descriptionLabel;
     QFrame *line;
 
     void setupUi(QDialog *AddOrganizationClass)
@@ -55,10 +55,10 @@ public:
         Name->setObjectName("Name");
         Name->setGeometry(QRect(40, 20, 63, 20));
         Name->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-        label_2 = new QLabel(AddOrganizationClass);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(40, 60, 91, 20));
-        label_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        descriptionLabel = new QLabel(AddOrganizationClass);
+        descriptionLabel->setObjectName("descriptionLabel");
+        descriptionLabel->setGeometry(QRect(40, 60, 91, 20));
+        descriptionLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         line = new QFrame(AddOrganizationClass);
         line->setObjectName("line");
         line->setGeometry(QRect(461, -10, 20, 191));
@@ -80,7 +80,7 @@ public:
         AddOrganizationClass->setWindowTitle(QCoreApplication::translate("AddOrganizationClass", "Dialog", nullptr));
         addButton->setText(QCoreApplication::translate("AddOrganizationClass", "Add", nullptr));
         Name->setText(QCoreApplication::translate("AddOrganizationClass", "Name :", nullptr));
-        label_2->setText(QCoreApplication::translate("AddOrganizationClass", "Description :", nullptr));
+        descriptionLabel->setText(QCoreApplication::translate("AddOrganizationClass", "Description :", nullptr));
     } // retranslateUi
 
 };

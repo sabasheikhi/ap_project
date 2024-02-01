@@ -39,35 +39,27 @@ namespace {
 struct qt_meta_stringdata_CLASSOrganizationUIENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSOrganizationUIENDCLASS = QtMocHelpers::stringData(
     "OrganizationUI",
-    "on_OrganizationUI_customContextMenuRequested",
-    "",
-    "pos",
-    "on_pushButton_clicked"
+    "on_pushButton_clicked",
+    ""
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSOrganizationUIENDCLASS_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[6];
     char stringdata0[15];
-    char stringdata1[45];
+    char stringdata1[22];
     char stringdata2[1];
-    char stringdata3[4];
-    char stringdata4[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSOrganizationUIENDCLASS_t::offsetsAndSizes) + ofs), len 
 Q_CONSTINIT static const qt_meta_stringdata_CLASSOrganizationUIENDCLASS_t qt_meta_stringdata_CLASSOrganizationUIENDCLASS = {
     {
         QT_MOC_LITERAL(0, 14),  // "OrganizationUI"
-        QT_MOC_LITERAL(15, 44),  // "on_OrganizationUI_customConte..."
-        QT_MOC_LITERAL(60, 0),  // ""
-        QT_MOC_LITERAL(61, 3),  // "pos"
-        QT_MOC_LITERAL(65, 21)   // "on_pushButton_clicked"
+        QT_MOC_LITERAL(15, 21),  // "on_pushButton_clicked"
+        QT_MOC_LITERAL(37, 0)   // ""
     },
     "OrganizationUI",
-    "on_OrganizationUI_customContextMenuRequested",
-    "",
-    "pos",
-    "on_pushButton_clicked"
+    "on_pushButton_clicked",
+    ""
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -79,7 +71,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSOrganizationUIENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,11 +79,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSOrganizationUIENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   26,    2, 0x08,    1 /* Private */,
-       4,    0,   29,    2, 0x08,    3 /* Private */,
+       1,    0,   20,    2, 0x08,    1 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QPoint,    3,
     QMetaType::Void,
 
        0        // eod
@@ -106,9 +96,6 @@ Q_CONSTINIT const QMetaObject OrganizationUI::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSOrganizationUIENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<OrganizationUI, std::true_type>,
-        // method 'on_OrganizationUI_customContextMenuRequested'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
         // method 'on_pushButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -121,11 +108,11 @@ void OrganizationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         auto *_t = static_cast<OrganizationUI *>(_o);
         (void)_t;
         switch (_id) {
-        //case 0: _t->on_OrganizationUI_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 1: _t->on_pushButton_clicked(); break;
+        case 0: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
+    (void)_a;
 }
 
 const QMetaObject *OrganizationUI::metaObject() const
@@ -147,13 +134,13 @@ int OrganizationUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 1)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 1)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 1;
     }
     return _id;
 }

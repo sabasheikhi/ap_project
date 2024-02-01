@@ -2,7 +2,10 @@
 #include "ui_dashboard.h"
 #include "addorganizationclass.h"
 #include "organizationui.h"
-Dashboard::Dashboard(QWidget *parent,QTcpSocket* st,QString username)
+QString username;
+QString reader="Dashboard";
+QTcpSocket* socket;
+Dashboard::Dashboard(QWidget *parent,QTcpSocket* st,QString us)
     : QWidget(parent)
     , ui(new Ui::Dashboard)
 {
@@ -11,7 +14,7 @@ Dashboard::Dashboard(QWidget *parent,QTcpSocket* st,QString username)
     connect(socket,SIGNAL(readyRead()),this,SLOT(handleWrite()));
     row = 0;
     column =0;
-    this->username = username;
+    username = us;
     ui->addButton->setFixedSize(230,162);
     ui->gridLayout->setAlignment(ui->gridLayout->layout(),Qt::AlignLeft|Qt::AlignTop);
     ui->gridLayout->addWidget(ui->addButton,0,0,Qt::AlignLeft|Qt::AlignTop);
@@ -20,6 +23,7 @@ Dashboard::Dashboard(QWidget *parent,QTcpSocket* st,QString username)
 void Dashboard::fix()
 {
     int c = ui->gridLayout->count();
+    qDebug() << "c"<<c;
     for(int i =c-1;i>=0;i--)
     {
         int row,column,tmp;
@@ -47,7 +51,7 @@ void Dashboard::on_pushButton_clicked()
 void Dashboard::new_org(QString name)
 {
     fix();
-    OrganizationUI* b=new OrganizationUI(this,name);
+    OrganizationUI* b=new OrganizationUI(this,socket,name);
     b->setFixedSize(230,162);
     ui->gridLayout->addWidget(b,0,0,Qt::AlignLeft|Qt::AlignTop);
 }
@@ -66,6 +70,7 @@ void Dashboard::on_addButton_clicked()
 }
 void Dashboard::handleWrite()
 {
+    if(reader != "Dashboard") {return;}
     QString input = socket->readAll();
     qDebug() << input;
     QTextStream stream(&input);
@@ -75,5 +80,51 @@ void Dashboard::handleWrite()
     {
         new_org(stream.readAll());
         emit closeAddOrg();
+    }
+    else if(buffer=="LISTORG")
+    {
+        int c = ui->gridLayout->count();
+        QList<QLayoutItem*> items;
+        QLayoutItem* button;
+        for(int i = 0;i<c;i++)
+        {
+            auto item = ui->gridLayout->itemAt(i);
+            qDebug() << item->widget()->objectName();
+            if(item->widget()->objectName()=="addButton")
+            {
+                button =item;
+                continue;
+            }
+            items.append(item);
+        }
+        qDebug() <<"items" << items;
+        for(auto item:items)
+        {
+            ui->gridLayout->removeItem(item);
+            delete item->widget();
+        }
+        ui->gridLayout->removeItem(button);
+        ui->addButton->show();
+        ui->gridLayout->addWidget(ui->addButton,0,0,Qt::AlignLeft|Qt::AlignTop);
+        while(!stream.atEnd())
+        {
+
+            stream>>buffer;
+            if(buffer=="{")
+            {
+                QString name;
+                while(true)
+                {
+                    stream>>buffer;
+                    if(buffer=="}")
+                    {
+                        break;
+                    }
+                    name+=buffer+" ";
+                }
+                name.removeLast();
+                new_org(name);
+            }
+        }
     }
 }

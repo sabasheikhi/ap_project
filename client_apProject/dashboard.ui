@@ -88,8 +88,11 @@ background-color: #7C7C7C;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/pluss/plusIcon.png);</string>
+      </property>
       <property name="text">
-       <string>add</string>
+       <string/>
       </property>
      </widget>
     </item>

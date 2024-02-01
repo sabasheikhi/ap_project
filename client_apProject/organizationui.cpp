@@ -1,12 +1,13 @@
 #include "organizationui.h"
 #include "ui_organizationui.h"
 #include "orgdialog.h"
-
-OrganizationUI::OrganizationUI(QWidget *parent,QString name) :
+extern QString reader;
+OrganizationUI::OrganizationUI(QWidget *parent,QTcpSocket* sr,QString name) :
     QWidget(parent),
     ui(new Ui::OrganizationUI)
 {
     ui->setupUi(this);
+    socket=sr;
     ui->name->setText(name);
 }
 
@@ -17,8 +18,10 @@ OrganizationUI::~OrganizationUI()
 
 void OrganizationUI::on_pushButton_clicked()
 {
-    OrgDialog *page;
-    page = new OrgDialog();
-    page->show();
+    QString name=ui->name->text();
+    OrgDialog* window = new OrgDialog(this,name);
+    reader = "OrgDialog";
+    window->show();
+
 }
 

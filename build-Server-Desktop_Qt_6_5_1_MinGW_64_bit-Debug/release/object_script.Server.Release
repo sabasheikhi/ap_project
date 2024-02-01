@@ -6,6 +6,7 @@ release/project.o
 release/task.o
 release/team.o
 release/user.o
+release/qrc_back.o
 release/moc_mainwindow.o
 release/moc_organization.o
 release/moc_project.o

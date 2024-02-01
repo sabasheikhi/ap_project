@@ -7,8 +7,9 @@ editOrganizationClass::editOrganizationClass(QWidget *parent) :
     ui(new Ui::editOrganizationClass)
 {
     ui->setupUi(this);
-    ui->nameLineEdit = // old_name
-    ui->descriptionLineEdit = // old-description
+    ui->nameLineEdit->setText("");
+    ui->descriptionLineEdit->setText("");
+
 }
 
 editOrganizationClass::~editOrganizationClass()
@@ -18,11 +19,7 @@ editOrganizationClass::~editOrganizationClass()
 
 void editOrganizationClass::on_editButton_clicked()
 {
-    QString name = ui->nameLineEdit;
-    QString description = ui->descriptionLineEdit;
-    QString command = "EDITORG " + name + " " + description + "\n";
-    socket->write(command.toUtf8());
-    socket->flush();
-
+    if(!ui->nameLineEdit->text().isEmpty()){
+        emit editOrganization(ui->nameLineEdit->text(),ui->descriptionLineEdit->toPlainText());}
 }
 

@@ -6,6 +6,7 @@ debug/project.o
 debug/task.o
 debug/team.o
 debug/user.o
+debug/qrc_back.o
 debug/moc_mainwindow.o
 debug/moc_organization.o
 debug/moc_project.o

@@ -2,6 +2,7 @@
 #define DASHBOARD_H
 #include <QWidget>
 #include <QTcpSocket>
+
 namespace Ui {
 class Dashboard;
 }
@@ -10,8 +11,6 @@ class Dashboard : public QWidget
 {
     Q_OBJECT
     int row,column;
-    QTcpSocket* socket;
-    QString username;
 public:
     explicit Dashboard(QWidget *parent,QTcpSocket* st,QString username);
     void fix();

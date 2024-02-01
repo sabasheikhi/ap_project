@@ -4,10 +4,7 @@
 #include <QDateTime>
 #include <QMap>
 #include <QObject>
-#include "organization.h"
 #include "common.h"
-
-class organization;
 
 class project : public QObject
 {
@@ -24,22 +21,23 @@ public:
     QDateTime endDate();
     void setEndDate (QDateTime&);
     QMap<int, Role>members();
-    void setMembers( QMap<int, Role>& members);
-    //bool isMemberOf( organization&);
-
+    void setMembers(int,Role);
+    bool getMembers(int,Role);
+    void removeMember(int);
+    void setstatus(QString);
 signals:
 
 
 private:
     QString p_name;
     QString p_description;
-    organization* p_owner;
     QDateTime p_startDate;
     QDateTime p_endDate;
     QMap<int, Role> p_members;
     int p_ID;
     static int counter;
-    bool projectStatus;
+    QString projectStatus;
+
     // QList<Task> tasks;
 };
 #endif // PROJECT_H

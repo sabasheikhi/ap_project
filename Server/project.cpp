@@ -28,14 +28,22 @@ QDateTime project::endDate()  { return p_endDate; }
 void project::setEndDate( QDateTime& endDate) { p_endDate = endDate;  }
 
 QMap<int, Role> project::members() { return p_members; }
-void project::setMembers( QMap<int, Role>& members) { p_members = members;  }
-
-/* bool project::isMemberOf( organization& org)  {
-    for (const auto& member : org.members()) {
-        if (member.first == m_ID) {
-            return true;
-        }
+void project::setMembers(int id,Role role) { p_members[id] = role; }
+bool project::getMembers(int id,Role role)
+{
+    if(p_members[id] == role){
+        return true;
     }
     return false;
 }
-*/
+void project::removeMember(int memberId)
+{
+
+    p_members.remove(memberId);
+
+
+
+}
+void project::setstatus(QString pro){
+    projectStatus=pro;
+}
