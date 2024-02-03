@@ -22,6 +22,9 @@ void projectui::on_openproject_clicked()
     QString name=ui->projectname->text();
     prodialog* window = new prodialog(this,name,orgname);
     reader = "ProDialog";
+    QString command = "OPENPRO ";
+    socket->write(command.toUtf8());
+    socket->flush();
     window->show();
 }
 

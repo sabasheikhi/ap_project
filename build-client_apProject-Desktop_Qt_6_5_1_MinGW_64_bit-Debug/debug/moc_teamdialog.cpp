@@ -42,11 +42,11 @@ static constexpr auto qt_meta_stringdata_CLASSteamdialogENDCLASS = QtMocHelpers:
     "closeeditpro",
     "",
     "handleWrite",
-    "on_editpro_clicked",
     "request_edit",
-    "on_deletepro_clicked",
     "on_addOrEditUser_clicked",
-    "on_delete_user_clicked"
+    "on_delete_user_clicked",
+    "on_editTeam_clicked",
+    "on_deleteTeam_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSteamdialogENDCLASS_t {
@@ -55,11 +55,11 @@ struct qt_meta_stringdata_CLASSteamdialogENDCLASS_t {
     char stringdata1[13];
     char stringdata2[1];
     char stringdata3[12];
-    char stringdata4[19];
-    char stringdata5[13];
-    char stringdata6[21];
-    char stringdata7[25];
-    char stringdata8[23];
+    char stringdata4[13];
+    char stringdata5[25];
+    char stringdata6[23];
+    char stringdata7[20];
+    char stringdata8[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSteamdialogENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -69,21 +69,21 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSteamdialogENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(11, 12),  // "closeeditpro"
         QT_MOC_LITERAL(24, 0),  // ""
         QT_MOC_LITERAL(25, 11),  // "handleWrite"
-        QT_MOC_LITERAL(37, 18),  // "on_editpro_clicked"
-        QT_MOC_LITERAL(56, 12),  // "request_edit"
-        QT_MOC_LITERAL(69, 20),  // "on_deletepro_clicked"
-        QT_MOC_LITERAL(90, 24),  // "on_addOrEditUser_clicked"
-        QT_MOC_LITERAL(115, 22)   // "on_delete_user_clicked"
+        QT_MOC_LITERAL(37, 12),  // "request_edit"
+        QT_MOC_LITERAL(50, 24),  // "on_addOrEditUser_clicked"
+        QT_MOC_LITERAL(75, 22),  // "on_delete_user_clicked"
+        QT_MOC_LITERAL(98, 19),  // "on_editTeam_clicked"
+        QT_MOC_LITERAL(118, 21)   // "on_deleteTeam_clicked"
     },
     "teamdialog",
     "closeeditpro",
     "",
     "handleWrite",
-    "on_editpro_clicked",
     "request_edit",
-    "on_deletepro_clicked",
     "on_addOrEditUser_clicked",
-    "on_delete_user_clicked"
+    "on_delete_user_clicked",
+    "on_editTeam_clicked",
+    "on_deleteTeam_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -107,8 +107,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSteamdialogENDCLASS[] = {
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        3,    0,   57,    2, 0x08,    2 /* Private */,
-       4,    0,   58,    2, 0x08,    3 /* Private */,
-       5,    2,   59,    2, 0x08,    4 /* Private */,
+       4,    2,   58,    2, 0x08,    3 /* Private */,
+       5,    0,   63,    2, 0x08,    6 /* Private */,
        6,    0,   64,    2, 0x08,    7 /* Private */,
        7,    0,   65,    2, 0x08,    8 /* Private */,
        8,    0,   66,    2, 0x08,    9 /* Private */,
@@ -118,8 +118,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSteamdialogENDCLASS[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -140,17 +140,17 @@ Q_CONSTINIT const QMetaObject teamdialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'handleWrite'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_editpro_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'request_edit'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
-        // method 'on_deletepro_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_addOrEditUser_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_delete_user_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_editTeam_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_deleteTeam_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -164,11 +164,11 @@ void teamdialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->closeeditpro(); break;
         case 1: _t->handleWrite(); break;
-        case 2: _t->on_editpro_clicked(); break;
-        case 3: _t->request_edit((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 4: _t->on_deletepro_clicked(); break;
-        case 5: _t->on_addOrEditUser_clicked(); break;
-        case 6: _t->on_delete_user_clicked(); break;
+        case 2: _t->request_edit((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 3: _t->on_addOrEditUser_clicked(); break;
+        case 4: _t->on_delete_user_clicked(); break;
+        case 5: _t->on_editTeam_clicked(); break;
+        case 6: _t->on_deleteTeam_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

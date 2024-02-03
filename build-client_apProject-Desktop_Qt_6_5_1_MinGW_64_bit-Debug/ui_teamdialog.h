@@ -26,12 +26,12 @@ public:
     QPushButton *addOrEditUser;
     QLabel *nameLabel;
     QLabel *descriptionLabel;
-    QPushButton *editpro;
     QPushButton *delete_user;
     QLabel *idLabel;
     QLineEdit *idLineEdit;
     QComboBox *roleComboBox;
-    QPushButton *deletepro;
+    QPushButton *editTeam;
+    QPushButton *deleteTeam;
 
     void setupUi(QWidget *teamdialog)
     {
@@ -60,12 +60,6 @@ public:
         descriptionLabel->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 157);\n"
 "background-color: rgb(241, 238, 205);\n"
 "border-radius:7px;"));
-        editpro = new QPushButton(teamdialog);
-        editpro->setObjectName("editpro");
-        editpro->setGeometry(QRect(750, 120, 191, 29));
-        editpro->setStyleSheet(QString::fromUtf8("color: rgb(38, 0, 115);\n"
-"background-color: rgb(216, 213, 184);\n"
-"border-radius:6px;"));
         delete_user = new QPushButton(teamdialog);
         delete_user->setObjectName("delete_user");
         delete_user->setGeometry(QRect(390, 400, 181, 29));
@@ -89,10 +83,16 @@ public:
         roleComboBox->setGeometry(QRect(500, 300, 111, 31));
         roleComboBox->setStyleSheet(QString::fromUtf8("border-radius:5px;\n"
 "background-color: rgb(140, 140, 140);"));
-        deletepro = new QPushButton(teamdialog);
-        deletepro->setObjectName("deletepro");
-        deletepro->setGeometry(QRect(750, 160, 191, 29));
-        deletepro->setStyleSheet(QString::fromUtf8("color: rgb(38, 0, 115);\n"
+        editTeam = new QPushButton(teamdialog);
+        editTeam->setObjectName("editTeam");
+        editTeam->setGeometry(QRect(760, 130, 191, 29));
+        editTeam->setStyleSheet(QString::fromUtf8("color: rgb(38, 0, 115);\n"
+"background-color: rgb(216, 213, 184);\n"
+"border-radius:6px;"));
+        deleteTeam = new QPushButton(teamdialog);
+        deleteTeam->setObjectName("deleteTeam");
+        deleteTeam->setGeometry(QRect(760, 170, 191, 29));
+        deleteTeam->setStyleSheet(QString::fromUtf8("color: rgb(38, 0, 115);\n"
 "background-color: rgb(216, 213, 184);\n"
 "border-radius:6px;"));
 
@@ -108,13 +108,13 @@ public:
         addOrEditUser->setText(QCoreApplication::translate("teamdialog", "Add or Edit User", nullptr));
         nameLabel->setText(QString());
         descriptionLabel->setText(QString());
-        editpro->setText(QCoreApplication::translate("teamdialog", " Edit Team", nullptr));
         delete_user->setText(QCoreApplication::translate("teamdialog", "Delete User", nullptr));
         idLabel->setText(QCoreApplication::translate("teamdialog", "Members  :", nullptr));
         roleComboBox->setItemText(1, QCoreApplication::translate("teamdialog", "Admin", nullptr));
         roleComboBox->setItemText(2, QCoreApplication::translate("teamdialog", "User", nullptr));
 
-        deletepro->setText(QCoreApplication::translate("teamdialog", "Delete Team", nullptr));
+        editTeam->setText(QCoreApplication::translate("teamdialog", " Edit Team", nullptr));
+        deleteTeam->setText(QCoreApplication::translate("teamdialog", "Delete Team", nullptr));
     } // retranslateUi
 
 };

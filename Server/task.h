@@ -3,10 +3,12 @@
 
 #include <QObject>
 #include <QString>
-#include <QDateTime>
 #include "team.h"
 #include "project.h"
+#include "common.h"
 #include <QMap>
+#include <QVariant>
+
 
 class Task : public QObject
 {
@@ -14,38 +16,45 @@ class Task : public QObject
 public:
     explicit Task(QObject *parent = nullptr);
     explicit Task(QString &name, QString &description);
-    void edit_task(QString name, QString description, int userId); // deadline ro hm bezaram toye constructor?
-    void archive_task(); // ?
-    void unarchive_task(); // ?
-    void remove_task();
-    void set_deadline(QDateTime &deadline);
-    void set_priority(); // ?
     QString getName();
     QString getDescription();
     int getID();
-    int taskIsAssignedToWho();
     void setName(const QString &name);
     void setDescription(const QString &description);
-    void assignTaskTo(int &user_id);
-    void assignTaskTo(Team &team);
-    void assignTaskTo(project &project);
-    Team& taskIsAssignedToWhichTeam();
-    project& taskIsAssignedToWhichProject();
-    QDateTime timeLeftToDeadline(QDateTime today, QDateTime final_day); // ? => age deadline tmum shod, task_status = true;
-
+    bool Create_priority(QString,QString);
+    void setMemberstask(QString,QString);
+    void setMembers(int,Role);
+    QString getmemberduty(QString);
+    void setstatus(QString);
+    void setpro(QString,QString);
+    QString getpro(QString);
+    QString getstatus();
+    QString getdeadline();
+    void setdeadline(QString);
+    void setteam(QString);
+    QString getteam();
+    void setproject(QString);
+    QString getproject();
+    bool getMembers(int id,Role role);
 private:
     QString name;
     QString description;
-    QDateTime start_day;
-    QDateTime deadline; // final_day
-    bool userDoneTask; // age deadline tamum beshe vli user hnuz task ro anjam ndade bashe QMessage bede(toye ui dashboard)
-    bool task_status;
+    QString projectname;
+    QString teamname;
+    QString deadlinetask;
+    bool userDoneTask;
+    QMap<int,Role> member;
+    QMap<QString,QString> memberTask;
+    QMap<QString,QString> memberpro;
+    QMap<QString,QString> map;
+    QSet<QString> used;
+    QString task_status;
     int id;
     static int counter;
-    int taskIsAssignedTo;
-protected: // friend ye class be azaye protected class dastresi dasht ya n?
-           // QMap<int, int, int, int> tasks; // task_id, project_d, user_id, team_id
-           // che knm ? arraye dobodi, linkedlist, ...
+    QList<QString> list_of_priorities;
+
+
+protected:
 };
 
 #endif // TASK_H

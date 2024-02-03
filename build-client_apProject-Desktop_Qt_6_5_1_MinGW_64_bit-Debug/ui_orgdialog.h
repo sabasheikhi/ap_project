@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -54,6 +55,30 @@ public:
     QLabel *label_2;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *teamlay;
+    QWidget *Tasks;
+    QLabel *label_5;
+    QLabel *label_6;
+    QLabel *teamlabel_2;
+    QLineEdit *taskname;
+    QTextEdit *taskdes;
+    QPushButton *addteask;
+    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *tasklay;
+    QLabel *label_7;
+    QLabel *label_8;
+    QLineEdit *projectname;
+    QLineEdit *teamname;
+    QLabel *label_9;
+    QComboBox *year;
+    QComboBox *month;
+    QComboBox *day;
+    QLabel *label_10;
+    QLineEdit *namearchive;
+    QPushButton *setarchive;
+    QPushButton *setunarchive;
+    QFrame *line;
+    QPushButton *setarchive_2;
+    QPushButton *setarchive_3;
 
     void setupUi(QWidget *OrgDialog)
     {
@@ -119,7 +144,7 @@ public:
 "border-radius:7px;"));
         tabWidget = new QTabWidget(OrgDialog);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(350, 100, 761, 541));
+        tabWidget->setGeometry(QRect(360, 100, 761, 561));
         tabWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(26, 17, 68);\n"
 "border-color: rgb(26, 17, 68);\n"
 ""));
@@ -200,15 +225,172 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("color: rgb(248, 245, 211);"));
         horizontalLayoutWidget_2 = new QWidget(Teams);
         horizontalLayoutWidget_2->setObjectName("horizontalLayoutWidget_2");
-        horizontalLayoutWidget_2->setGeometry(QRect(40, 330, 661, 131));
+        horizontalLayoutWidget_2->setGeometry(QRect(40, 310, 661, 151));
         teamlay = new QHBoxLayout(horizontalLayoutWidget_2);
         teamlay->setObjectName("teamlay");
         teamlay->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(Teams, QString());
+        Tasks = new QWidget();
+        Tasks->setObjectName("Tasks");
+        label_5 = new QLabel(Tasks);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(360, 60, 91, 31));
+        label_5->setStyleSheet(QString::fromUtf8("color: rgb(248, 245, 211);"));
+        label_6 = new QLabel(Tasks);
+        label_6->setObjectName("label_6");
+        label_6->setGeometry(QRect(100, 60, 71, 31));
+        label_6->setStyleSheet(QString::fromUtf8("color: rgb(248, 245, 211);"));
+        teamlabel_2 = new QLabel(Tasks);
+        teamlabel_2->setObjectName("teamlabel_2");
+        teamlabel_2->setGeometry(QRect(40, 20, 71, 31));
+        teamlabel_2->setFont(font1);
+        teamlabel_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        taskname = new QLineEdit(Tasks);
+        taskname->setObjectName("taskname");
+        taskname->setGeometry(QRect(210, 60, 113, 31));
+        taskname->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        taskdes = new QTextEdit(Tasks);
+        taskdes->setObjectName("taskdes");
+        taskdes->setGeometry(QRect(490, 60, 231, 51));
+        taskdes->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        addteask = new QPushButton(Tasks);
+        addteask->setObjectName("addteask");
+        addteask->setGeometry(QRect(620, 170, 101, 31));
+        addteask->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
+"border-radius:6px;"));
+        horizontalLayoutWidget_3 = new QWidget(Tasks);
+        horizontalLayoutWidget_3->setObjectName("horizontalLayoutWidget_3");
+        horizontalLayoutWidget_3->setGeometry(QRect(30, 300, 711, 191));
+        tasklay = new QHBoxLayout(horizontalLayoutWidget_3);
+        tasklay->setObjectName("tasklay");
+        tasklay->setContentsMargins(0, 0, 0, 0);
+        label_7 = new QLabel(Tasks);
+        label_7->setObjectName("label_7");
+        label_7->setGeometry(QRect(90, 110, 101, 31));
+        label_7->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        label_8 = new QLabel(Tasks);
+        label_8->setObjectName("label_8");
+        label_8->setGeometry(QRect(90, 160, 101, 31));
+        label_8->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        projectname = new QLineEdit(Tasks);
+        projectname->setObjectName("projectname");
+        projectname->setGeometry(QRect(210, 110, 113, 31));
+        projectname->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        teamname = new QLineEdit(Tasks);
+        teamname->setObjectName("teamname");
+        teamname->setGeometry(QRect(210, 160, 113, 31));
+        teamname->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        label_9 = new QLabel(Tasks);
+        label_9->setObjectName("label_9");
+        label_9->setGeometry(QRect(360, 160, 81, 21));
+        label_9->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        year = new QComboBox(Tasks);
+        year->addItem(QString());
+        year->addItem(QString());
+        year->addItem(QString());
+        year->addItem(QString());
+        year->addItem(QString());
+        year->addItem(QString());
+        year->addItem(QString());
+        year->setObjectName("year");
+        year->setGeometry(QRect(490, 130, 75, 25));
+        year->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        month = new QComboBox(Tasks);
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->addItem(QString());
+        month->setObjectName("month");
+        month->setGeometry(QRect(570, 130, 75, 25));
+        month->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        day = new QComboBox(Tasks);
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->addItem(QString());
+        day->setObjectName("day");
+        day->setGeometry(QRect(650, 130, 75, 25));
+        day->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        label_10 = new QLabel(Tasks);
+        label_10->setObjectName("label_10");
+        label_10->setGeometry(QRect(90, 230, 91, 31));
+        label_10->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        namearchive = new QLineEdit(Tasks);
+        namearchive->setObjectName("namearchive");
+        namearchive->setGeometry(QRect(200, 230, 113, 31));
+        namearchive->setStyleSheet(QString::fromUtf8("background-color: rgb(199, 199, 199);\n"
+"border-radius:7px;"));
+        setarchive = new QPushButton(Tasks);
+        setarchive->setObjectName("setarchive");
+        setarchive->setGeometry(QRect(340, 220, 81, 21));
+        setarchive->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
+"border-radius:6px;"));
+        setunarchive = new QPushButton(Tasks);
+        setunarchive->setObjectName("setunarchive");
+        setunarchive->setGeometry(QRect(340, 250, 81, 21));
+        setunarchive->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
+"border-radius:6px;"));
+        line = new QFrame(Tasks);
+        line->setObjectName("line");
+        line->setGeometry(QRect(30, 200, 701, 20));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        setarchive_2 = new QPushButton(Tasks);
+        setarchive_2->setObjectName("setarchive_2");
+        setarchive_2->setGeometry(QRect(610, 230, 111, 21));
+        setarchive_2->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
+"border-radius:6px;"));
+        setarchive_3 = new QPushButton(Tasks);
+        setarchive_3->setObjectName("setarchive_3");
+        setarchive_3->setGeometry(QRect(610, 260, 111, 21));
+        setarchive_3->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
+"border-radius:6px;"));
+        tabWidget->addTab(Tasks, QString());
 
         retranslateUi(OrgDialog);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(OrgDialog);
@@ -238,6 +420,71 @@ public:
         label->setText(QCoreApplication::translate("OrgDialog", "Name :", nullptr));
         label_2->setText(QCoreApplication::translate("OrgDialog", "Description :", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Teams), QCoreApplication::translate("OrgDialog", "Teams", nullptr));
+        label_5->setText(QCoreApplication::translate("OrgDialog", "Description :", nullptr));
+        label_6->setText(QCoreApplication::translate("OrgDialog", "Name :", nullptr));
+        teamlabel_2->setText(QCoreApplication::translate("OrgDialog", "Tasks :", nullptr));
+        addteask->setText(QCoreApplication::translate("OrgDialog", "Add task", nullptr));
+        label_7->setText(QCoreApplication::translate("OrgDialog", "Project name :", nullptr));
+        label_8->setText(QCoreApplication::translate("OrgDialog", "Team name :", nullptr));
+        label_9->setText(QCoreApplication::translate("OrgDialog", "Deadline :", nullptr));
+        year->setItemText(0, QCoreApplication::translate("OrgDialog", "2024", nullptr));
+        year->setItemText(1, QCoreApplication::translate("OrgDialog", "2025", nullptr));
+        year->setItemText(2, QCoreApplication::translate("OrgDialog", "2026", nullptr));
+        year->setItemText(3, QCoreApplication::translate("OrgDialog", "2027", nullptr));
+        year->setItemText(4, QCoreApplication::translate("OrgDialog", "2028", nullptr));
+        year->setItemText(5, QCoreApplication::translate("OrgDialog", "2029", nullptr));
+        year->setItemText(6, QCoreApplication::translate("OrgDialog", "2030", nullptr));
+
+        month->setItemText(0, QCoreApplication::translate("OrgDialog", "1", nullptr));
+        month->setItemText(1, QCoreApplication::translate("OrgDialog", "2", nullptr));
+        month->setItemText(2, QCoreApplication::translate("OrgDialog", "3", nullptr));
+        month->setItemText(3, QCoreApplication::translate("OrgDialog", "4", nullptr));
+        month->setItemText(4, QCoreApplication::translate("OrgDialog", "5", nullptr));
+        month->setItemText(5, QCoreApplication::translate("OrgDialog", "6", nullptr));
+        month->setItemText(6, QCoreApplication::translate("OrgDialog", "7", nullptr));
+        month->setItemText(7, QCoreApplication::translate("OrgDialog", "8", nullptr));
+        month->setItemText(8, QCoreApplication::translate("OrgDialog", "9", nullptr));
+        month->setItemText(9, QCoreApplication::translate("OrgDialog", "10", nullptr));
+        month->setItemText(10, QCoreApplication::translate("OrgDialog", "11", nullptr));
+        month->setItemText(11, QCoreApplication::translate("OrgDialog", "12", nullptr));
+
+        day->setItemText(0, QCoreApplication::translate("OrgDialog", "1", nullptr));
+        day->setItemText(1, QCoreApplication::translate("OrgDialog", "2", nullptr));
+        day->setItemText(2, QCoreApplication::translate("OrgDialog", "3", nullptr));
+        day->setItemText(3, QCoreApplication::translate("OrgDialog", "4", nullptr));
+        day->setItemText(4, QCoreApplication::translate("OrgDialog", "5", nullptr));
+        day->setItemText(5, QCoreApplication::translate("OrgDialog", "6", nullptr));
+        day->setItemText(6, QCoreApplication::translate("OrgDialog", "7", nullptr));
+        day->setItemText(7, QCoreApplication::translate("OrgDialog", "8", nullptr));
+        day->setItemText(8, QCoreApplication::translate("OrgDialog", "9", nullptr));
+        day->setItemText(9, QCoreApplication::translate("OrgDialog", "10", nullptr));
+        day->setItemText(10, QCoreApplication::translate("OrgDialog", "11", nullptr));
+        day->setItemText(11, QCoreApplication::translate("OrgDialog", "12", nullptr));
+        day->setItemText(12, QCoreApplication::translate("OrgDialog", "13", nullptr));
+        day->setItemText(13, QCoreApplication::translate("OrgDialog", "14", nullptr));
+        day->setItemText(14, QCoreApplication::translate("OrgDialog", "15", nullptr));
+        day->setItemText(15, QCoreApplication::translate("OrgDialog", "16", nullptr));
+        day->setItemText(16, QCoreApplication::translate("OrgDialog", "17", nullptr));
+        day->setItemText(17, QCoreApplication::translate("OrgDialog", "18", nullptr));
+        day->setItemText(18, QCoreApplication::translate("OrgDialog", "19", nullptr));
+        day->setItemText(19, QCoreApplication::translate("OrgDialog", "20", nullptr));
+        day->setItemText(20, QCoreApplication::translate("OrgDialog", "21", nullptr));
+        day->setItemText(21, QCoreApplication::translate("OrgDialog", "22", nullptr));
+        day->setItemText(22, QCoreApplication::translate("OrgDialog", "23", nullptr));
+        day->setItemText(23, QCoreApplication::translate("OrgDialog", "24", nullptr));
+        day->setItemText(24, QCoreApplication::translate("OrgDialog", "25", nullptr));
+        day->setItemText(25, QCoreApplication::translate("OrgDialog", "26", nullptr));
+        day->setItemText(26, QCoreApplication::translate("OrgDialog", "27", nullptr));
+        day->setItemText(27, QCoreApplication::translate("OrgDialog", "28", nullptr));
+        day->setItemText(28, QCoreApplication::translate("OrgDialog", "29", nullptr));
+        day->setItemText(29, QCoreApplication::translate("OrgDialog", "30", nullptr));
+
+        label_10->setText(QCoreApplication::translate("OrgDialog", "Task name :", nullptr));
+        setarchive->setText(QCoreApplication::translate("OrgDialog", "Archive", nullptr));
+        setunarchive->setText(QCoreApplication::translate("OrgDialog", "Unarchive", nullptr));
+        setarchive_2->setText(QCoreApplication::translate("OrgDialog", "Show Archives", nullptr));
+        setarchive_3->setText(QCoreApplication::translate("OrgDialog", "Hide Archives", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(Tasks), QCoreApplication::translate("OrgDialog", "Tasks", nullptr));
     } // retranslateUi
 
 };

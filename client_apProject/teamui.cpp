@@ -1,6 +1,7 @@
 #include "teamui.h"
 #include "ui_teamui.h"
 #include "teamdialog.h"
+extern QString reader;
 teamui::teamui(QWidget *parent,QTcpSocket* sr,QString namet,QString nameo) :
     QWidget(parent),
     ui(new Ui::teamui)
@@ -24,7 +25,7 @@ void teamui::on_openteam_clicked()
 {
     QString name=ui->teamname->text();
     teamdialog* window = new teamdialog(this,name,orgname);
-
+    reader = "TeamDialog";
     window->show();
 }
 

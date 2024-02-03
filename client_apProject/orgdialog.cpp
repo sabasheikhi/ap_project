@@ -2,6 +2,7 @@
 #include "ui_orgdialog.h"
 #include "editorganizationclass.h"
 #include "teamui.h"
+#include "taskui.h"
 #include "projectui.h"
 #include <QMessageBox>
 extern QTcpSocket* socket;
@@ -15,10 +16,13 @@ OrgDialog::OrgDialog(QWidget *parent,QString name_) :
     this->setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
     ui->nameLabel->setText(name_);
+    //row = 0;
+    //column =0;
     connect(socket,SIGNAL(readyRead()),this,SLOT(handleWrite()));
     QString command = "DESCRIPTION " +username + " { "+name_ +" }\n";
     socket->write(command.toUtf8());
     socket->flush();
+
 }
 
 OrgDialog::~OrgDialog()
@@ -29,7 +33,14 @@ OrgDialog::~OrgDialog()
 }
 
 void OrgDialog::handleWrite(){
-    QString string = socket->readAll();
+
+    if(reader!="OrgDialog") return;
+
+    qDebug() << "reading in org dialog";
+    QString input = socket->readAll();
+    for(auto string:input.split("\n"))
+    {
+    qDebug() << string;
     QTextStream stream(&string);
     QString buffer;
     stream>>buffer;
@@ -63,7 +74,7 @@ void OrgDialog::handleWrite(){
     {
         QMessageBox::critical(this,"Change information","You are not the owner. so you cant make any changes.");
     }
-    else if(buffer=="DES")
+    if(buffer=="DES")
     {
         qDebug() << "des";
         stream>>buffer;
@@ -86,17 +97,119 @@ void OrgDialog::handleWrite(){
     if(buffer=="2004")
     {
         QString namep=ui->project_name_2->text();
-        projectui* b=new projectui(this,socket,namep,ui->nameLabel->text());
-        b->setFixedSize(210,147);
-        ui->prolay->addWidget(b,0,Qt::AlignLeft);
+        add_pro(namep);
     }
     if(buffer=="2005")
     {
         QString namet=ui->team_name->text();
-        teamui* b=new teamui(this,socket,namet,ui->nameLabel->text());
-        b->setFixedSize(194,139);
-        ui->teamlay->addWidget(b,0,Qt::AlignLeft);
+        add_team(namet);
     }
+    if(buffer=="2006")
+    {
+        QString nametask=stream.readAll();
+        add_task(nametask);
+    }
+    if(buffer=="LISTPRO")
+    {
+        int c = ui->prolay->count();
+        QList<QLayoutItem*> items;
+        for(int i = 0;i<c;i++)
+       {
+            auto item=ui->prolay->itemAt(i);
+
+            qDebug() << item->widget()->objectName() ;
+           items.append(item);
+      }
+        qDebug() <<"items" << items;
+       for(auto item:items)
+        {
+            ui->prolay->removeItem(item);
+            delete item->widget();
+        }
+        while(!stream.atEnd())
+        {
+
+            stream>>buffer;
+            if(buffer=="{")
+            {
+                QString name;
+                while(true)
+                {
+                    stream>>buffer;
+                    if(buffer=="}")
+                    {
+                        break;
+                    }
+                    name+=buffer+" ";
+                }
+                name.removeLast();
+                add_pro(name);
+            }
+        }
+    }
+
+    if(buffer=="LISTTEAM")
+    {
+        int c = ui->teamlay->count();
+    QList<QLayoutItem*> items;
+    for(int i = 0;i<c;i++)
+    {
+        auto item=ui->teamlay->itemAt(i);
+        items.append(item);
+    }
+    qDebug() <<"items" << items;
+    for(auto item:items)
+    {
+        ui->teamlay->removeItem(item);
+        delete item->widget();
+    }
+    while(!stream.atEnd())
+    {
+
+        stream>>buffer;
+        if(buffer=="{")
+        {
+            QString name;
+            while(true)
+            {
+                stream>>buffer;
+                if(buffer=="}")
+                {
+                    break;
+                }
+                name+=buffer+" ";
+            }
+            name.removeLast();
+            add_team(name);
+        }
+    }
+    }
+
+   }
+}
+void OrgDialog::add_team(QString name)
+{
+    teamui* b=new teamui(this,socket,name,ui->nameLabel->text());
+    b->setFixedSize(194,139);
+    ui->teamlay->addWidget(b,0,Qt::AlignLeft);
+
+}
+void OrgDialog::add_task(QString name)
+{
+    QString teamname=ui->teamname->text();
+    QString namep=ui->projectname->text();
+    taskui* b=new taskui(this,socket,teamname,ui->nameLabel->text(),name,namep);
+    b->setFixedSize(181,181);
+    ui->tasklay->addWidget(b,0,Qt::AlignLeft);
+
+
+}
+void OrgDialog::add_pro(QString name)
+{
+
+    projectui* b=new projectui(this,socket,name,ui->nameLabel->text());
+    b->setFixedSize(210,147);
+    ui->prolay->addWidget(b,0,Qt::AlignLeft);
 }
 void OrgDialog::on_editorg_clicked()
 {   editOrganizationClass* window= new editOrganizationClass(this);
@@ -166,6 +279,33 @@ void OrgDialog::on_addteam_clicked()
      QString command = "NEWTEAM " +username +" { "+orgname +" } { "+namet +" } { " + dest +" }\n";
      socket->write(command.toUtf8());
      socket->flush();
+
+}
+
+
+
+
+
+void OrgDialog::on_addteask_clicked()
+{
+     if (!ui->taskname->text().isEmpty() && !ui->projectname->text().isEmpty() && !ui->teamname->text().isEmpty() && !ui->taskdes->toPlainText().isEmpty()) {
+        QString nametask=ui->taskname->text();
+        QString namep=ui->projectname->text();
+        QString teamname=ui->teamname->text();
+        QString dest = ui->taskdes->toPlainText();
+        QString orgname=ui->nameLabel->text();
+        QString year = ui->year->currentText();
+        QString month = ui->month->currentText();
+        QString day = ui->day->currentText();
+        QString deadline = year + "-" + month + "-" + day;
+        QString command = "NEWTASK " +username +" { "+deadline +" } { "+orgname +" } { "+nametask +" } { "+namep +" } { "+teamname +" } { " + dest +" }\n";
+        socket->write(command.toUtf8());
+        socket->flush();
+     }
+     else {
+
+        QMessageBox::warning(this, "Warning", "Please fill all lines.");
+     }
 
 }
 

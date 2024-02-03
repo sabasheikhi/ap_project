@@ -83,24 +83,6 @@ border-radius:7px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="editpro">
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>120</y>
-     <width>191</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(38, 0, 115);
-background-color: rgb(216, 213, 184);
-border-radius:6px;</string>
-   </property>
-   <property name="text">
-    <string> Edit Team</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="delete_user">
    <property name="geometry">
     <rect>
@@ -178,11 +160,29 @@ background-color: rgb(140, 140, 140);</string>
     </property>
    </item>
   </widget>
-  <widget class="QPushButton" name="deletepro">
+  <widget class="QPushButton" name="editTeam">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>160</y>
+     <x>760</x>
+     <y>130</y>
+     <width>191</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(38, 0, 115);
+background-color: rgb(216, 213, 184);
+border-radius:6px;</string>
+   </property>
+   <property name="text">
+    <string> Edit Team</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteTeam">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>170</y>
      <width>191</width>
      <height>29</height>
     </rect>

@@ -20,13 +20,16 @@ public:
     ~teamdialog();
 private slots:
     void handleWrite();
-    void on_editpro_clicked();
     void request_edit(QString,QString);
-    void on_deletepro_clicked();
+
 
     void on_addOrEditUser_clicked();
 
     void on_delete_user_clicked();
+
+    void on_editTeam_clicked();
+
+    void on_deleteTeam_clicked();
 
 signals:
     void closeeditpro();

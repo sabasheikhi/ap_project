@@ -71,6 +71,7 @@ void Dashboard::on_addButton_clicked()
 void Dashboard::handleWrite()
 {
     if(reader != "Dashboard") {return;}
+    qDebug() << "reading in dashboard";
     QString input = socket->readAll();
     qDebug() << input;
     QTextStream stream(&input);
@@ -127,4 +128,6 @@ void Dashboard::handleWrite()
             }
         }
     }
+
+
 }

@@ -48,6 +48,10 @@ QList<project*>& organization::Projects()
     return projects;
 }
 
+QList<Task*>& organization::Tasks()
+{
+    return tasks;
+}
 
 //........................................................................................
 //functions:

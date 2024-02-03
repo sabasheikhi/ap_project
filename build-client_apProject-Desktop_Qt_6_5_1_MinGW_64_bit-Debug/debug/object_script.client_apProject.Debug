@@ -2,6 +2,7 @@ debug/addorganizationclass.o
 debug/dashboard.o
 debug/editorganizationclass.o
 debug/editproject.o
+debug/edittask.o
 debug/editteam.o
 debug/forgotpassworddialog.o
 debug/main.o
@@ -12,6 +13,8 @@ debug/prodialog.o
 debug/projectui.o
 debug/security.o
 debug/signupdialog.o
+debug/taskdialog.o
+debug/taskui.o
 debug/teamdialog.o
 debug/teamui.o
 debug/qrc_back.o
@@ -27,11 +30,13 @@ debug/qrc_pluss.o
 debug/qrc_prodialog.o
 debug/qrc_ptback.o
 debug/qrc_resources.o
+debug/qrc_tasku.o
 debug/qrc_wel.o
 debug/moc_addorganizationclass.o
 debug/moc_dashboard.o
 debug/moc_editorganizationclass.o
 debug/moc_editproject.o
+debug/moc_edittask.o
 debug/moc_editteam.o
 debug/moc_forgotpassworddialog.o
 debug/moc_mainwindow.o
@@ -40,5 +45,7 @@ debug/moc_orgdialog.o
 debug/moc_prodialog.o
 debug/moc_projectui.o
 debug/moc_signupdialog.o
+debug/moc_taskdialog.o
+debug/moc_taskui.o
 debug/moc_teamdialog.o
 debug/moc_teamui.o

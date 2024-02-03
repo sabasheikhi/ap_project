@@ -30,3 +30,12 @@ QList<Task*>& User::Tasks()
 {
     return tasks;
 }
+
+QString User::getdeadline()
+{
+    return deadlineuser;
+}
+void User::setdeadline(QString dead)
+{
+    deadlineuser=dead;
+}

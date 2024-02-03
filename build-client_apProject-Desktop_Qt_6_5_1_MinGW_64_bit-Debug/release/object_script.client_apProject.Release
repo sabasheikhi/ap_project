@@ -2,6 +2,7 @@ release/addorganizationclass.o
 release/dashboard.o
 release/editorganizationclass.o
 release/editproject.o
+release/edittask.o
 release/editteam.o
 release/forgotpassworddialog.o
 release/main.o
@@ -12,6 +13,8 @@ release/prodialog.o
 release/projectui.o
 release/security.o
 release/signupdialog.o
+release/taskdialog.o
+release/taskui.o
 release/teamdialog.o
 release/teamui.o
 release/qrc_back.o
@@ -27,11 +30,13 @@ release/qrc_pluss.o
 release/qrc_prodialog.o
 release/qrc_ptback.o
 release/qrc_resources.o
+release/qrc_tasku.o
 release/qrc_wel.o
 release/moc_addorganizationclass.o
 release/moc_dashboard.o
 release/moc_editorganizationclass.o
 release/moc_editproject.o
+release/moc_edittask.o
 release/moc_editteam.o
 release/moc_forgotpassworddialog.o
 release/moc_mainwindow.o
@@ -40,5 +45,7 @@ release/moc_orgdialog.o
 release/moc_prodialog.o
 release/moc_projectui.o
 release/moc_signupdialog.o
+release/moc_taskdialog.o
+release/moc_taskui.o
 release/moc_teamdialog.o
 release/moc_teamui.o

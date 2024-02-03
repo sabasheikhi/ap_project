@@ -16,6 +16,9 @@ class OrgDialog : public QWidget
 
 public:
     explicit OrgDialog(QWidget *parent,QString name_);
+    void add_pro(QString);
+    void add_team(QString);
+    void add_task(QString);
     ~OrgDialog();
 
 private slots:
@@ -33,6 +36,10 @@ private slots:
     void on_addproject_clicked();
 
     void on_addteam_clicked();
+
+    void on_addteam_2_clicked();
+
+    void on_addteask_clicked();
 
 signals:
    // void removeOrganizationUi(QString name);

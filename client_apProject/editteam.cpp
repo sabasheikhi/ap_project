@@ -6,6 +6,8 @@ editteam::editteam(QWidget *parent) :
     ui(new Ui::editteam)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);
+    this->setWindowFlag(Qt::Window);
     ui->nameLineEdit->setText("");
     ui->descriptionLineEdit->setText("");
 }

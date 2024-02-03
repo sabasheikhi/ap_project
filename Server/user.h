@@ -15,6 +15,8 @@ public:
     QString Username();
     QString Password();
     QString Name();
+    QString getdeadline();
+    void setdeadline(QString);
     QList<project*>& Projects();
     QList<organization*>& Organizations();
     QList<Team*>& Teams();
@@ -33,6 +35,7 @@ private:
     QList<Team*> teams;
     QList<project*> projects;
     QList<Task*> tasks;
+    QString deadlineuser;
 
     // save user data in QMap or linkedList?
 };

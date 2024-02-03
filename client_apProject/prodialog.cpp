@@ -23,11 +23,13 @@ prodialog::prodialog(QWidget *parent,QString name_,QString nemo) :
 
 prodialog::~prodialog()
 {
-    delete ui;
     reader = "OrgDialog";
+    delete ui;
 }
 void prodialog::handleWrite()
 {
+    if(reader!="ProDialog") return;
+    qDebug() << "reading in pro dialog";
     QString string = socket->readAll();
     QTextStream stream(&string);
     QString buffer;
@@ -95,10 +97,9 @@ void prodialog::handleWrite()
 void prodialog::on_editpro_clicked()
 {
     editproject* window= new editproject();
-        window->show();
+    window->show();
     connect(this,SIGNAL(closeeditpro()),window,SLOT(close()));
     connect(window,SIGNAL(editprojec(QString,QString)),this,SLOT(request_edit(QString,QString)));
-    window->close();
 
 }
 void prodialog::request_edit(QString name,QString des)
@@ -107,6 +108,7 @@ void prodialog::request_edit(QString name,QString des)
     QString command = "EDITPRO " +username +" { "+proname +" } { "+orgname +" } { "+name +" } { " + des +" }\n";
     socket->write(command.toUtf8());
     socket->flush();
+
 }
 
 
@@ -115,9 +117,9 @@ void prodialog::on_deletepro_clicked()
 {
     QString proname=ui->nameLabel->text();
     QString command = "DELETEPRO " +username +" { "+proname +" } { "+orgname +" }\n";
+    reader = "OrgDialog";
     socket->write(command.toUtf8());
     socket->flush();
-    reader = "Orgdialog";
     this->close();
 }
 

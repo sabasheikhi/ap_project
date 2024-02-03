@@ -13,6 +13,7 @@ SOURCES += \
     dashboard.cpp \
     editorganizationclass.cpp \
     editproject.cpp \
+    edittask.cpp \
     editteam.cpp \
     forgotpassworddialog.cpp \
     main.cpp \
@@ -23,6 +24,8 @@ SOURCES += \
     projectui.cpp \
     security.cpp \
     signupdialog.cpp \
+    taskdialog.cpp \
+    taskui.cpp \
     teamdialog.cpp \
     teamui.cpp
 
@@ -31,6 +34,7 @@ HEADERS += \
     dashboard.h \
     editorganizationclass.h \
     editproject.h \
+    edittask.h \
     editteam.h \
     forgotpassworddialog.h \
     mainwindow.h \
@@ -40,6 +44,8 @@ HEADERS += \
     projectui.h \
     security.h \
     signupdialog.h \
+    taskdialog.h \
+    taskui.h \
     teamdialog.h \
     teamui.h
 
@@ -48,6 +54,7 @@ FORMS += \
     dashboard.ui \
     editorganizationclass.ui \
     editproject.ui \
+    edittask.ui \
     editteam.ui \
     forgotpassworddialog.ui \
     mainwindow.ui \
@@ -56,6 +63,8 @@ FORMS += \
     prodialog.ui \
     projectui.ui \
     signupdialog.ui \
+    taskdialog.ui \
+    taskui.ui \
     teamdialog.ui \
     teamui.ui
 
@@ -79,4 +88,5 @@ RESOURCES += \
     prodialog.qrc \
     ptback.qrc \
     resources.qrc \
+    tasku.qrc \
     wel.qrc

@@ -6,6 +6,7 @@
 #include <QList>
 #include "project.h"
 #include "team.h"
+#include "task.h"
 #include "common.h"
 class organization : public QObject
 {
@@ -27,6 +28,8 @@ public:
     bool getMembers(int id,Role role);
     QList<Team*>& Teams();
     QList<project*>& Projects();
+    QList<Task*>& Tasks();
+
 
 signals:
 private:
@@ -35,6 +38,7 @@ private:
     QMap<int, Role> o_members;
     QList<Team*> teams;
     QList<project*> projects;
+    QList<Task*> tasks;
     int o_ID;
     static int count;
 

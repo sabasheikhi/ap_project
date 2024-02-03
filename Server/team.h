@@ -33,6 +33,7 @@ public:
     QList<project*>& Projects();
     void removeMember(int);
 
+
 private:
     QString name;
     QString description;
