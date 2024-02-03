@@ -36,6 +36,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QString MainWindow::getUserName()
+{
+    return ui->usernameLineEdit->text();
+}
+
 void MainWindow::handleWrite()
 {
     // 4011 User Already Exists

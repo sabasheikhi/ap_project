@@ -150,7 +150,7 @@ border-radius:6px;</string>
 border-color: rgb(26, 17, 68);</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="user">
     <attribute name="title">
@@ -788,6 +788,77 @@ border-radius:7px;</string>
     <attribute name="title">
      <string>Comments</string>
     </attribute>
+    <widget class="QLineEdit" name="sendLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>423</y>
+       <width>541</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(67, 62, 67);
+color: rgb(255, 255, 255);
+border-color: rgb(67, 62, 67);
+border-radius:10px;</string>
+     </property>
+     <property name="text">
+      <string>Send your message here</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sendButton">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>420</y>
+       <width>80</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-color: rgb(255, 255, 255);
+border-radius:10px;</string>
+     </property>
+     <property name="text">
+      <string>Send</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="messageList">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>31</y>
+       <width>541</width>
+       <height>361</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>541</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>539</width>
+        <height>359</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QComboBox" name="taskstatus">

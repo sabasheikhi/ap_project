@@ -240,7 +240,11 @@ Makefile: ../client_apProject/client_apProject.pro D:/Qt6.6/6.6.1/mingw_64/mkspe
 		../client_apProject/pain.qrc \
 		../client_apProject/paint.qrc \
 		../client_apProject/person.qrc \
+		../client_apProject/pluss.qrc \
+		../client_apProject/prodialog.qrc \
+		../client_apProject/ptback.qrc \
 		../client_apProject/resources.qrc \
+		../client_apProject/tasku.qrc \
 		../client_apProject/wel.qrc
 	$(QMAKE) -o Makefile ..\client_apProject\client_apProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/spec_pre.prf:
@@ -413,7 +417,11 @@ D:/Qt6.6/6.6.1/mingw_64/mkspecs/features/build_pass.prf:
 ../client_apProject/pain.qrc:
 ../client_apProject/paint.qrc:
 ../client_apProject/person.qrc:
+../client_apProject/pluss.qrc:
+../client_apProject/prodialog.qrc:
+../client_apProject/ptback.qrc:
 ../client_apProject/resources.qrc:
+../client_apProject/tasku.qrc:
 ../client_apProject/wel.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\client_apProject\client_apProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

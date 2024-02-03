@@ -3,6 +3,10 @@
 
 #include <QWidget>
 #include <QTcpSocket>
+#include <QListWidget>
+#include <QLabel>
+#include <QScrollArea>
+
 extern QString username;
 extern QTcpSocket* socket;
 namespace Ui {
@@ -25,16 +29,18 @@ public:
 
 private slots:
     void on_changestatus_clicked();
-
     void on_deletetask_clicked();
     void handleWrite();
     void on_edittask_clicked();
     void on_addtask_clicked();
+    void onMessageClicked(QListWidgetItem *item);
+    void on_sendButton_clicked();
 
 signals:
     void closeedittask();
 private:
     Ui::taskdialog *ui;
+    QLabel *replyMessage;
 };
 
 #endif // TASKDIALOG_H

@@ -1,12 +1,14 @@
 #include "taskdialog.h"
 #include "ui_taskdialog.h"
 #include "edittask.h"
+#include "mainwindow.h"
+
 extern QTcpSocket* socket;
 extern QString username;
 extern QString reader;
 taskdialog::taskdialog(QWidget *parent,QString tasknam,QString orgnam,QString teamnam,QString pronam) :
     QWidget(parent),
-    ui(new Ui::taskdialog)
+    ui(new Ui::taskdialog), replyMessage(new QLabel(this))
 {
     ui->setupUi(this);
     this->setWindowFlag(Qt::Window);
@@ -20,6 +22,11 @@ taskdialog::taskdialog(QWidget *parent,QString tasknam,QString orgnam,QString te
     QString command = "FILLABELS " +username + " { "+tasknam +" }\n";
     socket->write(command.toUtf8());
     socket->flush();
+    ui->scrollArea->setWidget(ui->messageList);
+    ui->messageList->setWordWrap(false);
+    ui->messageList->setWordWrap(QTextOption::WordWrap);
+    connect(ui->messageList, &QListWidget::itemClicked, this, &taskdialog::onMessageClicked);
+    replyMessage->hide();
 }
 
 taskdialog::~taskdialog()
@@ -166,5 +173,24 @@ void taskdialog::on_addtask_clicked()
     QString command = "ADDUSERTASK " +username +" "+user +" { "+taskname +" } { "+orgname +" } { "+deadline +" } { "+duty +" } { "+pro +" }\n";
     socket->write(command.toUtf8());
     socket->flush();
+}
+
+void taskdialog::onMessageClicked(QListWidgetItem *item)
+{
+    QString itemText = item->text();
+    if (itemText.startsWith("Reply to: ")){
+        int starIndex = itemText.indexOf("*");
+        itemText.remove(0, starIndex+2);
+    }
+    replyMessage->setText("Reply to: " + itemText + "*\n");
+}
+
+void taskdialog::on_sendButton_clicked()
+{
+    MainWindow sampleObj;
+    QString userName = sampleObj.getUserName();
+    ui->messageList->addItem(replyMessage->text() + userName + ": " + ui->sendLineEdit->text());
+    ui->sendLineEdit->clear();
+    replyMessage->clear();
 }
 

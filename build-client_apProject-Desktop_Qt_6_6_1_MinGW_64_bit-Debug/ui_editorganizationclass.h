@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -25,7 +24,6 @@ class Ui_editOrganizationClass
 public:
     QLabel *descriptionLabel;
     QTextEdit *descriptionLineEdit;
-    QFrame *line;
     QLineEdit *nameLineEdit;
     QLabel *Name;
     QPushButton *editButton;
@@ -34,45 +32,35 @@ public:
     {
         if (editOrganizationClass->objectName().isEmpty())
             editOrganizationClass->setObjectName("editOrganizationClass");
-        editOrganizationClass->resize(541, 295);
+        editOrganizationClass->resize(541, 218);
         editOrganizationClass->setStyleSheet(QString::fromUtf8("background-color: rgb(18, 2, 83);"));
         descriptionLabel = new QLabel(editOrganizationClass);
         descriptionLabel->setObjectName("descriptionLabel");
-        descriptionLabel->setGeometry(QRect(70, 130, 91, 20));
+        descriptionLabel->setGeometry(QRect(50, 100, 101, 20));
         descriptionLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgb(74, 74, 74);\n"
+"\n"
 "border-radius:7px;"));
         descriptionLineEdit = new QTextEdit(editOrganizationClass);
         descriptionLineEdit->setObjectName("descriptionLineEdit");
-        descriptionLineEdit->setGeometry(QRect(180, 130, 311, 61));
+        descriptionLineEdit->setGeometry(QRect(160, 100, 311, 61));
         descriptionLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(250, 255, 193);\n"
 "border-radius:8px;"));
-        line = new QFrame(editOrganizationClass);
-        line->setObjectName("line");
-        line->setGeometry(QRect(501, 40, 20, 191));
-        QFont font;
-        font.setPointSize(12);
-        line->setFont(font);
-        line->setStyleSheet(QString::fromUtf8("color: rgb(250, 255, 193);\n"
-"color: rgb(255, 255, 255);"));
-        line->setFrameShape(QFrame::VLine);
-        line->setFrameShadow(QFrame::Sunken);
         nameLineEdit = new QLineEdit(editOrganizationClass);
         nameLineEdit->setObjectName("nameLineEdit");
-        nameLineEdit->setGeometry(QRect(180, 70, 131, 31));
+        nameLineEdit->setGeometry(QRect(160, 40, 131, 31));
         nameLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(250, 255, 193);\n"
 "border-radius:8px;"));
         Name = new QLabel(editOrganizationClass);
         Name->setObjectName("Name");
-        Name->setGeometry(QRect(70, 70, 63, 20));
+        Name->setGeometry(QRect(50, 40, 63, 20));
         Name->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgb(80, 80, 80);\n"
+"\n"
 "border-radius:7px;"));
         editButton = new QPushButton(editOrganizationClass);
         editButton->setObjectName("editButton");
-        editButton->setGeometry(QRect(400, 70, 81, 31));
+        editButton->setGeometry(QRect(380, 40, 81, 31));
         editButton->setStyleSheet(QString::fromUtf8("background-color: rgb(149, 149, 149);\n"
-"border-radius:5px;"));
+"border-radius:7px;"));
 
         retranslateUi(editOrganizationClass);
 
