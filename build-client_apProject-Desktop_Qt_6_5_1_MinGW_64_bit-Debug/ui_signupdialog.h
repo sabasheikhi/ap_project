@@ -99,8 +99,9 @@ public:
         label->setStyleSheet(QString::fromUtf8("image: url(:/back/back.png)"));
         label_2 = new QLabel(SignUpDialog);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(190, 30, 101, 31));
+        label_2->setGeometry(QRect(190, 0, 101, 31));
         label_2->setStyleSheet(QString::fromUtf8("color: #ECD8BE;\n"
+"font: 11pt \"Segoe UI\";\n"
 ""));
         pushButton = new QPushButton(SignUpDialog);
         pushButton->setObjectName("pushButton");
@@ -140,7 +141,7 @@ public:
         SignUpDialog->setWindowTitle(QCoreApplication::translate("SignUpDialog", "Sign Up", nullptr));
         usernameLabel->setText(QCoreApplication::translate("SignUpDialog", "Username : ", nullptr));
         passwordLabel->setText(QCoreApplication::translate("SignUpDialog", "Password : ", nullptr));
-        securityQuestionLabel->setText(QCoreApplication::translate("SignUpDialog", "Security Question: ", nullptr));
+        securityQuestionLabel->setText(QCoreApplication::translate("SignUpDialog", "First grade teacher :", nullptr));
 #if QT_CONFIG(whatsthis)
         securityQuestionLineEdit->setWhatsThis(QCoreApplication::translate("SignUpDialog", "<html><head/><body><p>border-radius:7px;</p><p>background-color: #DCDCDC;</p></body></html>", nullptr));
 #endif // QT_CONFIG(whatsthis)

@@ -32,6 +32,9 @@ public:
     bool getMembers(int id,Role role);
     QList<project*>& Projects();
     void removeMember(int);
+    static bool compareByName( Team *team1, Team *team2);
+    static bool compareById( Team *team1,  Team *team2);
+
 
 
 private:

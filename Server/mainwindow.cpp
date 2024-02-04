@@ -3,6 +3,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QTextStream>
+#include <QList>
+#include <algorithm>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -47,8 +50,8 @@ void MainWindow::read_data()
     // 4012 Your are not the owner (access denied)
     // 4000 this password already exists. please use another one.
     // 4043 project not found
-    // team not found 4044
-    // task not found 4045
+    // 4044 team not found
+    // 4045 task not found
     QTcpSocket* socket = (QTcpSocket*)sender();
     QString input = socket->readAll();
     qDebug() << input;
@@ -259,7 +262,7 @@ void MainWindow::read_data()
                             socket->write(response.toUtf8());
                             socket->flush();
                             QString result ="LISTPRO";
-                            for (auto p:user->Projects())
+                            for (auto p:x->Projects())
                             {
                                 result+=" { "+p->name()+" }";
                             }
@@ -273,6 +276,14 @@ void MainWindow::read_data()
                             }
                             r+=" \n";
                             socket->write(r.toUtf8());
+                            socket->flush();
+                            QString rli ="UNARCIVE";
+                            for (auto b:x->Tasks())
+                            {
+                                rli+=" { "+b->getName()+" }";
+                            }
+                            rli+=" \n";
+                            socket->write(rli.toUtf8());
                             socket->flush();
                             return;
 
@@ -800,6 +811,7 @@ void MainWindow::read_data()
                                                     pro->setMembers(id,Role::Admin);
                                                     u->Projects().append(pro);
                                                 }
+                                                socket->write("2012");
                                                 return;
                                             }
                                             else if(pro->getMembers(user->getID(),Role::Admin)==true){
@@ -807,6 +819,7 @@ void MainWindow::read_data()
                                                     pro->setMembers(id,Role::Member);
                                                     u->Projects().append(pro);
                                                 }
+                                                socket->write("2012");
                                                 return;
                                             }
                                         }
@@ -865,11 +878,14 @@ void MainWindow::read_data()
                                             if(pro->getMembers(id,Role::Admin)==true){
                                                 pro->removeMember(id);
                                                 u->Projects().removeAll(pro);
+                                                socket->write("4011");
                                                 return;
                                             }
+
                                             else if(pro->getMembers(id,Role::Member)==true){
                                                 pro->removeMember(id);
                                                 u->Projects().removeAll(pro);
+                                                socket->write("4011");
                                                 return;
                                             }
                                         }
@@ -877,6 +893,7 @@ void MainWindow::read_data()
                                             if(pro->getMembers(id,Role::Member)==true){
                                                 pro->removeMember(id);
                                                 u->Projects().removeAll(pro);
+                                                socket->write("4011");
                                                 return;
                                             }
                                         }
@@ -1042,7 +1059,7 @@ void MainWindow::read_data()
                                     socket->flush();
                                     return;
                                 }
-                                socket->write("4012");
+                                socket->write("1234");
                                 return;
                             }
                             socket->write("4044");
@@ -1105,7 +1122,7 @@ void MainWindow::read_data()
                             socket->write("4044");
                             return;
                         }
-                        socket->write("4012");
+                        socket->write("1234");
                         return;
                         }
                     }
@@ -1161,6 +1178,8 @@ void MainWindow::read_data()
                                                     pro->setMembers(id,Role::Admin);
                                                     u->Teams().append(pro);
                                                 }
+                                                socket->write("2012");
+
                                                 return;
                                             }
                                             else if(pro->getMembers(user->getID(),Role::Admin)==true){
@@ -1168,11 +1187,13 @@ void MainWindow::read_data()
                                                     pro->setMembers(id,Role::Member);
                                                     u->Teams().append(pro);
                                                 }
+                                                socket->write("2012");
+
                                                 return;
                                             }
                                         }
                                     }
-                                    socket->write("4012");
+                                    socket->write("1234");
                                     return;
                                 }
                             }
@@ -1229,8 +1250,11 @@ void MainWindow::read_data()
                                                 else if(pro->getMembers(id,Role::Member)==true){
                                                     pro->removeMember(id);
                                                     u->Teams().removeAll(pro);
+                                                    socket->write("2011");
                                                     return;
                                                 }
+                                                socket->write("1234");
+                                                return;
                                             }
                                             else if(pro->getMembers(user->getID(),Role::Admin)==true){
                                                 if(pro->getMembers(id,Role::Member)==true)
@@ -1239,7 +1263,11 @@ void MainWindow::read_data()
                                                     u->Teams().removeAll(pro);
                                                     return;
                                                 }
+                                                socket->write("1234");
+                                                return;
                                             }
+                                            socket->write("1234");
+                                            return;
                                         }
                                     }
                                     socket->write("4012");
@@ -1341,6 +1369,8 @@ void MainWindow::read_data()
                                 socket->flush();
                                 return;
                             }
+                            socket->write("1234");
+                            return;
                         }
                     }
                     socket->write("4041");
@@ -1421,7 +1451,12 @@ void MainWindow::read_data()
                                     if(org->getMembers(user->getID(),Role::Admin)||org->getMembers(user->getID(),Role::Owner))
                                     {
                                         t->setstatus(status);
+                                        socket->write("2010");
+                                        return;
                                     }
+
+                                socket->write("1234");
+                                return;
                                 }
                             }
                             socket->write("4045");
@@ -1468,7 +1503,20 @@ void MainWindow::read_data()
                                         delete t;
                                         user->Tasks().removeAll(t);
                                         org->Tasks().removeAll(t);
+                                        QString rli ="UNARCIVE";
+                                        for (auto b:user->Tasks())
+                                        {
+                                            rli+=" { "+b->getName()+" }";
+                                        }
+                                        rli+=" \n";
+                                        socket->write(rli.toUtf8());
+                                        socket->flush();
+                                        return;
+
                                     }
+                                    socket->write("1234");
+                                    return;
+
                                 }
                             }
                             socket->write("4045");
@@ -1540,7 +1588,11 @@ void MainWindow::read_data()
                                 t->setName(newname);
                                 t->setDescription(newdes);
                                 t->setteam(newteam);
+                                socket->write("2009");
+                                return;
                             }
+                            socket->write("1234");
+                            return;
                         }
                     }
                     socket->write("4045");
@@ -1621,18 +1673,38 @@ void MainWindow::read_data()
                                             u->setdeadline(deadline);
                                             t->setMemberstask(u->Name(),duty);
                                             if( t->Create_priority(u->Name(),pro)==false){
+                                                socket->write("4046");
+                                                return;
 
                                             }
+                                            else{
+                                                socket->write("2008");
+                                                return;
+                                            }
+                                        }
+                                        else{
+                                            socket->write("1234");
+                                            return;
                                         }
                                         t->setMembers(u->getID(),Role::Member);
                                         u->setdeadline(deadline);
                                         t->setMemberstask(u->Name(),duty);
                                         if( t->Create_priority(u->Name(),pro)==false){
+                                            socket->write("4046");
+                                            return;
 
+                                        }
+                                        else{
+                                            socket->write("2008");
+                                            return;
                                         }
                                     }
                                         }
                         }
+                                    else{
+                                        socket->write("1234");
+                                        return;
+                                    }
                     }
                     }
                     socket->write("4045");
@@ -1647,5 +1719,237 @@ void MainWindow::read_data()
             }
             socket->write("4042");
             return;
+    }// QString command = "ARCHIV " +username +" { "+orgname +" } { "+task +" }\n";
+    else if(buffer=="ARCHIV")
+    {
+            QString username,orgname,taskname;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                taskname += buffer + " ";
+                stream >> buffer;
+            }
+            taskname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username()){
+                for(auto org:user->Organizations()){
+                if(org->name()==orgname){
+                    for(auto t:org->Tasks()){
+                    if(t->getName()==taskname)
+                    {
+                           user->Tasks().removeAll(t);
+                           user->Archive().append(t);
+
+                            }
+                    QString ar ="ARCIVE";
+                    for (auto d:user->Archive())
+                    {
+                           ar+=" { "+d->getName()+" }";
+                    }
+                    ar+=" \n";
+                    socket->write(ar.toUtf8());
+                    socket->flush();
+                    return;
+                    }
+                }
+                }
+                }
+            }
+
+    }//QString command = "UNARCHIV " +username +" { "+task +" } { "+orgname +" }\n";
+    else if(buffer=="UNARCHIV")
+    {
+            QString username,orgname,taskname;
+            stream >> buffer;
+            username = buffer;
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                taskname += buffer + " ";
+                stream >> buffer;
+            }
+            taskname.removeLast();
+            stream >> buffer;
+            buffer = "{";
+            stream >> buffer;
+            while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+            }
+            orgname.removeLast();
+            for(auto user:users){
+                if(username==user->Username()){
+                for(auto org:user->Organizations()){
+                if(org->name()==orgname){
+                    for(auto t:org->Tasks()){
+                            if(t->getName()==taskname)
+                            {
+                            user->Archive().removeAll(t);
+                            user->Tasks().append(t);
+
+                            }
+                            QString ar ="UNARCIVE";
+                            for (auto d:user->Tasks())
+                            {
+                            ar+=" { "+d->getName()+" }";
+                            }
+                            ar+=" \n";
+                            socket->write(ar.toUtf8());
+                            socket->flush();
+
+                            return;
+                    }
+                }
+                }
+                }
+            }
+
     }
+
+    else if(buffer == "FILTERTEAMANDPROJECT"){
+            QString filter, username, orgName;
+            stream>>buffer;
+            filter = buffer;
+            stream>>buffer;
+            username = buffer;
+            stream>>buffer;
+            orgName = buffer;
+            for (auto user : users){
+                if (user->Username() == username){
+                for (auto org: user->Organizations()){
+                if (org->name() == orgName){
+                    if (filter == "ALPHA"){
+                            std::sort(org->Projects().begin(), org->Projects().end(), project::compareByName);
+                            std::sort(org->Teams().begin(), org->Teams().end(), Team::compareByName);
+                            socket->write("2006"); // project and team sorted by alphabetical order
+                    }
+                    else{
+                            std::sort(org->Projects().begin(), org->Projects().end(), project::compareById);
+                            std::sort(org->Teams().begin(), org->Teams().end(), Team::compareById);
+                            socket->write("2007"); // project and team sorted by time(id)
+                    }
+                    QString result ="LISTPRO";
+                    for (auto p:org->Projects())
+                    {
+                            result+=" { "+p->name()+" }";
+                    }
+                    result+=" \n";
+                    socket->write(result.toUtf8());
+                    socket->flush();
+                    QString r ="LISTTEAM";
+                    for (auto t:org->Teams())
+                    {
+                            r+=" { "+t->getName()+" }";
+                    }
+                    r+=" \n";
+                    socket->write(r.toUtf8());
+                    socket->flush();
+                    return;
+                }
+                }
+                socket->write("4041"); // organization not found
+                return;
+                }
+            }
+            socket->write("4042"); // user not found
+            return;
+    }
+
+    else if(buffer == "FILTERORG"){
+            QString filter, username;
+            stream>>buffer;
+            filter = buffer;
+            stream>>buffer;
+            username = buffer;
+            for (auto user: users){
+                if (user->Username() == username){
+                if (filter == "ALPHA"){
+                std::sort(user->Organizations().begin(), user->Organizations().end(), organization::compareByName);
+                QString result ="LISTORG";
+                for (auto x:user->Organizations())
+                {
+                    result+=" { "+x->name()+" }";
+                }
+                result+=" \n";
+                socket->write(result.toUtf8());
+                return;
+                }
+                else{
+                std::sort(user->Organizations().begin(), user->Organizations().end(), organization::compareById);
+                QString result ="LISTORG";
+                for (auto x:user->Organizations())
+                {
+                    result+=" { "+x->name()+" }";
+                }
+                result+=" \n";
+                socket->write(result.toUtf8());
+                return;
+                }
+                }
+            }
+            socket->write("4042"); // user not found
+            return;
+    }
+    else if(buffer=="SEND")
+    {
+                QString username,orgname,taskname,text;
+                stream >> buffer;
+                username = buffer;
+                stream >> buffer;
+                buffer = "{";
+                stream >> buffer;
+                while (buffer != "}") {
+                taskname += buffer + " ";
+                stream >> buffer;
+                }
+                taskname.removeLast();
+                stream >> buffer;
+                buffer = "{";
+                stream >> buffer;
+                while (buffer != "}") {
+                orgname += buffer + " ";
+                stream >> buffer;
+                }
+                orgname.removeLast();
+                stream >> buffer;
+                buffer = "{";
+                stream >> buffer;
+                while (buffer != "}") {
+                text += buffer + " ";
+                stream >> buffer;
+                }
+                 text.removeLast();
+                for(auto user:users){
+                if(username==user->Username()){
+                for(auto org:user->Organizations()){
+                    if(org->name()==orgname){
+                            for(auto t:user->Tasks()){
+                            if(t->getName()==taskname)
+                            {
+                                 t->comment(username,text);
+                                 socket->write("7001");
+                                 return;
+
+                            }
+                            }
+                    }
+                }
+                }
+                }
+
+
+    }
+
 }

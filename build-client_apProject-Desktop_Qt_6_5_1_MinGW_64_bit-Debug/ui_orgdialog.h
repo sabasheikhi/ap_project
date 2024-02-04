@@ -77,8 +77,8 @@ public:
     QPushButton *setarchive;
     QPushButton *setunarchive;
     QFrame *line;
-    QPushButton *setarchive_2;
-    QPushButton *setarchive_3;
+    QComboBox *filterComboBox;
+    QPushButton *sortButton;
 
     void setupUi(QWidget *OrgDialog)
     {
@@ -363,12 +363,12 @@ public:
 "border-radius:7px;"));
         setarchive = new QPushButton(Tasks);
         setarchive->setObjectName("setarchive");
-        setarchive->setGeometry(QRect(340, 220, 81, 21));
+        setarchive->setGeometry(QRect(330, 230, 211, 21));
         setarchive->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
 "border-radius:6px;"));
         setunarchive = new QPushButton(Tasks);
         setunarchive->setObjectName("setunarchive");
-        setunarchive->setGeometry(QRect(340, 250, 81, 21));
+        setunarchive->setGeometry(QRect(330, 260, 211, 21));
         setunarchive->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
 "border-radius:6px;"));
         line = new QFrame(Tasks);
@@ -376,21 +376,39 @@ public:
         line->setGeometry(QRect(30, 200, 701, 20));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
-        setarchive_2 = new QPushButton(Tasks);
-        setarchive_2->setObjectName("setarchive_2");
-        setarchive_2->setGeometry(QRect(610, 230, 111, 21));
-        setarchive_2->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
-"border-radius:6px;"));
-        setarchive_3 = new QPushButton(Tasks);
-        setarchive_3->setObjectName("setarchive_3");
-        setarchive_3->setGeometry(QRect(610, 260, 111, 21));
-        setarchive_3->setStyleSheet(QString::fromUtf8("background-color: rgb(140, 140, 140);\n"
-"border-radius:6px;"));
         tabWidget->addTab(Tasks, QString());
+        line->raise();
+        label_5->raise();
+        label_6->raise();
+        teamlabel_2->raise();
+        taskname->raise();
+        taskdes->raise();
+        addteask->raise();
+        horizontalLayoutWidget_3->raise();
+        label_7->raise();
+        label_8->raise();
+        projectname->raise();
+        teamname->raise();
+        label_9->raise();
+        year->raise();
+        month->raise();
+        day->raise();
+        label_10->raise();
+        namearchive->raise();
+        setarchive->raise();
+        setunarchive->raise();
+        filterComboBox = new QComboBox(OrgDialog);
+        filterComboBox->addItem(QString());
+        filterComboBox->addItem(QString());
+        filterComboBox->setObjectName("filterComboBox");
+        filterComboBox->setGeometry(QRect(350, 30, 761, 25));
+        sortButton = new QPushButton(OrgDialog);
+        sortButton->setObjectName("sortButton");
+        sortButton->setGeometry(QRect(1070, 60, 71, 21));
 
         retranslateUi(OrgDialog);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(OrgDialog);
@@ -480,11 +498,13 @@ public:
         day->setItemText(29, QCoreApplication::translate("OrgDialog", "30", nullptr));
 
         label_10->setText(QCoreApplication::translate("OrgDialog", "Task name :", nullptr));
-        setarchive->setText(QCoreApplication::translate("OrgDialog", "Archive", nullptr));
-        setunarchive->setText(QCoreApplication::translate("OrgDialog", "Unarchive", nullptr));
-        setarchive_2->setText(QCoreApplication::translate("OrgDialog", "Show Archives", nullptr));
-        setarchive_3->setText(QCoreApplication::translate("OrgDialog", "Hide Archives", nullptr));
+        setarchive->setText(QCoreApplication::translate("OrgDialog", "Archive and show Archives", nullptr));
+        setunarchive->setText(QCoreApplication::translate("OrgDialog", "Unarchive and hide Archives", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Tasks), QCoreApplication::translate("OrgDialog", "Tasks", nullptr));
+        filterComboBox->setItemText(0, QCoreApplication::translate("OrgDialog", "Alphabetical Order", nullptr));
+        filterComboBox->setItemText(1, QCoreApplication::translate("OrgDialog", "Time(Id)", nullptr));
+
+        sortButton->setText(QCoreApplication::translate("OrgDialog", "Sort", nullptr));
     } // retranslateUi
 
 };

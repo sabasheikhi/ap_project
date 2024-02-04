@@ -86,6 +86,42 @@ void teamdialog::handleWrite()
     {
         QMessageBox::critical(this,"Change information","You are not the owner. so you cant make any changes.");
     }
+    else if(buffer=="4045")
+    {
+        QMessageBox::critical(this,"Wrong Task","You dont have access to the created task ");
+    }
+    else if(buffer=="4041")
+    {
+        QMessageBox::critical(this,"Wrong Organization","You dont have access to the created organization ");
+    }
+    else if(buffer=="4042")
+    {
+        QMessageBox::warning(this,"Warning" , "Username not found");
+    }
+    else if(buffer=="4042")
+    {
+        QMessageBox::warning(this,"Warning" , "Team not found");
+    }
+
+    else if(buffer=="1234"){
+        QMessageBox::warning(this,"Warning" , "You do not have access to this part because of your role");
+    }
+    else if(buffer=="2009")
+    {
+        QMessageBox::information(this,"Successful" , "Task edit successfully");
+    }
+    else if(buffer=="2008")
+    {
+        QMessageBox::information(this,"Successful" , "Team delete successfully");
+    }
+    else if(buffer=="2011")
+    {
+        QMessageBox::information(this,"Successful" , "User remove successfully");
+    }
+    else if(buffer=="2012")
+    {
+        QMessageBox::information(this,"Successful" , "User added successfully");
+    }
 
 }
 

@@ -47,11 +47,12 @@ static constexpr auto qt_meta_stringdata_CLASSDashboardENDCLASS = QtMocHelpers::
     "request_new_organization",
     "des",
     "on_addButton_clicked",
-    "handleWrite"
+    "handleWrite",
+    "on_sortButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDashboardENDCLASS_t {
-    uint offsetsAndSizes[20];
+    uint offsetsAndSizes[22];
     char stringdata0[10];
     char stringdata1[12];
     char stringdata2[1];
@@ -62,6 +63,7 @@ struct qt_meta_stringdata_CLASSDashboardENDCLASS_t {
     char stringdata7[4];
     char stringdata8[21];
     char stringdata9[12];
+    char stringdata10[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDashboardENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -76,7 +78,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDashboardENDCLASS_t qt_meta_str
         QT_MOC_LITERAL(58, 24),  // "request_new_organization"
         QT_MOC_LITERAL(83, 3),  // "des"
         QT_MOC_LITERAL(87, 20),  // "on_addButton_clicked"
-        QT_MOC_LITERAL(108, 11)   // "handleWrite"
+        QT_MOC_LITERAL(108, 11),  // "handleWrite"
+        QT_MOC_LITERAL(120, 21)   // "on_sortButton_clicked"
     },
     "Dashboard",
     "closeAddOrg",
@@ -87,7 +90,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDashboardENDCLASS_t qt_meta_str
     "request_new_organization",
     "des",
     "on_addButton_clicked",
-    "handleWrite"
+    "handleWrite",
+    "on_sortButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -99,7 +103,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDashboardENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -107,14 +111,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDashboardENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   50,    2, 0x06,    1 /* Public */,
+       1,    0,   56,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   51,    2, 0x08,    2 /* Private */,
-       4,    1,   52,    2, 0x08,    3 /* Private */,
-       6,    2,   55,    2, 0x08,    5 /* Private */,
-       8,    0,   60,    2, 0x08,    8 /* Private */,
-       9,    0,   61,    2, 0x08,    9 /* Private */,
+       3,    0,   57,    2, 0x08,    2 /* Private */,
+       4,    1,   58,    2, 0x08,    3 /* Private */,
+       6,    2,   61,    2, 0x08,    5 /* Private */,
+       8,    0,   66,    2, 0x08,    8 /* Private */,
+       9,    0,   67,    2, 0x08,    9 /* Private */,
+      10,    0,   68,    2, 0x08,   10 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -123,6 +128,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDashboardENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    5,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    5,    7,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -152,6 +158,8 @@ Q_CONSTINIT const QMetaObject Dashboard::staticMetaObject = { {
         // method 'on_addButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'handleWrite'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_sortButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -169,6 +177,7 @@ void Dashboard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 3: _t->request_new_organization((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 4: _t->on_addButton_clicked(); break;
         case 5: _t->handleWrite(); break;
+        case 6: _t->on_sortButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -202,13 +211,13 @@ int Dashboard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

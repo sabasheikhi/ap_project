@@ -109,12 +109,47 @@ background-color: #7C7C7C;</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout"/>
   </widget>
+  <widget class="QComboBox" name="filterComboBox">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>30</y>
+     <width>691</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Alphabetical Order</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Time(ID)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="sortButton">
+   <property name="geometry">
+    <rect>
+     <x>960</x>
+     <y>60</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sort</string>
+   </property>
+  </widget>
   <zorder>label</zorder>
   <zorder>notificationsListWidget</zorder>
   <zorder>welcomeLabel</zorder>
   <zorder>onlineChatSystemListWidget</zorder>
   <zorder>gridLayoutWidget</zorder>
   <zorder>verticalLayoutWidget</zorder>
+  <zorder>filterComboBox</zorder>
+  <zorder>sortButton</zorder>
  </widget>
  <resources/>
  <connections/>

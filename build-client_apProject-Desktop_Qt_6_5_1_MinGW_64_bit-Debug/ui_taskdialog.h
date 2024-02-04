@@ -17,6 +17,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -55,6 +56,11 @@ public:
     QLabel *label_7;
     QComboBox *combopriority;
     QWidget *tab_4;
+    QLineEdit *sendLineEdit;
+    QPushButton *sendButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *comlay;
+    QPushButton *deletecom;
     QComboBox *taskstatus;
     QLabel *deadline;
     QLabel *label_4;
@@ -105,7 +111,7 @@ public:
 "border-radius:6px;"));
         tabWidget = new QTabWidget(taskdialog);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(330, 80, 751, 551));
+        tabWidget->setGeometry(QRect(320, 60, 751, 551));
         tabWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(26, 17, 68);\n"
 "border-color: rgb(26, 17, 68);"));
         user = new QWidget();
@@ -277,6 +283,33 @@ public:
         tabWidget->addTab(tab_2, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName("tab_4");
+        sendLineEdit = new QLineEdit(tab_4);
+        sendLineEdit->setObjectName("sendLineEdit");
+        sendLineEdit->setGeometry(QRect(40, 390, 541, 41));
+        sendLineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(67, 62, 67);\n"
+"color: rgb(255, 255, 255);\n"
+"border-color: rgb(67, 62, 67);\n"
+"border-radius:10px;"));
+        sendButton = new QPushButton(tab_4);
+        sendButton->setObjectName("sendButton");
+        sendButton->setGeometry(QRect(620, 390, 80, 41));
+        sendButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
+"border-color: rgb(255, 255, 255);\n"
+"border-radius:10px;"));
+        verticalLayoutWidget = new QWidget(tab_4);
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(60, 30, 521, 331));
+        comlay = new QVBoxLayout(verticalLayoutWidget);
+        comlay->setObjectName("comlay");
+        comlay->setContentsMargins(0, 0, 0, 0);
+        deletecom = new QPushButton(tab_4);
+        deletecom->setObjectName("deletecom");
+        deletecom->setGeometry(QRect(540, 460, 161, 29));
+        deletecom->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
+"border-color: rgb(255, 255, 255);\n"
+"border-radius:10px;"));
         tabWidget->addTab(tab_4, QString());
         taskstatus = new QComboBox(taskdialog);
         taskstatus->addItem(QString());
@@ -300,7 +333,7 @@ public:
 
         retranslateUi(taskdialog);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(taskdialog);
@@ -397,6 +430,9 @@ public:
         combopriority->setItemText(9, QCoreApplication::translate("taskdialog", "10", nullptr));
 
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("taskdialog", " Add Users Task", nullptr));
+        sendLineEdit->setText(QString());
+        sendButton->setText(QCoreApplication::translate("taskdialog", "Send", nullptr));
+        deletecom->setText(QCoreApplication::translate("taskdialog", "Delete your comment", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("taskdialog", "Comments", nullptr));
         taskstatus->setItemText(0, QCoreApplication::translate("taskdialog", "undone", nullptr));
         taskstatus->setItemText(1, QCoreApplication::translate("taskdialog", "Done", nullptr));

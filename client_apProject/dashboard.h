@@ -2,6 +2,7 @@
 #define DASHBOARD_H
 #include <QWidget>
 #include <QTcpSocket>
+#include <QString>
 
 namespace Ui {
 class Dashboard;
@@ -24,6 +25,8 @@ private slots:
     void request_new_organization(QString name,QString des );
     void on_addButton_clicked();
     void handleWrite();
+
+    void on_sortButton_clicked();
 
 signals:
     void closeAddOrg();

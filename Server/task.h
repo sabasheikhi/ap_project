@@ -36,6 +36,7 @@ public:
     void setproject(QString);
     QString getproject();
     bool getMembers(int id,Role role);
+    void comment(QString,QString);
 private:
     QString name;
     QString description;
@@ -52,6 +53,8 @@ private:
     int id;
     static int counter;
     QList<QString> list_of_priorities;
+    QMap<QString,QString>comments;
+
 
 
 protected:

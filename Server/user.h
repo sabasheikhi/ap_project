@@ -21,6 +21,7 @@ public:
     QList<organization*>& Organizations();
     QList<Team*>& Teams();
     QList<Task*>& Tasks();
+    QList<Task*>& Archive();
     int getID();
     // in user che task hayi dare v deadline hrkodum ta keye?
 private:
@@ -35,6 +36,7 @@ private:
     QList<Team*> teams;
     QList<project*> projects;
     QList<Task*> tasks;
+    QList<Task*> archives;
     QString deadlineuser;
 
     // save user data in QMap or linkedList?

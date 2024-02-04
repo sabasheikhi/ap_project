@@ -84,6 +84,14 @@ void prodialog::handleWrite()
     {
         QMessageBox::critical(this,"Change information","You are not the owner. so you cant make any changes.");
     }
+    else if(buffer=="2011")
+    {
+        QMessageBox::information(this,"Successful" , "User remove successfully");
+    }
+    else if(buffer=="2012")
+    {
+        QMessageBox::information(this,"Successful" , "User added successfully");
+    }
     else if(buffer=="PROSTATUS")
     {
         QString s;
@@ -105,7 +113,7 @@ void prodialog::on_editpro_clicked()
 void prodialog::request_edit(QString name,QString des)
 {
     QString proname=ui->nameLabel->text();
-    QString command = "EDITPRO " +username +" { "+proname +" } { "+orgname +" } { "+name +" } { " + des +" }\n";
+    QString command = "EDITPRO " +username +" { "+proname +" } { "+orgname +" } { "+name +" } { " + des +" } \n";
     socket->write(command.toUtf8());
     socket->flush();
 
@@ -129,7 +137,7 @@ void prodialog::on_addOrEditUser_clicked()
     QString proname=ui->nameLabel->text();
     QString username_member=ui->idLineEdit->text();
     QString role=ui->roleComboBox->placeholderText();
-    QString command = "ROLEPRO " +username +" "+ username_member +" "+ role +" { "+proname +" } { "+orgname +" }\n";
+    QString command = "ROLEPRO " +username +" "+ username_member +" "+ role +" { "+proname +" } { "+orgname +" } \n";
     socket->write(command.toUtf8());
     socket->flush();
 }
@@ -139,7 +147,7 @@ void prodialog::on_delete_user_clicked()
 {
     QString member_us=ui->idLineEdit->text();
     QString proname=ui->nameLabel->text();
-    QString command = "MEMBERPRO " +username +" "+member_us +" { "+proname +" } { "+orgname +" }\n";
+    QString command = "MEMBERPRO " +username +" "+member_us +" { "+proname +" } { "+orgname +" } \n";
     socket->write(command.toUtf8());
     socket->flush();
 
@@ -149,7 +157,7 @@ void prodialog::on_pushButton_clicked()
 {
     QString proname=ui->nameLabel->text();
     QString value=ui->combo->placeholderText();
-    QString command = "PROSTATUS " +username+" "+ value +" { "+proname +" } { "+orgname +" }\n";
+    QString command = "PROSTATUS " +username+" "+ value +" { "+proname +" } { "+orgname +" } \n";
     socket->write(command.toUtf8());
     socket->flush();
 

@@ -5,6 +5,8 @@
 #include "taskui.h"
 #include "projectui.h"
 #include <QMessageBox>
+#include <QBoxLayout>
+
 extern QTcpSocket* socket;
 extern QString username;
 extern QString reader;
@@ -16,8 +18,6 @@ OrgDialog::OrgDialog(QWidget *parent,QString name_) :
     this->setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
     ui->nameLabel->setText(name_);
-    //row = 0;
-    //column =0;
     connect(socket,SIGNAL(readyRead()),this,SLOT(handleWrite()));
     QString command = "DESCRIPTION " +username + " { "+name_ +" }\n";
     socket->write(command.toUtf8());
@@ -109,6 +109,80 @@ void OrgDialog::handleWrite(){
         QString nametask=stream.readAll();
         add_task(nametask);
     }
+    else if(buffer=="4045")
+    {
+        QMessageBox::critical(this,"Wrong Task","You dont have access to the created task ");
+    }
+    else if(buffer=="4041")
+    {
+        QMessageBox::critical(this,"Wrong Organization","You dont have access to the created organization ");
+    }
+    else if(buffer=="4042")
+    {
+        QMessageBox::warning(this,"Warning" , "Username not found");
+    }
+    else if(buffer=="2007")
+    {
+        QMessageBox::information(this,"Successful" , "User task added successfully");
+    }
+    else if(buffer=="4046"){
+        QMessageBox::warning(this,"Warning" , "this Priority already exists");
+    }
+    else if(buffer=="1234"){
+        QMessageBox::warning(this,"Warning" , "You do not have access to this part because of your role");
+    }
+    else if(buffer=="2009")
+    {
+        QMessageBox::information(this,"Successful" , "Task edit successfully");
+    }
+    else if(buffer=="2008")
+    {
+        QMessageBox::information(this,"Successful" , "Task delete successfully");
+    }
+    else if(buffer=="2010")
+    {
+        QMessageBox::information(this,"Successful" , "Task status change successfully");
+    }
+    else if(buffer=="4012")
+    {
+        QMessageBox::critical(this,"Change information","You are not the owner. so you cant make any changes.");
+    }
+    else if(buffer=="4045")
+    {
+        QMessageBox::critical(this,"Wrong Task","You dont have access to the created task ");
+    }
+    else if(buffer=="4041")
+    {
+        QMessageBox::critical(this,"Wrong Organization","You dont have access to the created organization ");
+    }
+    else if(buffer=="4042")
+    {
+        QMessageBox::warning(this,"Warning" , "Username not found");
+    }
+    else if(buffer=="4042")
+    {
+        QMessageBox::warning(this,"Warning" , "Team not found");
+    }
+
+    else if(buffer=="1234"){
+        QMessageBox::warning(this,"Warning" , "You do not have access to this part because of your role");
+    }
+    else if(buffer=="2009")
+    {
+        QMessageBox::information(this,"Successful" , "Task edit successfully");
+    }
+    else if(buffer=="2008")
+    {
+        QMessageBox::information(this,"Successful" , "Team delete successfully");
+    }
+    else if(buffer=="2011")
+    {
+        QMessageBox::information(this,"Successful" , "User remove successfully");
+    }
+    else if(buffer=="2012")
+    {
+        QMessageBox::information(this,"Successful" , "User added successfully");
+    }
     if(buffer=="LISTPRO")
     {
         int c = ui->prolay->count();
@@ -184,8 +258,79 @@ void OrgDialog::handleWrite(){
         }
     }
     }
-
+    if(buffer=="UNARCIVE")
+    {
+   int c = ui->tasklay->count();
+   QList<QLayoutItem*> items;
+   for(int i = 0;i<c;i++)
+   {
+    auto item=ui->tasklay->itemAt(i);
+    items.append(item);
    }
+   qDebug() <<"items" << items;
+   for(auto item:items)
+   {
+    ui->tasklay->removeItem(item);
+    delete item->widget();
+   }
+   while(!stream.atEnd())
+   {
+
+    stream>>buffer;
+    if(buffer=="{")
+    {
+    QString name;
+    while(true)
+    {
+        stream>>buffer;
+        if(buffer=="}")
+        {
+            break;
+        }
+        name+=buffer+" ";
+    }
+    name.removeLast();
+    add_task(name);
+    }
+   }
+    }
+    if(buffer=="ARCIVE")
+    {
+   int c = ui->tasklay->count();
+   QList<QLayoutItem*> items;
+   for(int i = 0;i<c;i++)
+   {
+    auto item=ui->tasklay->itemAt(i);
+    items.append(item);
+   }
+   qDebug() <<"items" << items;
+   for(auto item:items)
+   {
+    ui->tasklay->removeItem(item);
+    delete item->widget();
+   }
+   while(!stream.atEnd())
+   {
+
+    stream>>buffer;
+    if(buffer=="{")
+    {
+    QString name;
+    while(true)
+    {
+        stream>>buffer;
+        if(buffer=="}")
+        {
+            break;
+        }
+        name+=buffer+" ";
+    }
+    name.removeLast();
+    add_task(name);
+    }
+   }
+    }
+    }
 }
 void OrgDialog::add_team(QString name)
 {
@@ -307,5 +452,58 @@ void OrgDialog::on_addteask_clicked()
         QMessageBox::warning(this, "Warning", "Please fill all lines.");
      }
 
+}
+
+
+
+
+
+void OrgDialog::on_setarchive_clicked()
+{
+      QString orgname=ui->nameLabel->text();
+    QString task=ui->namearchive->text();
+     QString command = "ARCHIV " +username +" { "+ task +" } { "+orgname +" }\n";
+     socket->write(command.toUtf8());
+     socket->flush();
+
+}
+
+
+void OrgDialog::on_setunarchive_clicked()
+{
+      QString orgname=ui->nameLabel->text();
+     QString task=ui->namearchive->text();
+     QString command = "UNARCHIV " +username +" { "+task +" } { "+orgname +" }\n";
+     socket->write(command.toUtf8());
+     socket->flush();
+
+}
+
+
+
+void OrgDialog::on_showarchives_clicked()
+{
+
+
+}
+
+
+void OrgDialog::on_hidearchives_clicked()
+{
+
+}
+
+
+void OrgDialog::on_sortButton_clicked()
+{
+    QString orgName = ui->nameLabel->text();
+    QString filter;
+    if (ui->filterComboBox->currentText() == "Alphabetical Order")
+       filter = "ALPHA";
+    else
+       filter = "ID";
+    QString command = "FILTERTEAMANDPROJECT " + filter + " " + username + " " + orgName + "\n"; // username ro saba dare inja!
+    socket->write(command.toUtf8());
+    socket->flush();
 }
 

@@ -109,3 +109,11 @@ QString Task::getmemberduty(QString s)
 {
     return memberTask[s];
 }
+void Task::comment(QString user,QString com) { comments[user] = com; }
+// Task::getMembers(QString user,QString com)
+//{
+//    if(member[id] == role){
+//        return true;
+//    }
+//    return false;
+//}

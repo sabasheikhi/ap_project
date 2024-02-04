@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QTcpSocket>
+#include <QString>
+
 extern QString username;
 extern QTcpSocket* socket;
 namespace Ui {
@@ -40,6 +42,17 @@ private slots:
     void on_addteam_2_clicked();
 
     void on_addteask_clicked();
+
+
+    void on_setarchive_clicked();
+
+    void on_setunarchive_clicked();
+
+    void on_showarchives_clicked();
+
+    void on_hidearchives_clicked();
+
+    void on_sortButton_clicked();
 
 signals:
    // void removeOrganizationUi(QString name);

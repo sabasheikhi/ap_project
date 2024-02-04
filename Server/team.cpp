@@ -96,6 +96,16 @@ void Team::removeMember(int memberId)
 
 
 }
+
+bool Team::compareByName( Team *team1,  Team *team2)
+{
+    return team1->getName() < team2->getName();
+}
+
+bool Team::compareById( Team *team1,  Team *team2)
+{
+    return team1->getID() < team2->getID();
+}
 QList<project*>& Team::Projects()
 {
     return projects;

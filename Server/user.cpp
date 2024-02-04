@@ -39,3 +39,8 @@ void User::setdeadline(QString dead)
 {
     deadlineuser=dead;
 }
+
+QList<Task*>& User::Archive()
+{
+    return archives;
+}

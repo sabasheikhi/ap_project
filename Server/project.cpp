@@ -47,3 +47,18 @@ void project::removeMember(int memberId)
 void project::setstatus(QString pro){
     projectStatus=pro;
 }
+
+bool project::compareByName( project *pro1, project *pro2)
+{
+    return pro1->name() < pro2->name();
+}
+
+bool project::compareById(project *pro1, project *pro2)
+{
+    return pro1->getID() < pro2->getID();
+}
+
+int project::getID()
+{
+    return this->p_ID;
+}

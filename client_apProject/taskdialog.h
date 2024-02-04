@@ -25,6 +25,7 @@ public:
     explicit taskdialog(QWidget *parent,QString tasknam,QString orgnam,QString teamnam,QString pronam);
 
     void request_edit(QString,QString,QString);
+    void add_com(QString);
     ~taskdialog();
 
 private slots:
@@ -35,6 +36,10 @@ private slots:
     void on_addtask_clicked();
     void onMessageClicked(QListWidgetItem *item);
     void on_sendButton_clicked();
+    void onButtonClicked();
+
+
+    void on_deletecom_clicked();
 
 signals:
     void closeedittask();

@@ -89,7 +89,7 @@ background-color: #DCDCDC;</string>
     <string notr="true">color: #ECD8BE;</string>
    </property>
    <property name="text">
-    <string>Security Question: </string>
+    <string>First grade teacher :</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="securityQuestionLineEdit">
@@ -209,13 +209,14 @@ background-color: #DCDCDC;</string>
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>30</y>
+     <y>0</y>
      <width>101</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: #ECD8BE;
+font: 11pt &quot;Segoe UI&quot;;
 </string>
    </property>
    <property name="text">

@@ -53,6 +53,16 @@ QList<Task*>& organization::Tasks()
     return tasks;
 }
 
+bool organization::compareById( organization *org1,  organization *org2)
+{
+    return org1->ID() < org2->ID();
+}
+
+bool organization::compareByName( organization *org1,  organization *org2)
+{
+    return org1->name() < org2->name();
+}
+
 //........................................................................................
 //functions:
 

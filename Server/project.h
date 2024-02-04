@@ -25,6 +25,11 @@ public:
     bool getMembers(int,Role);
     void removeMember(int);
     void setstatus(QString);
+    static bool compareByName( project *pro1,  project *pro2);
+    static bool compareById( project *pro1,  project *pro2);
+    int getID();
+
+
 signals:
 
 

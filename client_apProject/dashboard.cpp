@@ -131,3 +131,16 @@ void Dashboard::handleWrite()
 
 
 }
+
+void Dashboard::on_sortButton_clicked()
+{
+    QString filter;
+    if (ui->filterComboBox->currentText() == "Alphabetical Order")
+        filter = "ALPHA";
+    else
+        filter = "ID";
+    QString command = "FILTERORG " + filter + " " + username + "\n"; // username ro to dari inja! okeyesh kn...
+    socket->write(command.toUtf8());
+    socket->flush();
+}
+

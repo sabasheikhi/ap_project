@@ -211,7 +211,7 @@ border-color: rgb(26, 17, 68);
 </string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Projects">
     <property name="styleSheet">
@@ -960,9 +960,9 @@ border-radius:7px;</string>
     <widget class="QPushButton" name="setarchive">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>220</y>
-       <width>81</width>
+       <x>330</x>
+       <y>230</y>
+       <width>211</width>
        <height>21</height>
       </rect>
      </property>
@@ -971,15 +971,15 @@ border-radius:7px;</string>
 border-radius:6px;</string>
      </property>
      <property name="text">
-      <string>Archive</string>
+      <string>Archive and show Archives</string>
      </property>
     </widget>
     <widget class="QPushButton" name="setunarchive">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>250</y>
-       <width>81</width>
+       <x>330</x>
+       <y>260</y>
+       <width>211</width>
        <height>21</height>
       </rect>
      </property>
@@ -988,7 +988,7 @@ border-radius:6px;</string>
 border-radius:6px;</string>
      </property>
      <property name="text">
-      <string>Unarchive</string>
+      <string>Unarchive and hide Archives</string>
      </property>
     </widget>
     <widget class="Line" name="line">
@@ -1004,41 +1004,60 @@ border-radius:6px;</string>
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="setarchive_2">
-     <property name="geometry">
-      <rect>
-       <x>610</x>
-       <y>230</y>
-       <width>111</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(140, 140, 140);
-border-radius:6px;</string>
-     </property>
-     <property name="text">
-      <string>Show Archives</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="setarchive_3">
-     <property name="geometry">
-      <rect>
-       <x>610</x>
-       <y>260</y>
-       <width>111</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(140, 140, 140);
-border-radius:6px;</string>
-     </property>
-     <property name="text">
-      <string>Hide Archives</string>
-     </property>
-    </widget>
+    <zorder>line</zorder>
+    <zorder>label_5</zorder>
+    <zorder>label_6</zorder>
+    <zorder>teamlabel_2</zorder>
+    <zorder>taskname</zorder>
+    <zorder>taskdes</zorder>
+    <zorder>addteask</zorder>
+    <zorder>horizontalLayoutWidget_3</zorder>
+    <zorder>label_7</zorder>
+    <zorder>label_8</zorder>
+    <zorder>projectname</zorder>
+    <zorder>teamname</zorder>
+    <zorder>label_9</zorder>
+    <zorder>year</zorder>
+    <zorder>month</zorder>
+    <zorder>day</zorder>
+    <zorder>label_10</zorder>
+    <zorder>namearchive</zorder>
+    <zorder>setarchive</zorder>
+    <zorder>setunarchive</zorder>
    </widget>
+  </widget>
+  <widget class="QComboBox" name="filterComboBox">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>30</y>
+     <width>761</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Alphabetical Order</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Time(Id)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="sortButton">
+   <property name="geometry">
+    <rect>
+     <x>1070</x>
+     <y>60</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sort</string>
+   </property>
   </widget>
  </widget>
  <resources/>

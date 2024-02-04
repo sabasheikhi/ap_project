@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
@@ -32,6 +33,8 @@ public:
     QPushButton *addButton;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+    QComboBox *filterComboBox;
+    QPushButton *sortButton;
 
     void setupUi(QWidget *Dashboard)
     {
@@ -78,12 +81,22 @@ public:
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        filterComboBox = new QComboBox(Dashboard);
+        filterComboBox->addItem(QString());
+        filterComboBox->addItem(QString());
+        filterComboBox->setObjectName("filterComboBox");
+        filterComboBox->setGeometry(QRect(300, 30, 691, 25));
+        sortButton = new QPushButton(Dashboard);
+        sortButton->setObjectName("sortButton");
+        sortButton->setGeometry(QRect(960, 60, 61, 21));
         label->raise();
         notificationsListWidget->raise();
         welcomeLabel->raise();
         onlineChatSystemListWidget->raise();
         gridLayoutWidget->raise();
         verticalLayoutWidget->raise();
+        filterComboBox->raise();
+        sortButton->raise();
 
         retranslateUi(Dashboard);
 
@@ -96,6 +109,10 @@ public:
         welcomeLabel->setText(QCoreApplication::translate("Dashboard", "Welcome!", nullptr));
         label->setText(QString());
         addButton->setText(QString());
+        filterComboBox->setItemText(0, QCoreApplication::translate("Dashboard", "Alphabetical Order", nullptr));
+        filterComboBox->setItemText(1, QCoreApplication::translate("Dashboard", "Time(ID)", nullptr));
+
+        sortButton->setText(QCoreApplication::translate("Dashboard", "Sort", nullptr));
     } // retranslateUi
 
 };

@@ -106,7 +106,7 @@ public:
     {
         forgotPasswordDialog->setWindowTitle(QCoreApplication::translate("forgotPasswordDialog", "Forgot Password", nullptr));
         emailLabel->setText(QCoreApplication::translate("forgotPasswordDialog", "Email address : ", nullptr));
-        securityQuestionLabel->setText(QCoreApplication::translate("forgotPasswordDialog", "Your favorite song :", nullptr));
+        securityQuestionLabel->setText(QCoreApplication::translate("forgotPasswordDialog", "First grade teacher", nullptr));
         newPasswordLabel->setText(QCoreApplication::translate("forgotPasswordDialog", "New password :  ", nullptr));
         eyeButton->setText(QString());
         label->setText(QString());

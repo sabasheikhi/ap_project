@@ -1,4 +1,5 @@
 debug/addorganizationclass.o
+debug/commentui.o
 debug/dashboard.o
 debug/editorganizationclass.o
 debug/editproject.o
@@ -33,6 +34,7 @@ debug/qrc_resources.o
 debug/qrc_tasku.o
 debug/qrc_wel.o
 debug/moc_addorganizationclass.o
+debug/moc_commentui.o
 debug/moc_dashboard.o
 debug/moc_editorganizationclass.o
 debug/moc_editproject.o

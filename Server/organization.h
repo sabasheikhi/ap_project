@@ -29,7 +29,8 @@ public:
     QList<Team*>& Teams();
     QList<project*>& Projects();
     QList<Task*>& Tasks();
-
+    static bool compareById( organization *org1,  organization *org2);
+    static bool compareByName( organization *org1,  organization *org2);
 
 signals:
 private:

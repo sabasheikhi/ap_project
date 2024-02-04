@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addorganizationclass.cpp \
+    commentui.cpp \
     dashboard.cpp \
     editorganizationclass.cpp \
     editproject.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 
 HEADERS += \
     addorganizationclass.h \
+    commentui.h \
     dashboard.h \
     editorganizationclass.h \
     editproject.h \
@@ -51,6 +53,7 @@ HEADERS += \
 
 FORMS += \
     addorganizationclass.ui \
+    commentui.ui \
     dashboard.ui \
     editorganizationclass.ui \
     editproject.ui \
